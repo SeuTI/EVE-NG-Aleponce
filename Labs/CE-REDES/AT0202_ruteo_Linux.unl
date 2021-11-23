@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lab name="AT0202_ruteo_Linux" id="f29caf80-0b61-46e5-a9f4-4d4ba49135e6" version="1" scripttimeout="300" lock="0" author="Pablo Vargas">
+  <topology>
+    <networks>
+      <network id="1" type="bridge" name="SW1" left="216" top="297" visibility="1"/>
+      <network id="2" type="bridge" name="SW2" left="594" top="294" visibility="1"/>
+    </networks>
+  </topology>
+</lab>
