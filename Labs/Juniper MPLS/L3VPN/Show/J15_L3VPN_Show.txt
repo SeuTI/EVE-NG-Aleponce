@@ -1,0 +1,534 @@
+
+
+root@J15> show route 
+
+inet.0: 24 destinations, 24 routes (24 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.15/32       *[Direct/0] 00:14:13
+                    > via lo0.0
+10.0.0.19/32       *[RIP/100] 00:04:45, metric 2, tag 0
+                    > to 10.7.15.7 via em0.0
+10.7.15.0/24       *[Direct/0] 00:14:23
+                    > via em0.0
+10.7.15.15/32      *[Local/0] 00:14:23
+                      Local via em0.0
+10.8.15.0/24       *[Direct/0] 00:14:23
+                    > via em1.0
+10.8.15.15/32      *[Local/0] 00:14:23
+                      Local via em1.0
+10.11.19.0/24      *[RIP/100] 00:14:23, metric 2, tag 0
+                    > to 10.7.15.7 via em0.0
+10.12.19.0/24      *[RIP/100] 00:04:50, metric 2, tag 0
+                    > to 10.7.15.7 via em0.0
+172.15.1.0/24      *[Direct/0] 00:14:13
+                    > via lo0.0
+172.15.1.1/32      *[Local/0] 00:14:13
+                      Local via lo0.0   
+172.15.2.0/24      *[Direct/0] 00:14:13
+                    > via lo0.0
+172.15.2.1/32      *[Local/0] 00:14:13
+                      Local via lo0.0
+172.15.3.0/24      *[Direct/0] 00:14:13
+                    > via lo0.0
+172.15.3.1/32      *[Local/0] 00:14:13
+                      Local via lo0.0
+172.15.4.0/24      *[Direct/0] 00:14:13
+                    > via lo0.0
+172.15.4.1/32      *[Local/0] 00:14:13
+                      Local via lo0.0
+172.15.5.0/24      *[Direct/0] 00:14:13
+                    > via lo0.0
+172.15.5.1/32      *[Local/0] 00:14:13
+                      Local via lo0.0
+172.19.1.0/24      *[RIP/100] 00:04:45, metric 2, tag 0
+                    > to 10.7.15.7 via em0.0
+172.19.2.0/24      *[RIP/100] 00:04:45, metric 2, tag 0
+                    > to 10.7.15.7 via em0.0
+172.19.3.0/24      *[RIP/100] 00:04:45, metric 2, tag 0
+                    > to 10.7.15.7 via em0.0
+172.19.4.0/24      *[RIP/100] 00:04:45, metric 2, tag 0
+                    > to 10.7.15.7 via em0.0
+172.19.5.0/24      *[RIP/100] 00:04:45, metric 2, tag 0
+                    > to 10.7.15.7 via em0.0
+224.0.0.9/32       *[RIP/100] 00:14:30, metric 1
+                      MultiRecv
+
+root@J15> 
+
+root@J15> 
+
+root@J15> show rip da
+                   ^
+syntax error, expecting <command>.
+root@J15> show rip dat  
+                   ^
+syntax error, expecting <command>.
+root@J15> show rip ?     
+Possible completions:
+  general-statistics   Show RIP general statistics
+  neighbor             Show RIP interfaces
+  statistics           Show RIP statistics
+root@J15> show rip neighbor 
+                  Local  Source          Destination     Send   Receive   In
+Neighbor          State  Address         Address         Mode   Mode     Met 
+--------          -----  -------         -----------     ----   -------  --- 
+em0.0                Up 10.7.15.15      224.0.0.9       mcast  both       1
+em1.0                Up 10.8.15.15      224.0.0.9       mcast  both       1
+
+root@J15> show rip general-statistics 
+RIPv2 I/O info:
+     bad msgs       :            0
+     no recv intf   :            0
+     curr memory    :        11964 bytes
+     max memory     :        11964 bytes
+
+root@J15> show route ?
+Possible completions:
+  <[Enter]>            Execute this command
+  <destination>        IP address and optional prefix length of destination
+  active-path          Show active paths
+  advertising-protocol  Show information in format intended for particular routing protocol
+  all                  Show all entries, including hidden entries
+  aspath-regex         BGP AS path regular expression for entries to match
+  best                 Show longest matching route
+  brief                Display brief output
+  ccc                  Name of entry in MPLS table with a circuit cross-connect interface
++ community            Identifier for community (can include wildcards)
+  community-name       Name of configured community policy to match
+  damping              Show entries subjected to particular kind of route damping
+  detail               Display detailed output
+  exact                Show routes that match exactly
+  export               Show instance export information
+  extensive            Display extensive output
+  flow                 Show flow routing information
+  forwarding-table     Show entries in all forwarding tables
+  hidden               Show hidden entries
+root@J15> show route detail             
+
+inet.0: 24 destinations, 24 routes (24 active, 0 holddown, 0 hidden)
+10.0.0.15/32 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334208
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                Announcement bits (1): 1-RIPv2 
+                AS path: I
+
+10.0.0.19/32 (1 entry, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 549
+                Address: 0x9334178
+                Next-hop reference count: 16
+                Next hop: 10.7.15.7 via em0.0, selected
+                State: <Active Int>
+                Age: 5:16 	Metric: 2 	Tag: 0 
+                Task: RIPv2
+                Announcement bits (2): 0-KRT 1-RIPv2 
+                AS path: I
+		Route learned from 10.7.15.7 expires in 169 seconds
+
+10.7.15.0/24 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x93340e8
+                Next-hop reference count: 1
+                Next hop: via em0.0, selected
+                State: <Active Int>
+                Age: 14:54 
+                Task: IF
+                Announcement bits (1): 1-RIPv2 
+                AS path: I
+
+10.7.15.15/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: em0.0
+                State: <Active NoReadvrt Int>
+                Age: 14:54 
+                Task: IF
+                AS path: I
+
+10.8.15.0/24 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334130
+                Next-hop reference count: 1
+                Next hop: via em1.0, selected
+                State: <Active Int>
+                Age: 14:54 
+                Task: IF
+                Announcement bits (1): 1-RIPv2 
+                AS path: I
+
+10.8.15.15/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: em1.0        
+                State: <Active NoReadvrt Int>
+                Age: 14:54 
+                Task: IF
+                AS path: I
+
+10.11.19.0/24 (1 entry, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 549
+                Address: 0x9334178
+                Next-hop reference count: 16
+                Next hop: 10.7.15.7 via em0.0, selected
+                State: <Active Int>
+                Age: 14:54 	Metric: 2 	Tag: 0 
+                Task: RIPv2
+                Announcement bits (2): 0-KRT 1-RIPv2 
+                AS path: I
+		Route learned from 10.7.15.7 expires in 169 seconds
+
+10.12.19.0/24 (1 entry, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 549
+                Address: 0x9334178
+                Next-hop reference count: 16
+                Next hop: 10.7.15.7 via em0.0, selected
+                State: <Active Int>
+                Age: 5:21 	Metric: 2 	Tag: 0 
+                Task: RIPv2
+                Announcement bits (2): 0-KRT 1-RIPv2 
+                AS path: I
+		Route learned from 10.7.15.7 expires in 169 seconds
+
+172.15.1.0/24 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334250
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                Announcement bits (1): 1-RIPv2 
+                AS path: I
+
+172.15.1.1/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local    
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: lo0.0
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                AS path: I
+
+172.15.2.0/24 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334298
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                Announcement bits (1): 1-RIPv2 
+                AS path: I
+
+172.15.2.1/32 (1 entry, 0 announced)
+        *Local  Preference: 0           
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: lo0.0
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                AS path: I
+
+172.15.3.0/24 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x93342e0
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                Announcement bits (1): 1-RIPv2 
+                AS path: I
+
+172.15.3.1/32 (1 entry, 0 announced)    
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: lo0.0
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                AS path: I
+
+172.15.4.0/24 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334328
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                Announcement bits (1): 1-RIPv2 
+                AS path: I
+                                        
+172.15.4.1/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: lo0.0
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                AS path: I
+
+172.15.5.0/24 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334370
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                Announcement bits (1): 1-RIPv2 
+                AS path: I              
+
+172.15.5.1/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: lo0.0
+                State: <Active Int>
+                Age: 14:44 
+                Task: IF
+                AS path: I
+
+172.19.1.0/24 (1 entry, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 549
+                Address: 0x9334178
+                Next-hop reference count: 16
+                Next hop: 10.7.15.7 via em0.0, selected
+                State: <Active Int>
+                Age: 5:16 	Metric: 2 	Tag: 0 
+                Task: RIPv2
+                Announcement bits (2): 0-KRT 1-RIPv2 
+                AS path: I
+		Route learned from 10.7.15.7 expires in 169 seconds
+
+172.19.2.0/24 (1 entry, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 549
+                Address: 0x9334178
+                Next-hop reference count: 16
+                Next hop: 10.7.15.7 via em0.0, selected
+                State: <Active Int>
+                Age: 5:16 	Metric: 2 	Tag: 0 
+                Task: RIPv2
+                Announcement bits (2): 0-KRT 1-RIPv2 
+                AS path: I
+		Route learned from 10.7.15.7 expires in 169 seconds
+
+172.19.3.0/24 (1 entry, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 549
+                Address: 0x9334178
+                Next-hop reference count: 16
+                Next hop: 10.7.15.7 via em0.0, selected
+                State: <Active Int>     
+                Age: 5:16 	Metric: 2 	Tag: 0 
+                Task: RIPv2
+                Announcement bits (2): 0-KRT 1-RIPv2 
+                AS path: I
+		Route learned from 10.7.15.7 expires in 169 seconds
+
+172.19.4.0/24 (1 entry, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 549
+                Address: 0x9334178
+                Next-hop reference count: 16
+                Next hop: 10.7.15.7 via em0.0, selected
+                State: <Active Int>
+                Age: 5:16 	Metric: 2 	Tag: 0 
+                Task: RIPv2
+                Announcement bits (2): 0-KRT 1-RIPv2 
+                AS path: I
+		Route learned from 10.7.15.7 expires in 169 seconds
+
+172.19.5.0/24 (1 entry, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 549
+                Address: 0x9334178      
+                Next-hop reference count: 16
+                Next hop: 10.7.15.7 via em0.0, selected
+                State: <Active Int>
+                Age: 5:16 	Metric: 2 	Tag: 0 
+                Task: RIPv2
+                Announcement bits (2): 0-KRT 1-RIPv2 
+                AS path: I
+		Route learned from 10.7.15.7 expires in 169 seconds
+
+224.0.0.9/32 (1 entry, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: MultiRecv
+                Address: 0x8f2a7c4
+                Next-hop reference count: 2
+                State: <Active NoReadvrt Int>
+                Age: 15:01 	Metric: 1 
+                Task: RIPv2
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+root@J15> 
+
+root@J15> 
+
+root@J15> 
+
+root@J15> ping 172.19.1.1 count 3 
+PING 172.19.1.1 (172.19.1.1): 56 data bytes
+64 bytes from 172.19.1.1: icmp_seq=0 ttl=63 time=11.426 ms
+64 bytes from 172.19.1.1: icmp_seq=1 ttl=63 time=3.621 ms
+64 bytes from 172.19.1.1: icmp_seq=2 ttl=63 time=3.559 ms
+
+--- 172.19.1.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.559/6.202/11.426/3.694 ms
+
+root@J15> 
+
+root@J15> ping 172.19.2.1 count 3    
+PING 172.19.2.1 (172.19.2.1): 56 data bytes
+64 bytes from 172.19.2.1: icmp_seq=0 ttl=63 time=3.676 ms
+64 bytes from 172.19.2.1: icmp_seq=1 ttl=63 time=3.341 ms
+64 bytes from 172.19.2.1: icmp_seq=2 ttl=63 time=3.087 ms
+
+--- 172.19.2.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.087/3.368/3.676/0.241 ms
+
+root@J15> 
+
+root@J15> ping 172.19.3.1 count 3    
+PING 172.19.3.1 (172.19.3.1): 56 data bytes
+64 bytes from 172.19.3.1: icmp_seq=0 ttl=63 time=3.668 ms
+64 bytes from 172.19.3.1: icmp_seq=1 ttl=63 time=3.062 ms
+64 bytes from 172.19.3.1: icmp_seq=2 ttl=63 time=3.506 ms
+
+--- 172.19.3.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.062/3.412/3.668/0.256 ms
+
+root@J15> 
+
+root@J15> ping 172.19.4.1 count 3    
+PING 172.19.4.1 (172.19.4.1): 56 data bytes
+64 bytes from 172.19.4.1: icmp_seq=0 ttl=63 time=3.161 ms
+64 bytes from 172.19.4.1: icmp_seq=1 ttl=63 time=3.146 ms
+64 bytes from 172.19.4.1: icmp_seq=2 ttl=63 time=3.434 ms
+
+--- 172.19.4.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.146/3.247/3.434/0.132 ms
+
+root@J15> ping 172.19.5.1 count 3    
+PING 172.19.5.1 (172.19.5.1): 56 data bytes
+64 bytes from 172.19.5.1: icmp_seq=0 ttl=63 time=4.952 ms
+64 bytes from 172.19.5.1: icmp_seq=1 ttl=63 time=3.196 ms
+64 bytes from 172.19.5.1: icmp_seq=2 ttl=63 time=4.538 ms
+
+--- 172.19.5.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.196/4.229/4.952/0.750 ms
+
+root@J15> 
+
+root@J15> traceroute 172.19.1.1 
+traceroute to 172.19.1.1 (172.19.1.1), 30 hops max, 40 byte packets
+ 1  10.7.15.7 (10.7.15.7)  2.436 ms  0.823 ms  0.775 ms
+ 2  10.3.7.3 (10.3.7.3)  3.738 ms  3.064 ms  3.404 ms
+     MPLS Label=300480 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.2.3.2 (10.2.3.2)  7.000 ms  3.469 ms  2.816 ms
+     MPLS Label=300064 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.19.1.1 (172.19.1.1)  4.034 ms  7.351 ms  5.424 ms
+
+root@J15> 
+
+root@J15> traceroute 172.19.2.1    
+traceroute to 172.19.2.1 (172.19.2.1), 30 hops max, 40 byte packets
+ 1  10.7.15.7 (10.7.15.7)  1.867 ms  1.140 ms  0.944 ms
+ 2  10.3.7.3 (10.3.7.3)  2.737 ms  2.666 ms  3.991 ms
+     MPLS Label=300480 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.2.3.2 (10.2.3.2)  4.503 ms  2.621 ms  2.854 ms
+     MPLS Label=300064 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.19.2.1 (172.19.2.1)  4.994 ms  3.792 ms  3.909 ms
+
+root@J15> 
+
+root@J15> traceroute 172.19.3.1    
+traceroute to 172.19.3.1 (172.19.3.1), 30 hops max, 40 byte packets
+ 1  10.7.15.7 (10.7.15.7)  1.034 ms  1.393 ms  1.120 ms
+ 2  10.3.7.3 (10.3.7.3)  2.406 ms  2.947 ms  2.619 ms
+     MPLS Label=300480 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.2.3.2 (10.2.3.2)  2.543 ms  3.235 ms  4.670 ms
+     MPLS Label=300064 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.19.3.1 (172.19.3.1)  3.258 ms  3.539 ms  3.758 ms
+
+root@J15> 
+
+root@J15> traceroute 172.19.4.1    
+traceroute to 172.19.4.1 (172.19.4.1), 30 hops max, 40 byte packets
+ 1  10.7.15.7 (10.7.15.7)  2.238 ms  2.451 ms  1.104 ms
+ 2  10.3.7.3 (10.3.7.3)  4.412 ms  2.444 ms  2.496 ms
+     MPLS Label=300480 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.2.3.2 (10.2.3.2)  3.212 ms  6.984 ms  2.459 ms
+     MPLS Label=300064 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.19.4.1 (172.19.4.1)  3.102 ms  4.273 ms  2.558 ms
+
+root@J15> 
+
+root@J15> traceroute 172.19.5.1    
+traceroute to 172.19.5.1 (172.19.5.1), 30 hops max, 40 byte packets
+ 1  10.7.15.7 (10.7.15.7)  1.115 ms  0.811 ms  0.973 ms
+ 2  10.3.7.3 (10.3.7.3)  3.628 ms  2.969 ms  4.902 ms
+     MPLS Label=300480 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.2.3.2 (10.2.3.2)  2.616 ms  3.600 ms  3.416 ms
+     MPLS Label=300064 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.19.5.1 (172.19.5.1)  6.605 ms  3.335 ms  5.812 ms
+
+root@J15> 
+
+root@J15> 

@@ -1,0 +1,113 @@
+root@J13> show configuration | display set 
+set version 12.1R1.9
+set system host-name J13
+set system root-authentication encrypted-password "$1$HD6hscqU$Wnk5nJog4DjxFSz3HVXtC1"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces em0 unit 0 family inet address 10.5.13.13/24
+set interfaces em1 unit 0 family inet address 10.6.13.13/24
+set interfaces lo0 unit 0 family inet address 10.0.0.13/32
+set interfaces lo0 unit 0 family inet address 172.13.1.1/24
+set interfaces lo0 unit 0 family inet address 172.13.2.1/24
+set interfaces lo0 unit 0 family inet address 172.13.3.1/24
+set interfaces lo0 unit 0 family inet address 172.13.4.1/24
+set interfaces lo0 unit 0 family inet address 172.13.5.1/24
+set routing-options aggregate route 172.13.0.0/18
+set routing-options router-id 10.0.0.13
+set protocols ospf export AGGREGATE
+set protocols ospf area 0.0.0.100 interface all
+set protocols lldp management-address 10.0.0.13
+set protocols lldp interface all
+set policy-options policy-statement AGGREGATE term 1 from protocol aggregate
+set policy-options policy-statement AGGREGATE term 1 then accept
+set policy-options policy-statement AGGREGATE term 2 then reject
+set policy-options policy-statement REDISTRIBUTE-TO-OSPF term 1 from protocol direct
+set policy-options policy-statement REDISTRIBUTE-TO-OSPF term 1 then accept
+
+root@J13> show configuration                  
+version 12.1R1.9;
+system {
+    host-name J13;
+    root-authentication {
+        encrypted-password "$1$HD6hscqU$Wnk5nJog4DjxFSz3HVXtC1"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}
+interfaces {
+    em0 {
+        unit 0 {
+            family inet {
+                address 10.5.13.13/24;  
+            }
+        }
+    }
+    em1 {
+        unit 0 {
+            family inet {
+                address 10.6.13.13/24;
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 10.0.0.13/32;
+                address 172.13.1.1/24;
+                address 172.13.2.1/24;
+                address 172.13.3.1/24;
+                address 172.13.4.1/24;
+                address 172.13.5.1/24;
+            }
+        }
+    }
+}                                       
+routing-options {
+    aggregate {
+        route 172.13.0.0/18;
+    }
+    router-id 10.0.0.13;
+}
+protocols {
+    ospf {
+        export AGGREGATE;
+        area 0.0.0.100 {
+            interface all;
+        }
+    }
+    lldp {
+        management-address 10.0.0.13;
+        interface all;
+    }
+}
+policy-options {
+    policy-statement AGGREGATE {
+        term 1 {
+            from protocol aggregate;
+            then accept;                
+        }
+        term 2 {
+            then reject;
+        }
+    }
+    policy-statement REDISTRIBUTE-TO-OSPF {
+        term 1 {
+            from protocol direct;
+            then accept;
+        }
+    }
+}
+
+root@J13> 

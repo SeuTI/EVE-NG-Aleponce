@@ -1,0 +1,97 @@
+root@J17> show configuration | display set 
+set version 12.1R1.9
+set system host-name J17
+set system root-authentication encrypted-password "$1$2PowUueH$cQ09kT5wh6eHyW3oRQ7Xh0"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces em0 unit 0 family inet address 10.9.17.17/24
+set interfaces em1 unit 0 family inet address 10.10.17.17/24
+set interfaces lo0 unit 0 family inet address 10.0.0.17/32
+set interfaces lo0 unit 0 family inet address 172.17.1.1/24
+set interfaces lo0 unit 0 family inet address 172.17.2.1/24
+set interfaces lo0 unit 0 family inet address 172.17.3.1/24
+set interfaces lo0 unit 0 family inet address 172.17.4.1/24
+set interfaces lo0 unit 0 family inet address 172.17.5.1/24
+set routing-options router-id 10.0.0.17
+set protocols ospf export REDISTRIBUTE-TO-OSPF
+set protocols ospf area 0.0.0.100 interface all
+set protocols lldp management-address 10.0.0.17
+set protocols lldp interface all
+set policy-options policy-statement REDISTRIBUTE-TO-OSPF term 1 from protocol direct
+set policy-options policy-statement REDISTRIBUTE-TO-OSPF term 1 then accept
+
+root@J17> show configuration                  
+version 12.1R1.9;
+system {
+    host-name J17;
+    root-authentication {
+        encrypted-password "$1$2PowUueH$cQ09kT5wh6eHyW3oRQ7Xh0"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}
+interfaces {
+    em0 {
+        unit 0 {
+            family inet {
+                address 10.9.17.17/24;  
+            }
+        }
+    }
+    em1 {
+        unit 0 {
+            family inet {
+                address 10.10.17.17/24;
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 10.0.0.17/32;
+                address 172.17.1.1/24;
+                address 172.17.2.1/24;
+                address 172.17.3.1/24;
+                address 172.17.4.1/24;
+                address 172.17.5.1/24;
+            }
+        }
+    }
+}                                       
+routing-options {
+    router-id 10.0.0.17;
+}
+protocols {
+    ospf {
+        export REDISTRIBUTE-TO-OSPF;
+        area 0.0.0.100 {
+            interface all;
+        }
+    }
+    lldp {
+        management-address 10.0.0.17;
+        interface all;
+    }
+}
+policy-options {
+    policy-statement REDISTRIBUTE-TO-OSPF {
+        term 1 {
+            from protocol direct;
+            then accept;
+        }
+    }
+}                                       
+
+root@J17> 

@@ -1,0 +1,103 @@
+root@J14> show configuration | display set 
+set version 12.1R1.9
+set system host-name J14
+set system root-authentication encrypted-password "$1$j7lJY0yR$s6r2H0OniKbAmyy8Sgja00"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces em0 unit 0 family inet address 10.6.14.14/24
+set interfaces em1 unit 0 family inet address 10.5.14.14/24
+set interfaces lo0 unit 0 family inet address 10.0.0.14/32
+set interfaces lo0 unit 0 family inet address 172.14.1.1/24
+set interfaces lo0 unit 0 family inet address 172.14.2.1/24
+set interfaces lo0 unit 0 family inet address 172.14.3.1/24
+set interfaces lo0 unit 0 family inet address 172.14.4.1/24
+set interfaces lo0 unit 0 family inet address 172.14.5.1/24
+set protocols bgp group CE-PE-EBGP type external
+set protocols bgp group CE-PE-EBGP export REDISTRIBUTE-TO-BGP
+set protocols bgp group CE-PE-EBGP local-as 14
+set protocols bgp group CE-PE-EBGP neighbor 10.5.14.5 peer-as 5
+set protocols bgp group CE-PE-EBGP neighbor 10.6.14.6 peer-as 6
+set protocols lldp management-address 10.0.0.14
+set protocols lldp interface all
+set policy-options policy-statement REDISTRIBUTE-TO-BGP term 1 from protocol direct
+set policy-options policy-statement REDISTRIBUTE-TO-BGP term 1 then accept
+
+root@J14> show configuration                  
+version 12.1R1.9;
+system {
+    host-name J14;
+    root-authentication {
+        encrypted-password "$1$j7lJY0yR$s6r2H0OniKbAmyy8Sgja00"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}
+interfaces {
+    em0 {
+        unit 0 {
+            family inet {
+                address 10.6.14.14/24;  
+            }
+        }
+    }
+    em1 {
+        unit 0 {
+            family inet {
+                address 10.5.14.14/24;
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 10.0.0.14/32;
+                address 172.14.1.1/24;
+                address 172.14.2.1/24;
+                address 172.14.3.1/24;
+                address 172.14.4.1/24;
+                address 172.14.5.1/24;
+            }
+        }
+    }
+}                                       
+protocols {
+    bgp {
+        group CE-PE-EBGP {
+            type external;
+            export REDISTRIBUTE-TO-BGP;
+            local-as 14;
+            neighbor 10.5.14.5 {
+                peer-as 5;
+            }
+            neighbor 10.6.14.6 {
+                peer-as 6;
+            }
+        }
+    }
+    lldp {
+        management-address 10.0.0.14;
+        interface all;
+    }
+}
+policy-options {
+    policy-statement REDISTRIBUTE-TO-BGP {
+        term 1 {
+            from protocol direct;       
+            then accept;
+        }
+    }
+}
+
+root@J14>

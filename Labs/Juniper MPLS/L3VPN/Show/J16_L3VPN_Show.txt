@@ -1,0 +1,456 @@
+
+
+root@J16> show route 
+
+inet.0: 16 destinations, 16 routes (16 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0.0.0.0/0          *[Static/5] 00:00:57
+                    > to 10.8.16.8 via em0.0
+                      to 10.7.16.7 via em1.0
+10.0.0.16/32       *[Direct/0] 00:00:45
+                    > via lo0.0
+10.7.16.0/24       *[Direct/0] 00:00:59
+                    > via em1.0
+10.7.16.16/32      *[Local/0] 00:00:59
+                      Local via em1.0
+10.8.16.0/24       *[Direct/0] 00:01:00
+                    > via em0.0
+10.8.16.16/32      *[Local/0] 00:01:00
+                      Local via em0.0
+172.16.1.0/24      *[Direct/0] 00:00:45
+                    > via lo0.0
+172.16.1.1/32      *[Local/0] 00:00:45
+                      Local via lo0.0
+172.16.2.0/24      *[Direct/0] 00:00:45
+                    > via lo0.0
+172.16.2.1/32      *[Local/0] 00:00:45  
+                      Local via lo0.0
+172.16.3.0/24      *[Direct/0] 00:00:45
+                    > via lo0.0
+172.16.3.1/32      *[Local/0] 00:00:45
+                      Local via lo0.0
+172.16.4.0/24      *[Direct/0] 00:00:45
+                    > via lo0.0
+172.16.4.1/32      *[Local/0] 00:00:45
+                      Local via lo0.0
+172.16.5.0/24      *[Direct/0] 00:00:45
+                    > via lo0.0
+172.16.5.1/32      *[Local/0] 00:00:45
+                      Local via lo0.0
+
+root@J16> 
+
+root@J16> show rote
+               ^
+syntax error, expecting <command>.
+
+root@J16> showw  
+          ^
+unknown command.
+root@J16> show route 
+
+inet.0: 16 destinations, 16 routes (16 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0.0.0.0/0          *[Static/5] 00:13:51
+                    > to 10.8.16.8 via em0.0
+                      to 10.7.16.7 via em1.0
+10.0.0.16/32       *[Direct/0] 00:13:39
+                    > via lo0.0
+10.7.16.0/24       *[Direct/0] 00:13:53
+                    > via em1.0
+10.7.16.16/32      *[Local/0] 00:13:53
+                      Local via em1.0
+10.8.16.0/24       *[Direct/0] 00:13:54
+                    > via em0.0
+10.8.16.16/32      *[Local/0] 00:13:54
+                      Local via em0.0
+172.16.1.0/24      *[Direct/0] 00:13:39
+                    > via lo0.0
+172.16.1.1/32      *[Local/0] 00:13:39
+                      Local via lo0.0
+172.16.2.0/24      *[Direct/0] 00:13:39
+                    > via lo0.0
+172.16.2.1/32      *[Local/0] 00:13:39  
+                      Local via lo0.0
+172.16.3.0/24      *[Direct/0] 00:13:39
+                    > via lo0.0
+172.16.3.1/32      *[Local/0] 00:13:39
+                      Local via lo0.0
+172.16.4.0/24      *[Direct/0] 00:13:39
+                    > via lo0.0
+172.16.4.1/32      *[Local/0] 00:13:39
+                      Local via lo0.0
+172.16.5.0/24      *[Direct/0] 00:13:39
+                    > via lo0.0
+172.16.5.1/32      *[Local/0] 00:13:39
+                      Local via lo0.0
+
+root@J16> 
+
+root@J16> 
+
+root@J16> show route 
+
+inet.0: 16 destinations, 16 routes (16 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0.0.0.0/0          *[Static/5] 00:22:28
+                    > to 10.8.16.8 via em0.0
+                      to 10.7.16.7 via em1.0
+10.0.0.16/32       *[Direct/0] 00:22:16
+                    > via lo0.0
+10.7.16.0/24       *[Direct/0] 00:22:30
+                    > via em1.0
+10.7.16.16/32      *[Local/0] 00:22:30
+                      Local via em1.0
+10.8.16.0/24       *[Direct/0] 00:22:31
+                    > via em0.0
+10.8.16.16/32      *[Local/0] 00:22:31
+                      Local via em0.0
+172.16.1.0/24      *[Direct/0] 00:22:16
+                    > via lo0.0
+172.16.1.1/32      *[Local/0] 00:22:16
+                      Local via lo0.0
+172.16.2.0/24      *[Direct/0] 00:22:16
+                    > via lo0.0
+172.16.2.1/32      *[Local/0] 00:22:16  
+                      Local via lo0.0
+172.16.3.0/24      *[Direct/0] 00:22:16
+                    > via lo0.0
+172.16.3.1/32      *[Local/0] 00:22:16
+                      Local via lo0.0
+172.16.4.0/24      *[Direct/0] 00:22:16
+                    > via lo0.0
+172.16.4.1/32      *[Local/0] 00:22:16
+                      Local via lo0.0
+172.16.5.0/24      *[Direct/0] 00:22:16
+                    > via lo0.0
+172.16.5.1/32      *[Local/0] 00:22:16
+                      Local via lo0.0
+
+root@J16> 
+
+root@J16> show route detail 
+
+inet.0: 16 destinations, 16 routes (16 active, 0 holddown, 0 hidden)
+0.0.0.0/0 (1 entry, 1 announced)
+        *Static Preference: 5
+                Next hop type: Router
+                Address: 0x93a0010
+                Next-hop reference count: 1
+                Next hop: 10.8.16.8 via em0.0, selected
+                Next hop: 10.7.16.7 via em1.0
+                State: <Active Int Ext>
+                Age: 22:32 
+                Task: RT
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+10.0.0.16/32 (1 entry, 0 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334250
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF                
+                AS path: I
+
+10.7.16.0/24 (1 entry, 0 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x93340e8
+                Next-hop reference count: 1
+                Next hop: via em1.0, selected
+                State: <Active Int>
+                Age: 22:34 
+                Task: IF
+                AS path: I
+
+10.7.16.16/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: em1.0
+                State: <Active NoReadvrt Int>
+                Age: 22:34 
+                Task: IF                
+                AS path: I
+
+10.8.16.0/24 (1 entry, 0 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x93340a0
+                Next-hop reference count: 1
+                Next hop: via em0.0, selected
+                State: <Active Int>
+                Age: 22:35 
+                Task: IF
+                AS path: I
+
+10.8.16.16/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: em0.0
+                State: <Active NoReadvrt Int>
+                Age: 22:35 
+                Task: IF                
+                AS path: I
+
+172.16.1.0/24 (1 entry, 0 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334298
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF
+                AS path: I
+
+172.16.1.1/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: lo0.0
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF                
+                AS path: I
+
+172.16.2.0/24 (1 entry, 0 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x93342e0
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF
+                AS path: I
+
+172.16.2.1/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: lo0.0
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF                
+                AS path: I
+
+172.16.3.0/24 (1 entry, 0 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334328
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF
+                AS path: I
+
+172.16.3.1/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: lo0.0
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF                
+                AS path: I
+
+172.16.4.0/24 (1 entry, 0 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334370
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF
+                AS path: I
+
+172.16.4.1/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: lo0.0
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF                
+                AS path: I
+
+172.16.5.0/24 (1 entry, 0 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x93343b8
+                Next-hop reference count: 1
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF
+                AS path: I
+
+172.16.5.1/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 7
+                Next hop: 
+                Interface: lo0.0
+                State: <Active Int>
+                Age: 22:20 
+                Task: IF                
+                AS path: I
+
+root@J16> 
+
+root@J16> 
+
+root@J16> ping 172.20.1.1 count 3 
+PING 172.20.1.1 (172.20.1.1): 56 data bytes
+64 bytes from 172.20.1.1: icmp_seq=0 ttl=63 time=16.335 ms
+64 bytes from 172.20.1.1: icmp_seq=1 ttl=63 time=2.977 ms
+64 bytes from 172.20.1.1: icmp_seq=2 ttl=63 time=4.008 ms
+
+--- 172.20.1.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.977/7.773/16.335/6.069 ms
+
+root@J16> 
+
+root@J16> ping 172.20.2.1 count 3    
+PING 172.20.2.1 (172.20.2.1): 56 data bytes
+64 bytes from 172.20.2.1: icmp_seq=0 ttl=63 time=3.527 ms
+64 bytes from 172.20.2.1: icmp_seq=1 ttl=63 time=3.857 ms
+64 bytes from 172.20.2.1: icmp_seq=2 ttl=63 time=3.945 ms
+
+--- 172.20.2.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.527/3.776/3.945/0.180 ms
+
+root@J16> 
+
+root@J16> ping 172.20.3.1 count 3    
+PING 172.20.3.1 (172.20.3.1): 56 data bytes
+64 bytes from 172.20.3.1: icmp_seq=0 ttl=63 time=5.310 ms
+64 bytes from 172.20.3.1: icmp_seq=1 ttl=63 time=3.982 ms
+64 bytes from 172.20.3.1: icmp_seq=2 ttl=63 time=3.496 ms
+
+--- 172.20.3.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.496/4.263/5.310/0.767 ms
+
+root@J16> 
+
+root@J16> 
+
+root@J16> ping 172.20.4.1 count 3    
+PING 172.20.4.1 (172.20.4.1): 56 data bytes
+64 bytes from 172.20.4.1: icmp_seq=0 ttl=63 time=4.971 ms
+64 bytes from 172.20.4.1: icmp_seq=1 ttl=63 time=3.027 ms
+64 bytes from 172.20.4.1: icmp_seq=2 ttl=63 time=3.310 ms
+
+--- 172.20.4.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.027/3.769/4.971/0.858 ms
+
+root@J16> 
+
+root@J16> ping 172.20.5.1 count 3    
+PING 172.20.5.1 (172.20.5.1): 56 data bytes
+64 bytes from 172.20.5.1: icmp_seq=0 ttl=63 time=3.501 ms
+64 bytes from 172.20.5.1: icmp_seq=1 ttl=63 time=3.285 ms
+64 bytes from 172.20.5.1: icmp_seq=2 ttl=63 time=4.276 ms
+
+--- 172.20.5.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.285/3.687/4.276/0.425 ms
+
+root@J16> 
+
+root@J16> traceroute 172.20.1.1 
+traceroute to 172.20.1.1 (172.20.1.1), 30 hops max, 40 byte packets
+ 1  10.8.16.8 (10.8.16.8)  3.467 ms  1.151 ms  1.002 ms
+ 2  10.1.8.1 (10.1.8.1)  4.093 ms  4.005 ms  4.022 ms
+     MPLS Label=300448 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=1 S=1
+ 3  10.1.2.2 (10.1.2.2)  3.381 ms  2.726 ms  3.208 ms
+     MPLS Label=300848 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=2 S=1
+ 4  172.20.1.1 (172.20.1.1)  3.920 ms  5.951 ms  4.197 ms
+
+root@J16> 
+
+root@J16> traceroute 172.20.2.1    
+traceroute to 172.20.2.1 (172.20.2.1), 30 hops max, 40 byte packets
+ 1  10.8.16.8 (10.8.16.8)  1.416 ms  1.506 ms  1.041 ms
+ 2  10.1.8.1 (10.1.8.1)  2.829 ms  5.423 ms  3.070 ms
+     MPLS Label=300448 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=1 S=1
+ 3  10.1.2.2 (10.1.2.2)  6.232 ms  2.811 ms  2.995 ms
+     MPLS Label=300848 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=2 S=1
+ 4  172.20.2.1 (172.20.2.1)  7.355 ms  5.869 ms  5.087 ms
+
+root@J16> 
+
+root@J16> traceroute 172.20.3.1    
+traceroute to 172.20.3.1 (172.20.3.1), 30 hops max, 40 byte packets
+ 1  10.8.16.8 (10.8.16.8)  1.060 ms  0.961 ms  0.945 ms
+ 2  10.1.8.1 (10.1.8.1)  2.603 ms  5.479 ms  4.239 ms
+     MPLS Label=300448 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=1 S=1
+ 3  10.1.2.2 (10.1.2.2)  5.663 ms  6.470 ms  3.813 ms
+     MPLS Label=300848 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=2 S=1
+ 4  172.20.3.1 (172.20.3.1)  4.351 ms  3.766 ms  5.150 ms
+
+root@J16> 
+
+root@J16> traceroute 172.20.4.1    
+traceroute to 172.20.4.1 (172.20.4.1), 30 hops max, 40 byte packets
+ 1  10.8.16.8 (10.8.16.8)  0.806 ms  0.705 ms  0.870 ms
+ 2  10.1.8.1 (10.1.8.1)  3.114 ms  3.844 ms  3.377 ms
+     MPLS Label=300448 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=1 S=1
+ 3  10.1.2.2 (10.1.2.2)  19.712 ms  2.986 ms  3.147 ms
+     MPLS Label=300848 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=2 S=1
+ 4  172.20.4.1 (172.20.4.1)  3.244 ms  3.278 ms  3.153 ms
+
+root@J16> 
+
+root@J16> traceroute 172.20.5.1    
+traceroute to 172.20.5.1 (172.20.5.1), 30 hops max, 40 byte packets
+ 1  10.8.16.8 (10.8.16.8)  1.839 ms  1.281 ms  0.996 ms
+ 2  10.1.8.1 (10.1.8.1)  3.099 ms  2.799 ms  4.877 ms
+     MPLS Label=300448 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=1 S=1
+ 3  10.1.2.2 (10.1.2.2)  2.603 ms  4.147 ms  2.941 ms
+     MPLS Label=300848 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=2 S=1
+ 4  172.20.5.1 (172.20.5.1)  3.380 ms  5.876 ms  3.198 ms
+
+root@J16> 
+
+root@J16> 
+
+root@J16> 

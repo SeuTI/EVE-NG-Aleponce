@@ -1,0 +1,271 @@
+root@J13> ping 172.17.1.1 count 3 
+PING 172.17.1.1 (172.17.1.1): 56 data bytes
+64 bytes from 172.17.1.1: icmp_seq=0 ttl=63 time=5.882 ms
+64 bytes from 172.17.1.1: icmp_seq=1 ttl=63 time=2.984 ms
+64 bytes from 172.17.1.1: icmp_seq=2 ttl=63 time=4.085 ms
+
+--- 172.17.1.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.984/4.317/5.882/1.194 ms
+
+root@J13>                            
+
+root@J13> 
+
+root@J13> ping 172.17.2.1 count 3    
+PING 172.17.2.1 (172.17.2.1): 56 data bytes
+64 bytes from 172.17.2.1: icmp_seq=0 ttl=63 time=3.208 ms
+64 bytes from 172.17.2.1: icmp_seq=1 ttl=63 time=3.066 ms
+64 bytes from 172.17.2.1: icmp_seq=2 ttl=63 time=3.781 ms
+
+--- 172.17.2.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.066/3.352/3.781/0.309 ms
+
+root@J13> 
+
+root@J13> 
+
+root@J13> ping 172.17.3.1 count 3    
+PING 172.17.3.1 (172.17.3.1): 56 data bytes
+64 bytes from 172.17.3.1: icmp_seq=0 ttl=63 time=3.904 ms
+64 bytes from 172.17.3.1: icmp_seq=1 ttl=63 time=2.864 ms
+64 bytes from 172.17.3.1: icmp_seq=2 ttl=63 time=3.466 ms
+
+--- 172.17.3.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.864/3.411/3.904/0.426 ms
+
+root@J13> 
+
+root@J13> 
+
+root@J13> ping 172.17.4.1 count 3    
+PING 172.17.4.1 (172.17.4.1): 56 data bytes
+64 bytes from 172.17.4.1: icmp_seq=0 ttl=63 time=3.194 ms
+64 bytes from 172.17.4.1: icmp_seq=1 ttl=63 time=3.175 ms
+64 bytes from 172.17.4.1: icmp_seq=2 ttl=63 time=3.036 ms
+
+--- 172.17.4.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.036/3.135/3.194/0.070 ms
+
+root@J13> 
+
+root@J13> 
+
+root@J13> ping 172.17.5.1 count 3    
+PING 172.17.5.1 (172.17.5.1): 56 data bytes
+64 bytes from 172.17.5.1: icmp_seq=0 ttl=63 time=3.576 ms
+64 bytes from 172.17.5.1: icmp_seq=1 ttl=63 time=2.918 ms
+64 bytes from 172.17.5.1: icmp_seq=2 ttl=63 time=3.291 ms
+
+--- 172.17.5.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.918/3.262/3.576/0.269 ms
+
+root@J13> 
+
+root@J13> 
+
+root@J13> traceroute 172.17.5.1      
+traceroute to 172.17.5.1 (172.17.5.1), 30 hops max, 40 byte packets
+ 1  10.5.13.5 (10.5.13.5)  2.380 ms  1.155 ms  0.899 ms
+ 2  10.1.5.1 (10.1.5.1)  3.561 ms  3.058 ms  2.262 ms
+     MPLS Label=300240 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.1.4.4 (10.1.4.4)  2.430 ms  3.052 ms  5.405 ms
+     MPLS Label=299952 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.17.5.1 (172.17.5.1)  4.593 ms  3.564 ms  3.361 ms
+
+root@J13> 
+
+root@J13> traceroute 172.17.1.1   
+traceroute to 172.17.1.1 (172.17.1.1), 30 hops max, 40 byte packets
+ 1  10.5.13.5 (10.5.13.5)  0.952 ms  1.076 ms  2.071 ms
+ 2  10.1.5.1 (10.1.5.1)  2.482 ms  2.803 ms  1.965 ms
+     MPLS Label=300240 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.1.4.4 (10.1.4.4)  2.537 ms  2.928 ms  2.501 ms
+     MPLS Label=299952 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.17.1.1 (172.17.1.1)  4.852 ms  5.567 ms  5.049 ms
+
+root@J13> traceroute 172.17.2.1   
+traceroute to 172.17.2.1 (172.17.2.1), 30 hops max, 40 byte packets
+ 1  10.5.13.5 (10.5.13.5)  1.931 ms  1.012 ms  0.769 ms
+ 2  10.1.5.1 (10.1.5.1)  2.133 ms  3.133 ms  1.962 ms
+     MPLS Label=300240 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.1.4.4 (10.1.4.4)  3.139 ms  4.925 ms  2.469 ms
+     MPLS Label=299952 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.17.2.1 (172.17.2.1)  3.559 ms  3.247 ms  2.447 ms
+
+root@J13> traceroute 172.17.3.1   
+traceroute to 172.17.3.1 (172.17.3.1), 30 hops max, 40 byte packets
+ 1  10.6.13.6 (10.6.13.6)  2.197 ms  0.979 ms  0.656 ms
+ 2  10.2.6.2 (10.2.6.2)  3.176 ms  2.629 ms  2.974 ms
+     MPLS Label=300016 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.2.4.4 (10.2.4.4)  2.922 ms  2.963 ms  4.085 ms
+     MPLS Label=300032 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.17.3.1 (172.17.3.1)  3.544 ms  3.916 ms  4.876 ms
+
+root@J13> traceroute 172.17.4.1   
+traceroute to 172.17.4.1 (172.17.4.1), 30 hops max, 40 byte packets
+ 1  10.5.13.5 (10.5.13.5)  0.989 ms  1.451 ms  1.569 ms
+ 2  10.1.5.1 (10.1.5.1)  3.127 ms  3.760 ms  4.168 ms
+     MPLS Label=300240 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.1.4.4 (10.1.4.4)  2.967 ms  3.792 ms  2.992 ms
+     MPLS Label=299952 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.17.4.1 (172.17.4.1)  3.205 ms  4.046 ms  3.053 ms
+
+root@J13> traceroute 172.17.5.1   
+traceroute to 172.17.5.1 (172.17.5.1), 30 hops max, 40 byte packets
+ 1  10.5.13.5 (10.5.13.5)  0.936 ms  1.682 ms  1.511 ms
+ 2  10.1.5.1 (10.1.5.1)  3.502 ms  3.727 ms  2.202 ms
+     MPLS Label=300240 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.1.4.4 (10.1.4.4)  2.482 ms  2.861 ms  2.177 ms
+     MPLS Label=299952 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.17.5.1 (172.17.5.1)  4.997 ms  3.326 ms  2.495 ms
+
+root@J13> 
+
+root@J13> show route 
+
+inet.0: 30 destinations, 30 routes (30 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.13/32       *[Direct/0] 00:28:33
+                    > via lo0.0
+10.0.0.17/32       *[OSPF/10] 00:27:44, metric 2
+                    > to 10.5.13.5 via em0.0
+                      to 10.6.13.6 via em1.0
+10.5.13.0/24       *[Direct/0] 00:28:37
+                    > via em0.0
+10.5.13.13/32      *[Local/0] 00:28:37
+                      Local via em0.0
+10.6.13.0/24       *[Direct/0] 00:28:37
+                    > via em1.0
+10.6.13.13/32      *[Local/0] 00:28:37
+                      Local via em1.0
+10.9.17.0/24       *[OSPF/150] 00:28:17, metric 0, tag 3489660928
+                    > to 10.5.13.5 via em0.0
+                      to 10.6.13.6 via em1.0
+10.10.17.0/24      *[OSPF/150] 00:28:17, metric 0, tag 3489660928
+                      to 10.5.13.5 via em0.0
+                    > to 10.6.13.6 via em1.0
+172.13.0.0/18      *[Aggregate/130] 00:28:55
+                      Reject
+172.13.1.0/24      *[Direct/0] 00:28:33
+                    > via lo0.0
+172.13.1.1/32      *[Local/0] 00:28:33
+                      Local via lo0.0
+172.13.2.0/24      *[Direct/0] 00:28:33
+                    > via lo0.0
+172.13.2.1/32      *[Local/0] 00:28:33
+                      Local via lo0.0
+172.13.3.0/24      *[Direct/0] 00:28:33
+                    > via lo0.0
+172.13.3.1/32      *[Local/0] 00:28:33
+                      Local via lo0.0
+172.13.4.0/24      *[Direct/0] 00:28:33
+                    > via lo0.0
+172.13.4.1/32      *[Local/0] 00:28:33
+                      Local via lo0.0
+172.13.5.0/24      *[Direct/0] 00:28:33
+                    > via lo0.0
+172.13.5.1/32      *[Local/0] 00:28:33
+                      Local via lo0.0
+172.17.1.0/24      *[OSPF/10] 00:27:44, metric 2
+                    > to 10.5.13.5 via em0.0
+                      to 10.6.13.6 via em1.0
+172.17.1.1/32      *[OSPF/10] 00:27:44, metric 2
+                    > to 10.5.13.5 via em0.0
+                      to 10.6.13.6 via em1.0
+172.17.2.0/24      *[OSPF/10] 00:27:44, metric 2
+                    > to 10.5.13.5 via em0.0
+                      to 10.6.13.6 via em1.0
+172.17.2.1/32      *[OSPF/10] 00:27:44, metric 2
+                    > to 10.5.13.5 via em0.0
+                      to 10.6.13.6 via em1.0
+172.17.3.0/24      *[OSPF/10] 00:27:44, metric 2
+                      to 10.5.13.5 via em0.0
+                    > to 10.6.13.6 via em1.0
+172.17.3.1/32      *[OSPF/10] 00:27:44, metric 2
+                      to 10.5.13.5 via em0.0
+                    > to 10.6.13.6 via em1.0
+172.17.4.0/24      *[OSPF/10] 00:27:44, metric 2
+                      to 10.5.13.5 via em0.0
+                    > to 10.6.13.6 via em1.0
+172.17.4.1/32      *[OSPF/10] 00:27:44, metric 2
+                    > to 10.5.13.5 via em0.0
+                      to 10.6.13.6 via em1.0
+172.17.5.0/24      *[OSPF/10] 00:27:44, metric 2
+                      to 10.5.13.5 via em0.0
+                    > to 10.6.13.6 via em1.0
+172.17.5.1/32      *[OSPF/10] 00:27:44, metric 2
+                    > to 10.5.13.5 via em0.0
+                      to 10.6.13.6 via em1.0
+224.0.0.5/32       *[OSPF/10] 00:29:06, metric 1
+                      MultiRecv
+
+root@J13> 
+
+root@J13> 
+root@J13> show ospf neighbor 
+Address          Interface              State     ID               Pri  Dead
+10.5.13.5        em0.0                  Full      10.5.13.5        128    34
+10.6.13.6        em1.0                  Full      10.6.13.6        128    36
+
+root@J13> 
+
+root@J13> show ospf database    
+
+    OSPF database, Area 0.0.0.100
+ Type       ID               Adv Rtr           Seq      Age  Opt  Cksum  Len 
+Router  *10.0.0.13        10.0.0.13        0x80000004  1689  0x22 0x5ad1 180
+Router   10.5.13.5        10.5.13.5        0x80000008   810  0x22 0x1b89  36
+Router   10.6.13.6        10.6.13.6        0x80000008   799  0x22 0x2379  36
+Network  10.5.13.5        10.5.13.5        0x80000002   814  0x22 0x5c62  32
+Network  10.6.13.6        10.6.13.6        0x80000002   821  0x22 0x4a6e  32
+Summary  10.0.0.17        10.5.13.5        0x80000002   621  0xa2 0xe09d  28
+Summary  10.0.0.17        10.6.13.6        0x80000002   627  0xa2 0xd2a9  28
+Summary  172.17.1.0       10.5.13.5        0x80000002   428  0xa2 0x7169  28
+Summary  172.17.1.0       10.6.13.6        0x80000002   433  0xa2 0x6375  28
+Summary  172.17.1.1       10.5.13.5        0x80000002   235  0xa2 0x6772  28
+Summary  172.17.1.1       10.6.13.6        0x80000002   239  0xa2 0x597e  28
+Summary  172.17.2.0       10.5.13.5        0x80000002    41  0xa2 0x6673  28
+Summary  172.17.2.0       10.6.13.6        0x80000002    44  0xa2 0x587f  28
+Summary  172.17.2.1       10.5.13.5        0x80000001  1682  0xa2 0x5e7b  28
+Summary  172.17.2.1       10.6.13.6        0x80000001  1682  0xa2 0x5087  28
+Summary  172.17.3.0       10.5.13.5        0x80000001  1682  0xa2 0x5d7c  28
+Summary  172.17.3.0       10.6.13.6        0x80000001  1682  0xa2 0x4f88  28
+Summary  172.17.3.1       10.5.13.5        0x80000001  1682  0xa2 0x5385  28
+Summary  172.17.3.1       10.6.13.6        0x80000001  1682  0xa2 0x4591  28
+Summary  172.17.4.0       10.5.13.5        0x80000001  1682  0xa2 0x5286  28
+Summary  172.17.4.0       10.6.13.6        0x80000001  1682  0xa2 0x4492  28
+Summary  172.17.4.1       10.5.13.5        0x80000001  1682  0xa2 0x488f  28
+Summary  172.17.4.1       10.6.13.6        0x80000001  1682  0xa2 0x3a9b  28
+Summary  172.17.5.0       10.5.13.5        0x80000001  1682  0xa2 0x4790  28
+Summary  172.17.5.0       10.6.13.6        0x80000001  1682  0xa2 0x399c  28
+Summary  172.17.5.1       10.5.13.5        0x80000001  1682  0xa2 0x3d99  28
+Summary  172.17.5.1       10.6.13.6        0x80000001  1682  0xa2 0x2fa5  28
+    OSPF AS SCOPE link state database
+ Type       ID               Adv Rtr           Seq      Age  Opt  Cksum  Len 
+Extern   10.9.17.0        10.5.13.5        0x80000002  1201  0xa2 0xd0e   36
+Extern   10.9.17.0        10.6.13.6        0x80000002  1210  0xa2 0xfe1a  36
+Extern   10.10.17.0       10.5.13.5        0x80000002  1394  0xa2 0x119   36
+Extern   10.10.17.0       10.6.13.6        0x80000002  1404  0xa2 0xf225  36
+Extern  *172.13.0.0       10.0.0.13        0x80000001  1727  0x22 0xba66  36
+
+root@J13> 
+
+root@J13> 

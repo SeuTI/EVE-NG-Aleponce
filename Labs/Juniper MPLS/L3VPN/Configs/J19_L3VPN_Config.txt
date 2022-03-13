@@ -1,0 +1,97 @@
+root@J19> show configuration | display set    
+set version 12.1R1.9
+set system host-name J19
+set system root-authentication encrypted-password "$1$O6UCDw.A$BiH77GYtfgQ/Qh/MZtNDS/"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces em0 unit 0 family inet address 10.11.19.19/24
+set interfaces em1 unit 0 family inet address 10.12.19.19/24
+set interfaces lo0 unit 0 family inet address 10.0.0.19/32
+set interfaces lo0 unit 0 family inet address 172.19.1.1/24
+set interfaces lo0 unit 0 family inet address 172.19.2.1/24
+set interfaces lo0 unit 0 family inet address 172.19.3.1/24
+set interfaces lo0 unit 0 family inet address 172.19.4.1/24
+set interfaces lo0 unit 0 family inet address 172.19.5.1/24
+set protocols rip group CE2PE export ADVERTISE
+set protocols rip group CE2PE neighbor em0.0
+set protocols rip group CE2PE neighbor em1.0
+set policy-options policy-statement ADVERTISE term 1 from protocol direct
+set policy-options policy-statement ADVERTISE term 1 from protocol rip
+set policy-options policy-statement ADVERTISE term 1 then accept
+set policy-options policy-statement ADVERTISE term 2 then reject
+                                        
+root@J19> 
+
+root@J19> show configuration                  
+## Last commit: 2014-03-27 20:02:04 UTC by root
+version 12.1R1.9;
+system {
+    host-name J19;
+    root-authentication {
+        encrypted-password "$1$O6UCDw.A$BiH77GYtfgQ/Qh/MZtNDS/"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}
+interfaces {
+    em0 {
+        unit 0 {
+            family inet {               
+                address 10.11.19.19/24;
+            }
+        }
+    }
+    em1 {
+        unit 0 {
+            family inet {
+                address 10.12.19.19/24;
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 10.0.0.19/32;
+                address 172.19.1.1/24;
+                address 172.19.2.1/24;
+                address 172.19.3.1/24;
+                address 172.19.4.1/24;
+                address 172.19.5.1/24;
+            }
+        }
+    }                                   
+}
+protocols {
+    rip {
+        group CE2PE {
+            export ADVERTISE;
+            neighbor em0.0;
+            neighbor em1.0;
+        }
+    }
+}
+policy-options {
+    policy-statement ADVERTISE {
+        term 1 {
+            from protocol [ direct rip ];
+            then accept;
+        }
+        term 2 {
+            then reject;
+        }
+    }
+}
+
+root@J19> 

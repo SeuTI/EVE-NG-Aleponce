@@ -1,0 +1,309 @@
+root@J14> ping 172.18.1.1 count 3 
+PING 172.18.1.1 (172.18.1.1): 56 data bytes
+64 bytes from 172.18.1.1: icmp_seq=0 ttl=63 time=4.672 ms
+64 bytes from 172.18.1.1: icmp_seq=1 ttl=63 time=5.632 ms
+64 bytes from 172.18.1.1: icmp_seq=2 ttl=63 time=4.370 ms
+
+--- 172.18.1.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 4.370/4.891/5.632/0.538 ms
+
+root@J14>                            
+
+root@J14> ping 172.18.2.1 count 3    
+PING 172.18.2.1 (172.18.2.1): 56 data bytes
+64 bytes from 172.18.2.1: icmp_seq=0 ttl=63 time=3.438 ms
+64 bytes from 172.18.2.1: icmp_seq=1 ttl=63 time=3.032 ms
+64 bytes from 172.18.2.1: icmp_seq=2 ttl=63 time=3.106 ms
+
+--- 172.18.2.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.032/3.192/3.438/0.177 ms
+
+root@J14> 
+
+root@J14> 
+
+root@J14> ping 172.18.3.1 count 3    
+PING 172.18.3.1 (172.18.3.1): 56 data bytes
+64 bytes from 172.18.3.1: icmp_seq=0 ttl=63 time=3.854 ms
+64 bytes from 172.18.3.1: icmp_seq=1 ttl=63 time=4.238 ms
+64 bytes from 172.18.3.1: icmp_seq=2 ttl=63 time=3.192 ms
+
+--- 172.18.3.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 3.192/3.761/4.238/0.432 ms
+
+root@J14> 
+
+root@J14> ping 172.18.4.1 count 3    
+PING 172.18.4.1 (172.18.4.1): 56 data bytes
+64 bytes from 172.18.4.1: icmp_seq=0 ttl=63 time=2.984 ms
+64 bytes from 172.18.4.1: icmp_seq=1 ttl=63 time=3.385 ms
+64 bytes from 172.18.4.1: icmp_seq=2 ttl=63 time=2.825 ms
+
+--- 172.18.4.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.825/3.065/3.385/0.236 ms
+
+root@J14> 
+
+root@J14> ping 172.18.5.1 count 3    
+PING 172.18.5.1 (172.18.5.1): 56 data bytes
+64 bytes from 172.18.5.1: icmp_seq=0 ttl=63 time=2.858 ms
+64 bytes from 172.18.5.1: icmp_seq=1 ttl=63 time=2.850 ms
+64 bytes from 172.18.5.1: icmp_seq=2 ttl=63 time=3.400 ms
+
+--- 172.18.5.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.850/3.036/3.400/0.257 ms
+
+root@J14> 
+
+root@J14> traceroute 172.18.1.1 
+traceroute to 172.18.1.1 (172.18.1.1), 30 hops max, 40 byte packets
+ 1  10.6.14.6 (10.6.14.6)  2.518 ms  1.177 ms  0.943 ms
+ 2  10.2.6.2 (10.2.6.2)  3.007 ms  3.995 ms  2.813 ms
+     MPLS Label=300016 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=1 S=1
+ 3  10.2.4.4 (10.2.4.4)  3.371 ms  2.701 ms  2.176 ms
+     MPLS Label=300032 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=2 S=1
+ 4  172.18.1.1 (172.18.1.1)  3.809 ms  3.573 ms  2.976 ms
+
+root@J14> 
+
+root@J14> traceroute 172.18.2.1    
+traceroute to 172.18.2.1 (172.18.2.1), 30 hops max, 40 byte packets
+ 1  10.6.14.6 (10.6.14.6)  0.945 ms  0.980 ms  0.746 ms
+ 2  10.2.6.2 (10.2.6.2)  2.541 ms  2.670 ms  3.228 ms
+     MPLS Label=300016 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=1 S=1
+ 3  10.2.4.4 (10.2.4.4)  2.679 ms  2.358 ms  2.456 ms
+     MPLS Label=300032 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=2 S=1
+ 4  172.18.2.1 (172.18.2.1)  4.829 ms  3.995 ms  2.983 ms
+
+root@J14>                          
+
+root@J14> traceroute 172.18.3.1    
+traceroute to 172.18.3.1 (172.18.3.1), 30 hops max, 40 byte packets
+ 1  10.6.14.6 (10.6.14.6)  0.877 ms  1.145 ms  1.031 ms
+ 2  10.2.6.2 (10.2.6.2)  3.675 ms  2.842 ms  2.786 ms
+     MPLS Label=300016 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=1 S=1
+ 3  10.2.4.4 (10.2.4.4)  2.463 ms  5.644 ms  2.867 ms
+     MPLS Label=300032 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=2 S=1
+ 4  172.18.3.1 (172.18.3.1)  3.612 ms  3.381 ms  2.994 ms
+
+root@J14> 
+
+root@J14> traceroute 172.18.4.1    
+traceroute to 172.18.4.1 (172.18.4.1), 30 hops max, 40 byte packets
+ 1  10.6.14.6 (10.6.14.6)  1.014 ms  0.799 ms  0.601 ms
+ 2  10.2.6.2 (10.2.6.2)  2.292 ms  3.484 ms  6.499 ms
+     MPLS Label=300016 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=1 S=1
+ 3  10.2.4.4 (10.2.4.4)  3.464 ms  2.267 ms  1.987 ms
+     MPLS Label=300032 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=2 S=1
+ 4  172.18.4.1 (172.18.4.1)  5.406 ms  3.168 ms  2.869 ms
+
+root@J14> 
+
+root@J14> traceroute 172.18.5.1    
+traceroute to 172.18.5.1 (172.18.5.1), 30 hops max, 40 byte packets
+ 1  10.6.14.6 (10.6.14.6)  1.278 ms  1.052 ms  0.833 ms
+ 2  10.2.6.2 (10.2.6.2)  3.182 ms  2.590 ms  4.061 ms
+     MPLS Label=300016 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=1 S=1
+ 3  10.2.4.4 (10.2.4.4)  2.866 ms  2.579 ms  2.420 ms
+     MPLS Label=300032 CoS=0 TTL=1 S=0
+     MPLS Label=17 CoS=0 TTL=2 S=1
+ 4  172.18.5.1 (172.18.5.1)  3.722 ms  3.007 ms  5.809 ms
+
+root@J14> 
+
+root@J14> 
+
+root@J14> show bgp summary 
+Groups: 1 Peers: 2 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+inet.0                18          8          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+10.5.14.5                 5         79         78       0       0       31:42 3/9/9/0              0/0/0/0
+10.6.14.6                 6         81         76       0       0       31:38 5/9/9/0              0/0/0/0
+
+root@J14> 
+
+root@J14> show bgp neighbor 
+Peer: 10.5.14.5+179 AS 5       Local: 10.5.14.14+59617 AS 14   
+  Type: External    State: Established    Flags: <ImportEval Sync>
+  Last State: OpenConfirm   Last Event: RecvKeepAlive
+  Last Error: None
+  Export: [ REDISTRIBUTE-TO-BGP ] 
+  Options: <Preference PeerAS LocalAS Refresh>
+  Holdtime: 90 Preference: 170 Local AS: 14 Local System AS: 0
+  Number of flaps: 0
+  Peer ID: 10.5.14.5       Local ID: 10.0.0.14         Active Holdtime: 90
+  Keepalive Interval: 30         Peer index: 0   
+  BFD: disabled, down
+  Local Interface: em1.0                            
+  NLRI for restart configured on peer: inet-unicast
+  NLRI advertised by peer: inet-unicast
+  NLRI for this session: inet-unicast
+  Peer supports Refresh capability (2)
+  Stale routes from peer are kept for: 300
+  Peer does not support Restarter functionality
+  NLRI that restart is negotiated for: inet-unicast
+  NLRI of received end-of-rib markers: inet-unicast
+  NLRI of all end-of-rib markers sent: inet-unicast
+  Peer supports 4 byte AS extension (peer-as 5)
+  Peer does not support Addpath
+  Table inet.0 Bit: 10000               
+    RIB State: BGP restart is complete
+    Send state: in sync
+    Active prefixes:              3
+    Received prefixes:            9
+    Accepted prefixes:            9
+    Suppressed due to damping:    0
+    Advertised prefixes:          13
+  Last traffic (seconds): Received 14   Sent 7    Checked 4   
+  Input messages:  Total 79	Updates 6	Refreshes 0 	Octets 1794
+  Output messages: Total 78	Updates 4	Refreshes 0 	Octets 1795
+  Output Queue[0]: 0
+
+Peer: 10.6.14.6+179 AS 6       Local: 10.6.14.14+58764 AS 14   
+  Type: External    State: Established    Flags: <ImportEval Sync>
+  Last State: OpenConfirm   Last Event: RecvKeepAlive
+  Last Error: None
+  Export: [ REDISTRIBUTE-TO-BGP ] 
+  Options: <Preference PeerAS LocalAS Refresh>
+  Holdtime: 90 Preference: 170 Local AS: 14 Local System AS: 0
+  Number of flaps: 0
+  Peer ID: 10.6.14.6       Local ID: 10.0.0.14         Active Holdtime: 90
+  Keepalive Interval: 30         Peer index: 1   
+  BFD: disabled, down                   
+  Local Interface: em0.0                            
+  NLRI for restart configured on peer: inet-unicast
+  NLRI advertised by peer: inet-unicast
+  NLRI for this session: inet-unicast
+  Peer supports Refresh capability (2)
+  Stale routes from peer are kept for: 300
+  Peer does not support Restarter functionality
+  NLRI that restart is negotiated for: inet-unicast
+  NLRI of received end-of-rib markers: inet-unicast
+  NLRI of all end-of-rib markers sent: inet-unicast
+  Peer supports 4 byte AS extension (peer-as 6)
+  Peer does not support Addpath
+  Table inet.0 Bit: 10000
+    RIB State: BGP restart is complete
+    Send state: in sync
+    Active prefixes:              5
+    Received prefixes:            9
+    Accepted prefixes:            9
+    Suppressed due to damping:    0
+    Advertised prefixes:          11
+  Last traffic (seconds): Received 11   Sent 7    Checked 74  
+  Input messages:  Total 81	Updates 8	Refreshes 0 	Octets 1933
+  Output messages: Total 76     Updates 4	Refreshes 0 	Octets 1727
+  Output Queue[0]: 0
+
+root@J14> 
+
+root@J14> 
+
+root@J14> show route 
+
+inet.0: 23 destinations, 33 routes (23 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.14/32       *[Direct/0] 00:32:05
+                    > via lo0.0
+10.0.0.18/32       *[BGP/170] 00:23:35, localpref 100
+                      AS path: 5 65535 9 18 I
+                    > to 10.5.14.5 via em1.0
+                    [BGP/170] 00:23:35, localpref 100
+                      AS path: 6 65535 9 18 I
+                    > to 10.6.14.6 via em0.0
+10.5.14.0/24       *[Direct/0] 00:32:16
+                    > via em1.0
+                    [BGP/170] 00:31:54, localpref 100
+                      AS path: 6 65535 I
+                    > to 10.6.14.6 via em0.0
+10.5.14.14/32      *[Local/0] 00:32:16
+                      Local via em1.0
+10.6.14.0/24       *[Direct/0] 00:32:19
+                    > via em0.0
+                    [BGP/170] 00:31:57, localpref 100
+                      AS path: 5 65535 I
+                    > to 10.5.14.5 via em1.0
+10.6.14.14/32      *[Local/0] 00:32:19
+                      Local via em0.0
+10.9.18.0/24       *[BGP/170] 00:31:57, localpref 100
+                      AS path: 5 65535 I
+                    > to 10.5.14.5 via em1.0
+                    [BGP/170] 00:31:54, localpref 100
+                      AS path: 6 65535 I
+                    > to 10.6.14.6 via em0.0
+10.10.18.0/24      *[BGP/170] 00:31:57, localpref 100
+                      AS path: 5 65535 I
+                    > to 10.5.14.5 via em1.0
+                    [BGP/170] 00:31:54, localpref 100
+                      AS path: 6 65535 I
+                    > to 10.6.14.6 via em0.0
+172.14.1.0/24      *[Direct/0] 00:32:05
+                    > via lo0.0
+172.14.1.1/32      *[Local/0] 00:32:05
+                      Local via lo0.0
+172.14.2.0/24      *[Direct/0] 00:32:04
+                    > via lo0.0
+172.14.2.1/32      *[Local/0] 00:32:04
+                      Local via lo0.0
+172.14.3.0/24      *[Direct/0] 00:32:04 
+                    > via lo0.0
+172.14.3.1/32      *[Local/0] 00:32:04
+                      Local via lo0.0
+172.14.4.0/24      *[Direct/0] 00:32:04
+                    > via lo0.0
+172.14.4.1/32      *[Local/0] 00:32:04
+                      Local via lo0.0
+172.14.5.0/24      *[Direct/0] 00:32:03
+                    > via lo0.0
+172.14.5.1/32      *[Local/0] 00:32:03
+                      Local via lo0.0
+172.18.1.0/24      *[BGP/170] 00:23:35, localpref 100
+                      AS path: 6 65535 9 18 I
+                    > to 10.6.14.6 via em0.0
+                    [BGP/170] 00:23:35, localpref 100
+                      AS path: 5 65535 9 18 I
+                    > to 10.5.14.5 via em1.0
+172.18.2.0/24      *[BGP/170] 00:23:35, localpref 100
+                      AS path: 6 65535 9 18 I
+                    > to 10.6.14.6 via em0.0
+                    [BGP/170] 00:23:35, localpref 100
+                      AS path: 5 65535 9 18 I
+                    > to 10.5.14.5 via em1.0
+172.18.3.0/24      *[BGP/170] 00:23:35, localpref 100
+                      AS path: 6 65535 9 18 I
+                    > to 10.6.14.6 via em0.0
+                    [BGP/170] 00:23:35, localpref 100
+                      AS path: 5 65535 9 18 I
+                    > to 10.5.14.5 via em1.0
+172.18.4.0/24      *[BGP/170] 00:23:35, localpref 100
+                      AS path: 6 65535 9 18 I
+                    > to 10.6.14.6 via em0.0
+                    [BGP/170] 00:23:35, localpref 100
+                      AS path: 5 65535 9 18 I
+                    > to 10.5.14.5 via em1.0
+172.18.5.0/24      *[BGP/170] 00:23:35, localpref 100
+                      AS path: 6 65535 9 18 I
+                    > to 10.6.14.6 via em0.0
+                    [BGP/170] 00:23:35, localpref 100
+                      AS path: 5 65535 9 18 I
+                    > to 10.5.14.5 via em1.0
+
+root@J14> 
+
+

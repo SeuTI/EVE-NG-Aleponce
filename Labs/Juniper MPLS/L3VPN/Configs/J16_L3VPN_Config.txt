@@ -1,0 +1,75 @@
+root@J16> show configuration | display set    
+set version 12.1R1.9
+set system host-name J16
+set system root-authentication encrypted-password "$1$j56/OdrH$oFGrLueoRJQu4iqADwUzd1"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces em0 unit 0 family inet address 10.8.16.16/24
+set interfaces em1 unit 0 family inet address 10.7.16.16/24
+set interfaces lo0 unit 0 family inet address 10.0.0.16/32
+set interfaces lo0 unit 0 family inet address 172.16.1.1/24
+set interfaces lo0 unit 0 family inet address 172.16.2.1/24
+set interfaces lo0 unit 0 family inet address 172.16.3.1/24
+set interfaces lo0 unit 0 family inet address 172.16.4.1/24
+set interfaces lo0 unit 0 family inet address 172.16.5.1/24
+set routing-options static route 0.0.0.0/0 next-hop 10.7.16.7
+set routing-options static route 0.0.0.0/0 next-hop 10.8.16.8
+
+root@J16> show configuration                  
+## Last commit: 2014-03-27 19:52:58 UTC by root
+version 12.1R1.9;
+system {
+    host-name J16;
+    root-authentication {
+        encrypted-password "$1$j56/OdrH$oFGrLueoRJQu4iqADwUzd1"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}
+interfaces {
+    em0 {
+        unit 0 {
+            family inet {               
+                address 10.8.16.16/24;
+            }
+        }
+    }
+    em1 {
+        unit 0 {
+            family inet {
+                address 10.7.16.16/24;
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 10.0.0.16/32;
+                address 172.16.1.1/24;
+                address 172.16.2.1/24;
+                address 172.16.3.1/24;
+                address 172.16.4.1/24;
+                address 172.16.5.1/24;
+            }
+        }
+    }                                   
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop [ 10.7.16.7 10.8.16.8 ];
+    }
+}
+
+root@J16> 

@@ -1,0 +1,4287 @@
+ 
+
+root@J12> show mpls interface 
+Interface        State       Administrative groups (x: extended)
+em0.0            Up         <none>
+em1.0            Up         <none>
+
+root@J12> 
+
+root@J12> show mpls lsp          
+Ingress LSP: 6 sessions
+To              From            State Rt P     ActivePath       LSPname
+10.0.0.5        10.0.0.12       Up     0 *                      J12-TO-J5
+10.0.0.6        10.0.0.12       Up     0 *                      J12-TO-J6
+10.0.0.7        10.0.0.12       Up     0 *                      J12-TO-J7
+10.0.0.8        10.0.0.12       Up     0 *                      J12-TO-J8
+10.0.0.9        10.0.0.12       Up     0 *                      J12-TO-J9
+10.0.0.11       10.0.0.12       Up     0 *                      J12-TO-J10
+Total 6 displayed, Up 6, Down 0
+
+Egress LSP: 7 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.12       10.0.0.9        Up       0  1 FF       3        - J9-TO-J12
+10.0.0.12       10.0.0.8        Up       0  1 FF       3        - J8-TO-J12
+10.0.0.12       10.0.0.11       Up       0  1 FF       3        - J11-TO-J12
+10.0.0.12       10.0.0.5        Up       0  1 FF       3        - J5-TO-J12
+10.0.0.12       10.0.0.10       Up       0  1 FF       3        - J10-TO-J12
+10.0.0.12       10.0.0.7        Up       0  1 FF       3        - J7-TO-J12
+10.0.0.12       10.0.0.6        Up       0  1 FF       3        - J6-TO-J12
+Total 7 displayed, Up 7, Down 0
+
+Transit LSP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+                                        
+root@J12> 
+
+root@J12> 
+
+root@J12> show mpls lsp detail 
+Ingress LSP: 6 sessions
+
+10.0.0.5
+  From: 10.0.0.12, State: Up, ActiveRoute: 0, LSPname: J12-TO-J5
+  ActivePath:  (primary)
+  LSPtype: Static Configured
+  LoadBalance: Random
+  Encoding type: Packet, Switching type: Packet, GPID: IPv4
+ *Primary                    State: Up
+    Priorities: 7 0
+    SmartOptimizeTimer: 180
+    Received RRO (ProtectionFlag 1=Available 2=InUse 4=B/W 8=Node 10=SoftPreempt 20=Node-ID):
+          10.2.12.2 10.2.5.5
+
+10.0.0.6
+  From: 10.0.0.12, State: Up, ActiveRoute: 0, LSPname: J12-TO-J6
+  ActivePath:  (primary)
+  LSPtype: Static Configured
+  LoadBalance: Random
+  Encoding type: Packet, Switching type: Packet, GPID: IPv4
+ *Primary                    State: Up
+    Priorities: 7 0
+    SmartOptimizeTimer: 180             
+    Received RRO (ProtectionFlag 1=Available 2=InUse 4=B/W 8=Node 10=SoftPreempt 20=Node-ID):
+          10.2.12.2 10.2.6.6
+
+10.0.0.7
+  From: 10.0.0.12, State: Up, ActiveRoute: 0, LSPname: J12-TO-J7
+  ActivePath:  (primary)
+  LSPtype: Static Configured
+  LoadBalance: Random
+  Encoding type: Packet, Switching type: Packet, GPID: IPv4
+ *Primary                    State: Up
+    Priorities: 7 0
+    SmartOptimizeTimer: 180
+    Received RRO (ProtectionFlag 1=Available 2=InUse 4=B/W 8=Node 10=SoftPreempt 20=Node-ID):
+          10.2.12.2 10.2.3.3 10.3.7.7
+
+10.0.0.8
+  From: 10.0.0.12, State: Up, ActiveRoute: 0, LSPname: J12-TO-J8
+  ActivePath:  (primary)
+  LSPtype: Static Configured
+  LoadBalance: Random
+  Encoding type: Packet, Switching type: Packet, GPID: IPv4
+ *Primary                    State: Up
+    Priorities: 7 0
+    SmartOptimizeTimer: 180
+    Received RRO (ProtectionFlag 1=Available 2=InUse 4=B/W 8=Node 10=SoftPreempt 20=Node-ID):
+          10.2.12.2 10.2.3.3 10.3.8.8
+
+10.0.0.9
+  From: 10.0.0.12, State: Up, ActiveRoute: 0, LSPname: J12-TO-J9
+  ActivePath:  (primary)
+  LSPtype: Static Configured
+  LoadBalance: Random
+  Encoding type: Packet, Switching type: Packet, GPID: IPv4
+ *Primary                    State: Up
+    Priorities: 7 0
+    SmartOptimizeTimer: 180
+    Received RRO (ProtectionFlag 1=Available 2=InUse 4=B/W 8=Node 10=SoftPreempt 20=Node-ID):
+          10.4.12.4 10.4.9.9
+
+10.0.0.11
+  From: 10.0.0.12, State: Up, ActiveRoute: 0, LSPname: J12-TO-J10
+  ActivePath:  (primary)                
+  LSPtype: Static Configured
+  LoadBalance: Random
+  Encoding type: Packet, Switching type: Packet, GPID: IPv4
+ *Primary                    State: Up
+    Priorities: 7 0
+    SmartOptimizeTimer: 180
+    Received RRO (ProtectionFlag 1=Available 2=InUse 4=B/W 8=Node 10=SoftPreempt 20=Node-ID):
+          10.4.12.4 10.4.11.11
+Total 6 displayed, Up 6, Down 0
+
+Egress LSP: 7 sessions
+
+10.0.0.12
+  From: 10.0.0.9, LSPstate: Up, ActiveRoute: 0
+  LSPname: J9-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  130, Since: Sat Mar 29 00:01:34 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 17449 protocol 0
+  PATH rcvfrom: 10.4.12.4 (em0.0) 53 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.4.9.9 10.4.12.4 <self>  
+
+10.0.0.12
+  From: 10.0.0.8, LSPstate: Up, ActiveRoute: 0
+  LSPname: J8-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  139, Since: Fri Mar 28 23:11:37 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 29103 protocol 0
+  PATH rcvfrom: 10.2.12.2 (em1.0) 122 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.1.8.8 10.1.2.1 10.2.12.2 <self>  
+
+10.0.0.12
+  From: 10.0.0.11, LSPstate: Up, ActiveRoute: 0
+  LSPname: J11-TO-J12, LSPpath: Primary 
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  152, Since: Fri Mar 28 23:11:52 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 32446 protocol 0
+  PATH rcvfrom: 10.4.12.4 (em0.0) 123 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.4.11.11 10.4.12.4 <self>  
+
+10.0.0.12
+  From: 10.0.0.5, LSPstate: Up, ActiveRoute: 0
+  LSPname: J5-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  158, Since: Sat Mar 29 00:00:57 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 50680 protocol 0
+  PATH rcvfrom: 10.2.12.2 (em1.0) 55 pkts
+  Adspec: received MTU 1500             
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.2.5.5 10.2.12.2 <self>  
+
+10.0.0.12
+  From: 10.0.0.10, LSPstate: Up, ActiveRoute: 0
+  LSPname: J10-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  155, Since: Sat Mar 29 00:01:10 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 53261 protocol 0
+  PATH rcvfrom: 10.4.12.4 (em0.0) 54 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.4.10.10 10.4.12.4 <self>  
+
+10.0.0.12
+  From: 10.0.0.7, LSPstate: Up, ActiveRoute: 0
+  LSPname: J7-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  144, Since: Fri Mar 28 23:21:44 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 57080 protocol 0
+  PATH rcvfrom: 10.2.12.2 (em1.0) 106 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.3.7.7 10.2.3.3 10.2.12.2 <self>  
+
+10.0.0.12
+  From: 10.0.0.6, LSPstate: Up, ActiveRoute: 0
+  LSPname: J6-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  155, Since: Sat Mar 29 00:00:54 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 62806 protocol 0
+  PATH rcvfrom: 10.2.12.2 (em1.0) 55 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient              
+  RESV rcvfrom: localclient 
+  Record route: 10.2.6.6 10.2.12.2 <self>  
+Total 7 displayed, Up 7, Down 0
+
+Transit LSP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+root@J12> 
+
+root@J12> show rsvp interface 
+RSVP interface: 4 active
+                  Active Subscr- Static      Available   Reserved    Highwater
+Interface   State resv   iption  BW          BW          BW          mark
+em0.0       Up         2   100%  1000Mbps    1000Mbps    0bps        0bps       
+em1.0       Up         4   100%  1000Mbps    1000Mbps    0bps        0bps       
+em3.0       Up         0   100%  1000Mbps    1000Mbps    0bps        0bps       
+em4.0       Up         0   100%  1000Mbps    1000Mbps    0bps        0bps       
+
+root@J12> show rsvp interface detail 
+RSVP interface: 4 active
+em0.0 Index 65, State Ena/Up
+  NoAuthentication, NoAggregate, NoReliable, NoLinkProtection
+  HelloInterval 9(second)
+  Address 10.4.12.12
+  ActiveResv 2, PreemptionCnt 0, Update threshold 10%
+  Subscription 100%, StaticBW 1000Mbps, AvailableBW 1000Mbps
+  ReservedBW [0] 0bps[1] 0bps[2] 0bps[3] 0bps[4] 0bps[5] 0bps[6] 0bps[7] 0bps
+  PacketType              Total                  Last 5 seconds
+                   Sent      Received        Sent      Received
+  Path               174           230           1             0
+  PathErr              0             0           0             0
+  PathTear             0             0           0             0
+  Resv               223           177           0             0
+  ResvErr              0             0           0             0
+  ResvTear             0             0           0             0
+  Hello              598           598           0             0
+  Ack                  0             0           0             0
+  Srefresh             0             0           0             0
+  EndtoEnd RSVP        0             0           0             0
+
+em1.0 Index 70, State Ena/Up
+  NoAuthentication, NoAggregate, NoReliable, NoLinkProtection
+  HelloInterval 9(second)               
+  Address 10.2.12.12
+  ActiveResv 4, PreemptionCnt 0, Update threshold 10%
+  Subscription 100%, StaticBW 1000Mbps, AvailableBW 1000Mbps
+  ReservedBW [0] 0bps[1] 0bps[2] 0bps[3] 0bps[4] 0bps[5] 0bps[6] 0bps[7] 0bps
+  PacketType              Total                  Last 5 seconds
+                   Sent      Received        Sent      Received
+  Path               345           354           0             0
+  PathErr              1             3           0             0
+  PathTear             0             0           0             0
+  Resv               345           355           0             0
+  ResvErr              5             0           0             0
+  ResvTear             0             0           0             0
+  Hello              592           592           1             1
+  Ack                  0             0           0             0
+  Srefresh             0             0           0             0
+  EndtoEnd RSVP        0             0           0             0
+
+em3.0 Index 75, State Ena/Up
+  NoAuthentication, NoAggregate, NoReliable, NoLinkProtection
+  HelloInterval 9(second)
+  Address 10.12.20.12
+  ActiveResv 0, PreemptionCnt 0, Update threshold 10%
+  Subscription 100%, StaticBW 1000Mbps, AvailableBW 1000Mbps
+  ReservedBW [0] 0bps[1] 0bps[2] 0bps[3] 0bps[4] 0bps[5] 0bps[6] 0bps[7] 0bps
+  PacketType              Total                  Last 5 seconds
+                   Sent      Received        Sent      Received
+  Path                 0             0           0             0
+  PathErr              0             0           0             0
+  PathTear             0             0           0             0
+  Resv                 0             0           0             0
+  ResvErr              0             0           0             0
+  ResvTear             0             0           0             0
+  Hello                0             0           0             0
+  Ack                  0             0           0             0
+  Srefresh             0             0           0             0
+  EndtoEnd RSVP        0             0           0             0
+
+em4.0 Index 74, State Ena/Up
+  NoAuthentication, NoAggregate, NoReliable, NoLinkProtection
+  HelloInterval 9(second)
+  Address 10.12.19.12
+  ActiveResv 0, PreemptionCnt 0, Update threshold 10%
+  Subscription 100%, StaticBW 1000Mbps, AvailableBW 1000Mbps
+  ReservedBW [0] 0bps[1] 0bps[2] 0bps[3] 0bps[4] 0bps[5] 0bps[6] 0bps[7] 0bps
+  PacketType              Total                  Last 5 seconds
+                   Sent      Received        Sent      Received
+  Path                 0             0           0             0
+  PathErr              0             0           0             0
+  PathTear             0             0           0             0
+  Resv                 0             0           0             0
+  ResvErr              0             0           0             0
+  ResvTear             0             0           0             0
+  Hello                0             0           0             0
+  Ack                  0             0           0             0
+  Srefresh             0             0           0             0
+  EndtoEnd RSVP        0             0           0             0
+
+lsi.0 Index 76, State Dis/Up
+  NoAuthentication, NoAggregate, NoReliable, NoLinkProtection
+  HelloInterval 9(second)
+  Address 10.0.0.12
+  PacketType              Total                  Last 5 seconds
+                   Sent      Received        Sent      Received
+  Path                 0             0           0             0
+  PathErr              0             0           0             0
+  PathTear             0             0           0             0
+  Resv                 0             0           0             0
+  ResvErr              0             0           0             0
+  ResvTear             0             0           0             0
+  Hello                0             0           0             0
+  Ack                  0             0           0             0
+  Srefresh             0             0           0             0
+  EndtoEnd RSVP        0             0           0             0
+
+lsi.1 Index 77, State Dis/Up
+  NoAuthentication, NoAggregate, NoReliable, NoLinkProtection
+  HelloInterval 9(second)
+  Address 10.0.0.12
+  PacketType              Total                  Last 5 seconds
+                   Sent      Received        Sent      Received
+  Path                 0             0           0             0
+  PathErr              0             0           0             0
+  PathTear             0             0           0             0
+  Resv                 0             0           0             0
+  ResvErr              0             0           0             0
+  ResvTear             0             0           0             0
+  Hello                0             0           0             0
+  Ack                  0             0           0             0
+  Srefresh             0             0           0             0
+  EndtoEnd RSVP        0             0           0             0
+
+root@J12> 
+
+root@J12> 
+
+root@J12> show rsvp neighbor            
+RSVP neighbor: 2 learned
+Address            Idle Up/Dn LastChange HelloInt HelloTx/Rx MsgRcvd
+10.2.12.2             0  1/0     1:25:57        9   593/593  712
+10.4.12.4             0  1/0     1:25:42        9   599/599  408
+
+root@J12> 
+
+root@J12> show rsvp neighbor detail 
+RSVP neighbor: 2 learned
+Address: 10.2.12.2 via: em1.0 status: Up
+  Last changed time: 1:26:00, Idle: 0 sec, Up cnt: 1, Down cnt: 0
+  Message received: 713
+  Hello: sent 593, received: 593, interval: 9 sec
+  Remote instance: 0xd597817c, Local instance: 0x1fa8d847
+  Refresh reduction:  not operational
+
+Address: 10.4.12.4 via: em0.0 status: Up
+  Last changed time: 1:25:45, Idle: 5 sec, Up cnt: 1, Down cnt: 0
+  Message received: 408
+  Hello: sent 599, received: 599, interval: 9 sec
+  Remote instance: 0x3b01bd57, Local instance: 0xb66fa07c
+  Refresh reduction:  not operational
+
+root@J12> 
+
+root@J12> show rsvp session 
+Ingress RSVP: 6 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.5        10.0.0.12       Up       0  1 FF       -   300064 J12-TO-J5
+10.0.0.6        10.0.0.12       Up       0  1 FF       -   300144 J12-TO-J6
+10.0.0.7        10.0.0.12       Up       0  1 FF       -   299968 J12-TO-J7
+10.0.0.8        10.0.0.12       Up       0  1 FF       -   299952 J12-TO-J8
+10.0.0.9        10.0.0.12       Up       0  1 FF       -   300064 J12-TO-J9
+10.0.0.11       10.0.0.12       Up       0  1 FF       -   299936 J12-TO-J10
+Total 6 displayed, Up 6, Down 0
+
+Egress RSVP: 7 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.12       10.0.0.9        Up       0  1 FF       3        - J9-TO-J12
+10.0.0.12       10.0.0.8        Up       0  1 FF       3        - J8-TO-J12
+10.0.0.12       10.0.0.11       Up       0  1 FF       3        - J11-TO-J12
+10.0.0.12       10.0.0.5        Up       0  1 FF       3        - J5-TO-J12
+10.0.0.12       10.0.0.10       Up       0  1 FF       3        - J10-TO-J12
+10.0.0.12       10.0.0.7        Up       0  1 FF       3        - J7-TO-J12
+10.0.0.12       10.0.0.6        Up       0  1 FF       3        - J6-TO-J12
+Total 7 displayed, Up 7, Down 0
+
+Transit RSVP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+                                        
+root@J12> 
+
+root@J12> show rsvp session detail 
+Ingress RSVP: 6 sessions
+
+10.0.0.5
+  From: 10.0.0.12, LSPstate: Up, ActiveRoute: 0
+  LSPname: J12-TO-J5, LSPpath: Primary
+  LSPtype: Static Configured
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 300064
+  Resv style: 1 FF, Label in: -, Label out: 300064
+  Time left:    -, Since: Fri Mar 28 23:11:03 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 6179 protocol 0
+  PATH rcvfrom: localclient 
+  Adspec: sent MTU 1500
+  Path MTU: received 1500
+  PATH sentto: 10.2.12.2 (em1.0) 52 pkts
+  RESV rcvfrom: 10.2.12.2 (em1.0) 55 pkts
+  Record route: <self> 10.2.12.2 10.2.5.5  
+
+10.0.0.6
+  From: 10.0.0.12, LSPstate: Up, ActiveRoute: 0
+  LSPname: J12-TO-J6, LSPpath: Primary
+  LSPtype: Static Configured
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 300144
+  Resv style: 1 FF, Label in: -, Label out: 300144
+  Time left:    -, Since: Fri Mar 28 23:11:03 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 6180 protocol 0
+  PATH rcvfrom: localclient 
+  Adspec: sent MTU 1500
+  Path MTU: received 1500
+  PATH sentto: 10.2.12.2 (em1.0) 52 pkts
+  RESV rcvfrom: 10.2.12.2 (em1.0) 55 pkts
+  Record route: <self> 10.2.12.2 10.2.6.6  
+
+10.0.0.7
+  From: 10.0.0.12, LSPstate: Up, ActiveRoute: 0
+  LSPname: J12-TO-J7, LSPpath: Primary
+  LSPtype: Static Configured
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 299968
+  Resv style: 1 FF, Label in: -, Label out: 299968
+  Time left:    -, Since: Fri Mar 28 23:11:03 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 6181 protocol 0
+  PATH rcvfrom: localclient             
+  Adspec: sent MTU 1500
+  Path MTU: received 1500
+  PATH sentto: 10.2.12.2 (em1.0) 122 pkts
+  RESV rcvfrom: 10.2.12.2 (em1.0) 122 pkts
+  Record route: <self> 10.2.12.2 10.2.3.3 10.3.7.7  
+
+10.0.0.8
+  From: 10.0.0.12, LSPstate: Up, ActiveRoute: 0
+  LSPname: J12-TO-J8, LSPpath: Primary
+  LSPtype: Static Configured
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 299952
+  Resv style: 1 FF, Label in: -, Label out: 299952
+  Time left:    -, Since: Fri Mar 28 23:11:03 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 6182 protocol 0
+  PATH rcvfrom: localclient 
+  Adspec: sent MTU 1500
+  Path MTU: received 1500
+  PATH sentto: 10.2.12.2 (em1.0) 120 pkts
+  RESV rcvfrom: 10.2.12.2 (em1.0) 122 pkts
+  Record route: <self> 10.2.12.2 10.2.3.3 10.3.8.8  
+                                        
+10.0.0.9
+  From: 10.0.0.12, LSPstate: Up, ActiveRoute: 0
+  LSPname: J12-TO-J9, LSPpath: Primary
+  LSPtype: Static Configured
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 300064
+  Resv style: 1 FF, Label in: -, Label out: 300064
+  Time left:    -, Since: Fri Mar 28 23:11:03 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 6183 protocol 0
+  PATH rcvfrom: localclient 
+  Adspec: sent MTU 1500
+  Path MTU: received 1500
+  PATH sentto: 10.4.12.4 (em0.0) 54 pkts
+  RESV rcvfrom: 10.4.12.4 (em0.0) 54 pkts
+  Record route: <self> 10.4.12.4 10.4.9.9  
+
+10.0.0.11
+  From: 10.0.0.12, LSPstate: Up, ActiveRoute: 0
+  LSPname: J12-TO-J10, LSPpath: Primary
+  LSPtype: Static Configured
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 299936
+  Resv style: 1 FF, Label in: -, Label out: 299936
+  Time left:    -, Since: Fri Mar 28 23:11:02 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 6178 protocol 0
+  PATH rcvfrom: localclient 
+  Adspec: sent MTU 1500
+  Path MTU: received 1500
+  PATH sentto: 10.4.12.4 (em0.0) 122 pkts
+  RESV rcvfrom: 10.4.12.4 (em0.0) 123 pkts
+  Record route: <self> 10.4.12.4 10.4.11.11  
+Total 6 displayed, Up 6, Down 0
+
+Egress RSVP: 7 sessions
+
+10.0.0.12
+  From: 10.0.0.9, LSPstate: Up, ActiveRoute: 0
+  LSPname: J9-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  146, Since: Sat Mar 29 00:01:34 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 17449 protocol 0
+  PATH rcvfrom: 10.4.12.4 (em0.0) 54 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.4.9.9 10.4.12.4 <self>  
+
+10.0.0.12
+  From: 10.0.0.8, LSPstate: Up, ActiveRoute: 0
+  LSPname: J8-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  156, Since: Fri Mar 28 23:11:37 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 29103 protocol 0
+  PATH rcvfrom: 10.2.12.2 (em1.0) 123 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.1.8.8 10.1.2.1 10.2.12.2 <self>  
+
+10.0.0.12
+  From: 10.0.0.11, LSPstate: Up, ActiveRoute: 0
+  LSPname: J11-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  125, Since: Fri Mar 28 23:11:52 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 32446 protocol 0
+  PATH rcvfrom: 10.4.12.4 (em0.0) 123 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.4.11.11 10.4.12.4 <self>  
+
+10.0.0.12
+  From: 10.0.0.5, LSPstate: Up, ActiveRoute: 0
+  LSPname: J5-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  132, Since: Sat Mar 29 00:00:57 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 50680 protocol 0
+  PATH rcvfrom: 10.2.12.2 (em1.0) 55 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.2.5.5 10.2.12.2 <self>  
+
+10.0.0.12
+  From: 10.0.0.10, LSPstate: Up, ActiveRoute: 0
+  LSPname: J10-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  128, Since: Sat Mar 29 00:01:10 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 53261 protocol 0
+  PATH rcvfrom: 10.4.12.4 (em0.0) 54 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.4.10.10 10.4.12.4 <self>  
+
+10.0.0.12
+  From: 10.0.0.7, LSPstate: Up, ActiveRoute: 0
+  LSPname: J7-TO-J12, LSPpath: Primary  
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  117, Since: Fri Mar 28 23:21:44 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 57080 protocol 0
+  PATH rcvfrom: 10.2.12.2 (em1.0) 106 pkts
+  Adspec: received MTU 1500 
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.3.7.7 10.2.3.3 10.2.12.2 <self>  
+
+10.0.0.12
+  From: 10.0.0.6, LSPstate: Up, ActiveRoute: 0
+  LSPname: J6-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 1 FF, Label in: 3, Label out: -
+  Time left:  128, Since: Sat Mar 29 00:00:54 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 62806 protocol 0
+  PATH rcvfrom: 10.2.12.2 (em1.0) 55 pkts
+  Adspec: received MTU 1500             
+  PATH sentto: localclient
+  RESV rcvfrom: localclient 
+  Record route: 10.2.6.6 10.2.12.2 <self>  
+Total 7 displayed, Up 7, Down 0
+
+Transit RSVP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+root@J12> 
+
+root@J12> 
+
+root@J12> show rsvp statistics        
+  PacketType              Total                  Last 5 seconds
+                   Sent      Received        Sent      Received
+  Path               523           587           1             1
+  PathErr              1             3           0             0
+  PathTear             0             0           0             0
+  Resv FF            571           537           0             0
+  Resv WF              0             0           0             0
+  Resv SE              0             0           0             0
+  ResvErr              5             0           0             0
+  ResvTear             0             0           0             0
+  ResvConf             0             0           0             0
+  Ack                  0             0           0             0
+  SRefresh             0             0           0             0
+  Hello             1196          1196           0             0
+  EndtoEnd RSVP        0             0           0             0
+
+  Errors                          Total            Last 5 seconds
+  Rcv pkt bad length                 0                         0
+  Rcv pkt unknown type               0                         0
+  Rcv pkt bad version                0                         0
+  Rcv pkt auth fail                  0                         0
+  Rcv pkt bad checksum               0                         0
+  Rcv pkt bad format                 0                         0
+  Memory allocation fail             0                         0
+  No path information                5                         0
+  Resv style conflict                0                         0
+  Port conflict                      0                         0
+  Resv no interface                  0                         0
+  PathErr to client                234                         0
+  ResvErr to client                  0                         0
+  Path timeout                       0                         0
+  Resv timeout                       0                         0
+  Message out-of-order               0                         0
+  Unknown ack msg                    0                         0
+  Recv nack                          0                         0
+  Recv duplicated msg-id             0                         0
+  No TE-link to recv Hop             0                         0
+  Rcv pkt disabled interface         0                         0
+  Transmit buffer full               0                         0
+  Transmit failure                   0                         0
+  Receive failure                    0                         0
+  P2MP RESV discarded by appl         0                        0
+  Rate limit                         0                         0
+  Err msg loop detected              0                         0
+
+root@J12> 
+
+root@J12> 
+
+root@J12> show ldp interface      
+Interface            Label space ID        Nbr count   Next hello
+em0.0                10.0.0.12:0              1           0
+em1.0                10.0.0.12:0              1           1
+
+root@J12> show ldp interface detail 
+Interface            Label space ID        Nbr count   Next hello
+em0.0                10.0.0.12:0              1           1
+  Hello interval: 5, Hold time: 15, Transport address: 10.0.0.12
+em1.0                10.0.0.12:0              1           3
+  Hello interval: 5, Hold time: 15, Transport address: 10.0.0.12
+
+root@J12> 
+
+root@J12> show ldp overview            
+Instance: master
+  Router ID: 10.0.0.12
+  Message id: 1144
+  Configuration sequence: 4
+  Deaggregate: disabled
+  Explicit null: disabled
+  IPv6 tunneling: disabled
+  Strict targeted hellos: disabled
+  Loopback if added: no
+  Route preference: 9
+  Unicast transit LSP chaining: disabled
+  P2MP transit LSP chaining: disabled
+  Transit LSP statistics based on route statistics: disabled
+  Capabilities enabled: none
+  Protocol modes:
+    Distribution: unsolicited
+    Retention: liberal
+    Control: ordered
+  Sessions:
+    Operational: 2
+  Timers:
+    Keepalive interval: 10, Keepalive timeout: 30
+    Link hello interval: 5, Link hello hold time: 15
+    Targeted hello interval: 15, Targeted hello hold time: 45
+    Label withdraw delay: 60
+  Graceful restart:
+    Restart: enabled, Helper: enabled, Restart in process: false
+    Reconnect time: 60000, Max neighbor reconnect time: 120000
+    Recovery time: 160000, Max neighbor recovery time: 240000
+  Traffic Engineering:
+    Bgp igp: disabled
+    Both ribs: disabled
+    Mpls forwarding: disabled
+  IGP:
+    Tracking igp metric: disabled
+    Sync session up delay: 10
+  Session protection:
+    Session protection: disabled
+    Session protecton timeout: 0
+  Interface addresses advertising:
+    10.2.12.12
+    10.4.12.12
+
+root@J12> 
+
+root@J12> 
+
+root@J12> show ldp path        
+Output Session (label)          Input Session (label)
+10.0.0.2:0(3)                   ( )
+10.0.0.4:0(3)
+  Attached route:  10.0.0.12/32
+10.0.0.2:0(300032)              10.0.0.2:0(3)
+10.0.0.4:0(300032)
+  Attached route:  10.0.0.2/32, Ingress route
+10.0.0.2:0(300048)              10.0.0.2:0(299792)
+10.0.0.4:0(300048)              10.0.0.4:0(299776)
+  Attached route:  10.0.0.1/32, Ingress route
+10.0.0.2:0(300064)              10.0.0.2:0(299776)
+10.0.0.4:0(300064)              10.0.0.4:0(299808)
+  Attached route:  10.0.0.3/32, Ingress route
+10.0.0.2:0(300080)              10.0.0.4:0(3)
+10.0.0.4:0(300080)
+  Attached route:  10.0.0.4/32, Ingress route
+10.0.0.2:0(300096)              10.0.0.2:0(299840)
+10.0.0.4:0(300096)              10.0.0.4:0(299840)
+  Attached route:  10.0.0.7/32, Ingress route
+10.0.0.2:0(300112)              10.0.0.2:0(299824)
+10.0.0.4:0(300112)              10.0.0.4:0(299824)
+  Attached route:  10.0.0.8/32, Ingress route
+10.0.0.2:0(300128)              10.0.0.2:0(299856)
+10.0.0.4:0(300128)              10.0.0.4:0(299856)
+  Attached route:  10.0.0.11/32, Ingress route
+10.0.0.2:0(300144)              10.0.0.2:0(300016)
+10.0.0.4:0(300144)
+  Attached route:  10.0.0.6/32, Ingress route
+10.0.0.2:0(300160)              10.0.0.2:0(299984)
+10.0.0.4:0(300160)
+  Attached route:  10.0.0.5/32, Ingress route
+10.0.0.2:0(300176)              10.0.0.4:0(299984)
+10.0.0.4:0(300176)
+  Attached route:  10.0.0.10/32, Ingress route
+10.0.0.2:0(300192)              10.0.0.4:0(300000)
+10.0.0.4:0(300192)
+  Attached route:  10.0.0.9/32, Ingress route
+
+root@J12> 
+
+root@J12> show ldp path detail 
+Output Session (label)          Input Session (label)
+10.0.0.2:0(3)                   ( )
+10.0.0.4:0(3)
+  Attached route:  10.0.0.12/32
+10.0.0.2:0(300032)              10.0.0.2:0(3)
+10.0.0.4:0(300032)
+  Attached route:  10.0.0.2/32, Ingress route
+10.0.0.2:0(300048)              10.0.0.2:0(299792)
+10.0.0.4:0(300048)              10.0.0.4:0(299776)
+  Attached route:  10.0.0.1/32, Ingress route
+10.0.0.2:0(300064)              10.0.0.2:0(299776)
+10.0.0.4:0(300064)              10.0.0.4:0(299808)
+  Attached route:  10.0.0.3/32, Ingress route
+10.0.0.2:0(300080)              10.0.0.4:0(3)
+10.0.0.4:0(300080)
+  Attached route:  10.0.0.4/32, Ingress route
+10.0.0.2:0(300096)              10.0.0.2:0(299840)
+10.0.0.4:0(300096)              10.0.0.4:0(299840)
+  Attached route:  10.0.0.7/32, Ingress route
+10.0.0.2:0(300112)              10.0.0.2:0(299824)
+10.0.0.4:0(300112)              10.0.0.4:0(299824)
+  Attached route:  10.0.0.8/32, Ingress route
+10.0.0.2:0(300128)              10.0.0.2:0(299856)
+10.0.0.4:0(300128)              10.0.0.4:0(299856)
+  Attached route:  10.0.0.11/32, Ingress route
+10.0.0.2:0(300144)              10.0.0.2:0(300016)
+10.0.0.4:0(300144)
+  Attached route:  10.0.0.6/32, Ingress route
+10.0.0.2:0(300160)              10.0.0.2:0(299984)
+10.0.0.4:0(300160)
+  Attached route:  10.0.0.5/32, Ingress route
+10.0.0.2:0(300176)              10.0.0.4:0(299984)
+10.0.0.4:0(300176)
+  Attached route:  10.0.0.10/32, Ingress route
+10.0.0.2:0(300192)              10.0.0.4:0(300000)
+10.0.0.4:0(300192)
+  Attached route:  10.0.0.9/32, Ingress route
+
+root@J12> 
+
+root@J12> 
+
+root@J12> show ldp route          
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.0.0.0/24        em1.0                            10.2.12.2
+ 10.0.0.1/32        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.0.0.2/32        em1.0                            10.2.12.2
+ 10.0.0.3/32        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.0.0.4/32        em0.0                            10.4.12.4
+ 10.0.0.5/32        em1.0                            10.2.12.2
+ 10.0.0.6/32        em1.0                            10.2.12.2
+ 10.0.0.7/32        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.0.0.8/32        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.0.0.9/32        em0.0                            10.4.12.4
+ 10.0.0.10/32       em0.0                            10.4.12.4
+ 10.0.0.11/32       em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.0.0.12/32       lo0.0
+ 10.1.2.0/24        em1.0                            10.2.12.2
+ 10.1.3.0/24        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.1.4.0/24        em0.0                            10.4.12.4
+ 10.1.5.0/24        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.1.6.0/24        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.1.7.0/24        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.1.8.0/24        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.2.3.0/24        em1.0                            10.2.12.2
+ 10.2.4.0/24        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.2.5.0/24        em1.0                            10.2.12.2
+ 10.2.6.0/24        em1.0                            10.2.12.2
+ 10.2.11.0/24       em1.0                            10.2.12.2
+ 10.2.12.0/24       em1.0
+ 10.2.12.12/32     
+ 10.3.4.0/24        em0.0                            10.4.12.4
+ 10.3.7.0/24        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.3.8.0/24        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.3.9.0/24        em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.3.10.0/24       em1.0                            10.2.12.2
+                    em0.0                            10.4.12.4
+ 10.4.9.0/24        em0.0                            10.4.12.4
+ 10.4.10.0/24       em0.0                            10.4.12.4
+ 10.4.11.0/24       em0.0                            10.4.12.4
+ 10.4.12.0/24       em0.0
+ 10.4.12.12/32     
+
+root@J12> 
+
+root@J12> show ldp route detail 
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.0.0.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.0.0.1/32        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Bound to outgoing label 300048, Topology entry: 0x91a22c0
+   Ingress route status: Active, Last modified: 01:17:56 ago
+ 10.0.0.2/32        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+   Bound to outgoing label 300032, Topology entry: 0x91a1900
+   Ingress route status: Active, Last modified: 01:17:56 ago
+ 10.0.0.3/32        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Bound to outgoing label 300064, Topology entry: 0x91a27c0
+   Ingress route status: Active, Last modified: 01:17:56 ago
+ 10.0.0.4/32        em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Bound to outgoing label 300080, Topology entry: 0x91a30c0
+   Ingress route status: Active, Last modified: 01:17:56 ago
+ 10.0.0.5/32        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+   Bound to outgoing label 300160, Topology entry: 0x91a3e80
+   Ingress route status: Active, Last modified: 00:38:51 ago
+ 10.0.0.6/32        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+   Bound to outgoing label 300144, Topology entry: 0x91a0800
+   Ingress route status: Active, Last modified: 00:38:52 ago
+ 10.0.0.7/32        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Bound to outgoing label 300096, Topology entry: 0x91a3140
+   Ingress route status: Active, Last modified: 01:17:56 ago
+ 10.0.0.8/32        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Bound to outgoing label 300112, Topology entry: 0x91a31c0
+   Ingress route status: Active, Last modified: 01:17:56 ago
+ 10.0.0.9/32        em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0   
+   Bound to outgoing label 300192, Topology entry: 0x93fcac0
+   Ingress route status: Active, Last modified: 00:38:03 ago
+ 10.0.0.10/32       em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Bound to outgoing label 300176, Topology entry: 0x93fc180
+   Ingress route status: Active, Last modified: 00:38:16 ago
+ 10.0.0.11/32       em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Bound to outgoing label 300128, Topology entry: 0x91a3240
+   Ingress route status: Active, Last modified: 01:17:56 ago
+ 10.0.0.12/32       lo0.0
+   Bound to outgoing label 3, Topology entry: 0x91a11c0
+   Ingress route status: Inactive
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.1.2.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.1.3.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0   
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.1.4.0/24        em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.1.5.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.1.6.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.1.7.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.1.8.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.2.3.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.2.4.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.2.5.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.2.6.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.2.11.0/24       em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.2.12.0/24       em1.0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.2.12.12/32     
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.3.4.0/24        em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.3.7.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none                    
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.3.8.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.3.9.0/24        em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.3.10.0/24       em1.0                            10.2.12.2
+   Session ID 10.0.0.12:0--10.0.0.2:0
+                    em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.4.9.0/24        em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.4.10.0/24       em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.4.11.0/24       em0.0                            10.4.12.4
+   Session ID 10.0.0.12:0--10.0.0.4:0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.4.12.0/24       em0.0
+   Route flags: none
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.4.12.12/32     
+   Route flags: none
+
+root@J12> 
+
+root@J12> 
+
+root@J12> show ldp session detail  
+Address: 10.0.0.2, State: Operational, Connection: Open, Hold time: 26
+  Session ID: 10.0.0.12:0--10.0.0.2:0
+  Next keepalive in 9 seconds
+  Active, Maximum PDU: 4096, Hold time: 30, Neighbor count: 1
+  Neighbor types: discovered
+  Keepalive interval: 10, Connect retry interval: 1
+  Local address: 10.0.0.12, Remote address: 10.0.0.2
+  Up for 01:18:04
+  Capabilities advertised: none
+  Capabilities received: none
+  Protection: disabled
+  Local - Restart: disabled, Helper mode: enabled
+  Remote - Restart: disabled, Helper mode: enabled
+  Local maximum neighbor reconnect time: 120000 msec
+  Local maximum neighbor recovery time: 240000 msec
+  Nonstop routing state: Not in sync
+  Next-hop addresses received:
+    10.1.2.2
+    10.2.3.2
+    10.2.4.2
+    10.2.5.2
+    10.2.6.2
+    10.2.11.2
+    10.2.12.2                           
+
+Address: 10.0.0.4, State: Operational, Connection: Open, Hold time: 25
+  Session ID: 10.0.0.12:0--10.0.0.4:0
+  Next keepalive in 9 seconds
+  Active, Maximum PDU: 4096, Hold time: 30, Neighbor count: 1
+  Neighbor types: discovered
+  Keepalive interval: 10, Connect retry interval: 1
+  Local address: 10.0.0.12, Remote address: 10.0.0.4
+  Up for 01:18:04
+  Capabilities advertised: none
+  Capabilities received: none
+  Protection: disabled
+  Local - Restart: disabled, Helper mode: enabled
+  Remote - Restart: disabled, Helper mode: enabled
+  Local maximum neighbor reconnect time: 120000 msec
+  Local maximum neighbor recovery time: 240000 msec
+  Nonstop routing state: Not in sync
+  Next-hop addresses received:
+    10.1.4.4
+    10.2.4.4
+    10.3.4.4
+    10.4.9.4
+    10.4.10.4                           
+    10.4.11.4
+    10.4.12.4
+
+root@J12> 
+
+root@J12> show ldp statistics        
+Message type               Total                     Last 5 seconds
+                       Sent      Received          Sent      Received
+Hello                  2480          2542             3             2
+Initialization            6             6             0             0
+Keepalive              1054          1097             0             2
+Notification              4             0             0             0
+Address                   6             6             0             0
+Address withdraw          0             0             0             0
+Label mapping            56            56             0             0
+Label request             0             0             0             0
+Label withdraw            0             0             0             0
+Label release             0             0             0             0
+Label abort               0             0             0             0
+All UDP                2480          2542             3             2
+All TCP                1084          1124             0             2
+
+
+Event type                             Total        Last 5 seconds
+
+Sessions opened                            6                  0
+Sessions closed                            4                  0
+Topology changes                         218                  0
+No router id                               0                  0
+No address                                 0                  0
+No interface                               0                  0
+No session                                 0                  0
+No adjacency                               0                  0
+Unknown version                            0                  0
+Malformed PDU                              0                  0
+Malformed message                          0                  0
+Unknown message type                       0                  0
+Inappropriate message                      0                  0
+Malformed TLV                              0                  0
+Bad TLV value                              0                  0
+Missing TLV                                0                  0
+PDU too large                              0                  0
+PDU too small                              0                  0
+
+root@J12> 
+
+root@J12> sow
+          ^
+unknown command.
+root@J12> show route 
+
+inet.0: 37 destinations, 37 routes (37 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.0/24        *[IS-IS/18] 00:39:21, metric 20
+                    > to 10.2.12.2 via em1.0
+10.0.0.1/32        *[IS-IS/18] 01:27:36, metric 20
+                    > to 10.4.12.4 via em0.0
+                      to 10.2.12.2 via em1.0
+10.0.0.2/32        *[IS-IS/18] 01:28:05, metric 10
+                    > to 10.2.12.2 via em1.0
+10.0.0.3/32        *[IS-IS/18] 01:27:36, metric 20
+                      to 10.4.12.4 via em0.0
+                    > to 10.2.12.2 via em1.0
+10.0.0.4/32        *[IS-IS/18] 01:27:36, metric 10
+                    > to 10.4.12.4 via em0.0
+10.0.0.5/32        *[IS-IS/18] 00:39:14, metric 20
+                    > to 10.2.12.2 via em1.0
+10.0.0.6/32        *[IS-IS/18] 00:39:21, metric 20
+                    > to 10.2.12.2 via em1.0
+10.0.0.7/32        *[IS-IS/18] 01:27:36, metric 30
+                    > to 10.4.12.4 via em0.0
+                      to 10.2.12.2 via em1.0
+10.0.0.8/32        *[IS-IS/18] 01:27:36, metric 30
+                    > to 10.4.12.4 via em0.0
+                      to 10.2.12.2 via em1.0
+10.0.0.9/32        *[IS-IS/18] 00:38:26, metric 20
+                    > to 10.4.12.4 via em0.0
+10.0.0.10/32       *[IS-IS/18] 00:38:39, metric 20
+                    > to 10.4.12.4 via em0.0
+10.0.0.11/32       *[IS-IS/18] 01:27:36, metric 20
+                    > to 10.4.12.4 via em0.0
+                      to 10.2.12.2 via em1.0
+10.0.0.12/32       *[Direct/0] 01:28:16
+                    > via lo0.0
+10.1.2.0/24        *[IS-IS/18] 01:28:05, metric 20
+                    > to 10.2.12.2 via em1.0
+10.1.3.0/24        *[IS-IS/18] 01:27:36, metric 30
+                      to 10.4.12.4 via em0.0
+                    > to 10.2.12.2 via em1.0
+10.1.4.0/24        *[IS-IS/18] 01:27:36, metric 20
+                    > to 10.4.12.4 via em0.0
+10.1.5.0/24        *[IS-IS/18] 01:27:36, metric 30
+                      to 10.4.12.4 via em0.0
+                    > to 10.2.12.2 via em1.0
+10.1.6.0/24        *[IS-IS/18] 01:27:36, metric 30
+                      to 10.4.12.4 via em0.0
+                    > to 10.2.12.2 via em1.0
+10.1.7.0/24        *[IS-IS/18] 01:27:36, metric 30
+                      to 10.4.12.4 via em0.0
+                    > to 10.2.12.2 via em1.0
+10.1.8.0/24        *[IS-IS/18] 01:27:36, metric 30
+                    > to 10.4.12.4 via em0.0
+                      to 10.2.12.2 via em1.0
+10.2.3.0/24        *[IS-IS/18] 01:28:05, metric 20
+                    > to 10.2.12.2 via em1.0
+10.2.4.0/24        *[IS-IS/18] 01:27:36, metric 20
+                      to 10.4.12.4 via em0.0
+                    > to 10.2.12.2 via em1.0
+10.2.5.0/24        *[IS-IS/18] 01:28:05, metric 20
+                    > to 10.2.12.2 via em1.0
+10.2.6.0/24        *[IS-IS/18] 01:28:05, metric 20
+                    > to 10.2.12.2 via em1.0
+10.2.11.0/24       *[IS-IS/18] 01:28:05, metric 20
+                    > to 10.2.12.2 via em1.0
+10.2.12.0/24       *[Direct/0] 01:28:20
+                    > via em1.0
+10.2.12.12/32      *[Local/0] 01:28:20
+                      Local via em1.0
+10.3.4.0/24        *[IS-IS/18] 01:27:36, metric 20
+                    > to 10.4.12.4 via em0.0
+10.3.7.0/24        *[IS-IS/18] 01:27:36, metric 30
+                    > to 10.4.12.4 via em0.0
+                      to 10.2.12.2 via em1.0
+10.3.8.0/24        *[IS-IS/18] 01:27:36, metric 30
+                      to 10.4.12.4 via em0.0
+                    > to 10.2.12.2 via em1.0
+10.3.9.0/24        *[IS-IS/18] 01:27:36, metric 30
+                      to 10.4.12.4 via em0.0
+                    > to 10.2.12.2 via em1.0
+10.3.10.0/24       *[IS-IS/18] 01:27:36, metric 30
+                    > to 10.4.12.4 via em0.0
+                      to 10.2.12.2 via em1.0
+10.4.9.0/24        *[IS-IS/18] 01:27:36, metric 20
+                    > to 10.4.12.4 via em0.0
+10.4.10.0/24       *[IS-IS/18] 01:27:36, metric 20
+                    > to 10.4.12.4 via em0.0
+10.4.11.0/24       *[IS-IS/18] 01:27:36, metric 20
+                    > to 10.4.12.4 via em0.0
+10.4.12.0/24       *[Direct/0] 01:28:21
+                    > via em0.0
+10.4.12.12/32      *[Local/0] 01:28:21
+                      Local via em0.0   
+
+inet.3: 11 destinations, 17 routes (11 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.1/32        *[LDP/9] 01:18:19, metric 1
+                      to 10.4.12.4 via em0.0, Push 299776
+                    > to 10.2.12.2 via em1.0, Push 299792
+10.0.0.2/32        *[LDP/9] 01:18:19, metric 1
+                    > to 10.2.12.2 via em1.0
+10.0.0.3/32        *[LDP/9] 01:18:19, metric 1
+                      to 10.4.12.4 via em0.0, Push 299808
+                    > to 10.2.12.2 via em1.0, Push 299776
+10.0.0.4/32        *[LDP/9] 01:18:19, metric 1
+                    > to 10.4.12.4 via em0.0
+10.0.0.5/32        *[RSVP/7/1] 00:39:02, metric 20
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J5
+                    [LDP/9] 00:39:14, metric 1
+                    > to 10.2.12.2 via em1.0, Push 299984
+10.0.0.6/32        *[RSVP/7/1] 00:38:52, metric 20
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J6
+                    [LDP/9] 00:39:15, metric 1
+                    > to 10.2.12.2 via em1.0, Push 300016
+10.0.0.7/32        *[RSVP/7/1] 01:17:59, metric 30
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+                    [LDP/9] 01:18:19, metric 1
+                    > to 10.4.12.4 via em0.0, Push 299840
+                      to 10.2.12.2 via em1.0, Push 299840
+10.0.0.8/32        *[RSVP/7/1] 01:17:52, metric 30
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J8
+                    [LDP/9] 01:18:19, metric 1
+                    > to 10.4.12.4 via em0.0, Push 299824
+                      to 10.2.12.2 via em1.0, Push 299824
+10.0.0.9/32        *[RSVP/7/1] 00:38:20, metric 20
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J9
+                    [LDP/9] 00:38:26, metric 1
+                    > to 10.4.12.4 via em0.0, Push 300000
+10.0.0.10/32       *[LDP/9] 00:38:39, metric 1
+                    > to 10.4.12.4 via em0.0, Push 299984
+10.0.0.11/32       *[RSVP/7/1] 01:18:00, metric 20
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+                    [LDP/9] 01:18:19, metric 1
+                    > to 10.4.12.4 via em0.0, Push 299856
+                      to 10.2.12.2 via em1.0, Push 299856
+                                        
+RI-L3VPN-MAGENTA.inet.0: 18 destinations, 35 routes (18 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.15/32       *[RIP/100] 01:16:16, metric 3, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.19/32       *[RIP/100] 01:16:16, metric 2, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.7.15.0/24       *[RIP/100] 01:16:16, metric 3, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:13:56, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.8.15.0/24       *[RIP/100] 01:16:16, metric 3, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:13:53, localpref 100, from 10.0.0.8
+                      AS path: I        
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J8
+                    [BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.11.19.0/24      *[RIP/100] 01:16:16, metric 2, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:14:04, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.12.19.0/24      *[Direct/0] 01:28:14
+                    > via em4.0
+                    [BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.12.19.12/32     *[Local/0] 01:28:14
+                      Local via em4.0
+172.15.1.0/24      *[RIP/100] 01:16:16, metric 3, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+172.15.2.0/24      *[RIP/100] 01:16:16, metric 3, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+172.15.3.0/24      *[RIP/100] 01:16:16, metric 3, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+172.15.4.0/24      *[RIP/100] 01:16:16, metric 3, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+172.15.5.0/24      *[RIP/100] 01:16:16, metric 3, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+172.19.1.0/24      *[RIP/100] 01:16:16, metric 2, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+172.19.2.0/24      *[RIP/100] 01:16:16, metric 2, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+172.19.3.0/24      *[RIP/100] 01:16:16, metric 2, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+172.19.4.0/24      *[RIP/100] 01:16:16, metric 2, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+172.19.5.0/24      *[RIP/100] 01:16:16, metric 2, tag 0
+                    > to 10.12.19.19 via em4.0
+                    [BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+224.0.0.9/32       *[RIP/100] 01:14:17, metric 1
+                      MultiRecv
+                                        
+RI-L3VPN-RED.inet.0: 9 destinations, 13 routes (9 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.16/32       *[BGP/170] 01:13:56, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+                    [BGP/170] 01:13:53, localpref 100, from 10.0.0.8
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J8
+10.0.0.20/32       *[Static/5] 01:19:24
+                    > to 10.12.20.20 via em3.0
+                    [BGP/170] 01:14:04, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.7.16.0/24       *[BGP/170] 01:13:56, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.8.16.0/24       *[BGP/170] 01:13:53, localpref 100, from 10.0.0.8
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J8
+10.11.20.0/24      *[BGP/170] 01:14:04, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.12.20.0/24      *[Direct/0] 01:19:24
+                    > via em3.0
+10.12.20.12/32     *[Local/0] 01:19:24
+                      Local via em3.0
+172.16.0.0/16      *[BGP/170] 01:13:56, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+                    [BGP/170] 01:13:53, localpref 100, from 10.0.0.8
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J8
+172.20.0.0/16      *[Static/5] 01:19:24
+                    > to 10.12.20.20 via em3.0
+                    [BGP/170] 01:14:04, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0000.0000.0012/56                
+                   *[Direct/0] 01:28:14
+                    > via lo0.0
+                                        
+mpls.0: 19 destinations, 19 routes (19 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:28:26, metric 1
+                      Receive
+1                  *[MPLS/0] 01:28:26, metric 1
+                      Receive
+2                  *[MPLS/0] 01:28:26, metric 1
+                      Receive
+13                 *[MPLS/0] 01:28:26, metric 1
+                      Receive
+16                 *[VPN/0] 01:18:23
+                      to table RI-L3VPN-MAGENTA.inet.0, Pop      
+17                 *[VPN/0] 01:18:23
+                      to table RI-L3VPN-RED.inet.0, Pop      
+300032             *[LDP/9] 01:18:19, metric 1
+                    > to 10.2.12.2 via em1.0, Pop      
+300032(S=0)        *[LDP/9] 01:18:19, metric 1
+                    > to 10.2.12.2 via em1.0, Pop      
+300048             *[LDP/9] 01:18:19, metric 1
+                      to 10.4.12.4 via em0.0, Swap 299776
+                    > to 10.2.12.2 via em1.0, Swap 299792
+300064             *[LDP/9] 01:18:19, metric 1
+                    > to 10.4.12.4 via em0.0, Swap 299808
+                      to 10.2.12.2 via em1.0, Swap 299776
+300080             *[LDP/9] 01:18:19, metric 1
+                    > to 10.4.12.4 via em0.0, Pop      
+300080(S=0)        *[LDP/9] 01:18:19, metric 1
+                    > to 10.4.12.4 via em0.0, Pop      
+300096             *[LDP/9] 01:18:19, metric 1
+                    > to 10.4.12.4 via em0.0, Swap 299840
+                      to 10.2.12.2 via em1.0, Swap 299840
+300112             *[LDP/9] 01:18:19, metric 1
+                    > to 10.4.12.4 via em0.0, Swap 299824
+                      to 10.2.12.2 via em1.0, Swap 299824
+300128             *[LDP/9] 01:18:19, metric 1
+                    > to 10.4.12.4 via em0.0, Swap 299856
+                      to 10.2.12.2 via em1.0, Swap 299856
+300144             *[LDP/9] 00:39:15, metric 1
+                    > to 10.2.12.2 via em1.0, Swap 300016
+300160             *[LDP/9] 00:39:14, metric 1
+                    > to 10.2.12.2 via em1.0, Swap 299984
+300176             *[LDP/9] 00:38:39, metric 1
+                    > to 10.4.12.4 via em0.0, Swap 299984
+300192             *[LDP/9] 00:38:26, metric 1
+                    > to 10.4.12.4 via em0.0, Swap 300000
+
+bgp.l3vpn.0: 26 destinations, 26 routes (26 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.7:1:10.0.0.15/32                
+                   *[BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.7:1:10.7.15.0/24                
+                   *[BGP/170] 01:13:56, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.7:1:10.8.15.0/24                
+                   *[BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.7:1:172.15.1.0/24                
+                   *[BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.7:1:172.15.2.0/24                
+                   *[BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I        
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.7:1:172.15.3.0/24                
+                   *[BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.7:1:172.15.4.0/24                
+                   *[BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.7:1:172.15.5.0/24                
+                   *[BGP/170] 01:13:56, MED 2, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.7:2:10.0.0.16/32                
+                   *[BGP/170] 01:13:56, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.7:2:10.7.16.0/24                
+                   *[BGP/170] 01:13:56, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.7:2:172.16.0.0/16                
+                   *[BGP/170] 01:13:56, localpref 100, from 10.0.0.7
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J7
+10.0.0.8:1:10.8.15.0/24                
+                   *[BGP/170] 01:13:53, localpref 100, from 10.0.0.8
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J8
+10.0.0.8:2:10.0.0.16/32                
+                   *[BGP/170] 01:13:53, localpref 100, from 10.0.0.8
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J8
+10.0.0.8:2:10.8.16.0/24                
+                   *[BGP/170] 01:13:53, localpref 100, from 10.0.0.8
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J8
+10.0.0.8:2:172.16.0.0/16                
+                   *[BGP/170] 01:13:53, localpref 100, from 10.0.0.8
+                      AS path: I
+                    > to 10.2.12.2 via em1.0, label-switched-path J12-TO-J8
+10.0.0.11:1:10.0.0.19/32                
+                   *[BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.0.0.11:1:10.11.19.0/24                
+                   *[BGP/170] 01:14:04, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.0.0.11:1:10.12.19.0/24                
+                   *[BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.0.0.11:1:172.19.1.0/24                
+                   *[BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.0.0.11:1:172.19.2.0/24                
+                   *[BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.0.0.11:1:172.19.3.0/24                
+                   *[BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.0.0.11:1:172.19.4.0/24                
+                   *[BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.0.0.11:1:172.19.5.0/24                
+                   *[BGP/170] 01:14:04, MED 2, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.0.0.11:2:10.0.0.20/32                
+                   *[BGP/170] 01:14:04, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.0.0.11:2:10.11.20.0/24                
+                   *[BGP/170] 01:14:04, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+10.0.0.11:2:172.20.0.0/16                
+                   *[BGP/170] 01:14:04, localpref 100, from 10.0.0.11
+                      AS path: I
+                    > to 10.4.12.4 via em0.0, label-switched-path J12-TO-J10
+
+root@J12> 
+
+root@J12> show route summary 
+Autonomous system number: 65535
+Router ID: 10.0.0.12
+
+inet.0: 37 destinations, 37 routes (37 active, 0 holddown, 0 hidden)
+              Direct:      3 routes,      3 active
+               Local:      2 routes,      2 active
+               IS-IS:     32 routes,     32 active
+
+inet.3: 11 destinations, 17 routes (11 active, 0 holddown, 0 hidden)
+                RSVP:      6 routes,      6 active
+                 LDP:     11 routes,      5 active
+
+RI-L3VPN-MAGENTA.inet.0: 18 destinations, 35 routes (18 active, 0 holddown, 0 hidden)
+              Direct:      1 routes,      1 active
+               Local:      1 routes,      1 active
+                 RIP:     16 routes,     16 active
+                 BGP:     17 routes,      0 active
+
+RI-L3VPN-RED.inet.0: 9 destinations, 13 routes (9 active, 0 holddown, 0 hidden)
+              Direct:      1 routes,      1 active
+               Local:      1 routes,      1 active
+                 BGP:      9 routes,      5 active
+              Static:      2 routes,      2 active
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+              Direct:      1 routes,      1 active
+
+mpls.0: 19 destinations, 19 routes (19 active, 0 holddown, 0 hidden)
+                MPLS:      4 routes,      4 active
+                 LDP:     13 routes,     13 active
+                 VPN:      2 routes,      2 active
+
+bgp.l3vpn.0: 26 destinations, 26 routes (26 active, 0 holddown, 0 hidden)
+                 BGP:     26 routes,     26 active
+
+root@J12> 
+
+root@J12> 
+
+root@J12> show route active-path detail 
+
+inet.0: 37 destinations, 37 routes (37 active, 0 holddown, 0 hidden)
+10.0.0.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 606
+                Address: 0x93345b0
+                Next-hop reference count: 35
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 39:33 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.1/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0, selected
+                Next hop: 10.2.12.2 via em1.0
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.2/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 606
+                Address: 0x93345b0
+                Next-hop reference count: 35
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:17 	Metric: 10 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.3/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18          
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.4/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 615
+                Address: 0x9334c70
+                Next-hop reference count: 31
+                Next hop: 10.4.12.4 via em0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48    Metric: 10 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.5/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 606
+                Address: 0x93345b0
+                Next-hop reference count: 35
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 39:26 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.6/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 606
+                Address: 0x93345b0      
+                Next-hop reference count: 35
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 39:33 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.7/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0, selected
+                Next hop: 10.2.12.2 via em1.0
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I              
+
+10.0.0.8/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0, selected
+                Next hop: 10.2.12.2 via em1.0
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.9/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 615
+                Address: 0x9334c70
+                Next-hop reference count: 31
+                Next hop: 10.4.12.4 via em0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 38:38 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.10/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 615
+                Address: 0x9334c70
+                Next-hop reference count: 31
+                Next hop: 10.4.12.4 via em0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 38:51 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.11/32 (1 entry, 1 announced)
+        *IS-IS  Preference: 18          
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0, selected
+                Next hop: 10.2.12.2 via em1.0
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.0.0.12/32 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334370
+                Next-hop reference count: 2
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:28 
+                Task: IF                
+                Announcement bits (3): 1-LDP 2-IS-IS 5-Resolve tree 4 
+                AS path: I
+
+10.1.2.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 606
+                Address: 0x93345b0
+                Next-hop reference count: 35
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:17 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.1.3.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.1.4.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 615
+                Address: 0x9334c70
+                Next-hop reference count: 31
+                Next hop: 10.4.12.4 via em0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+                                        
+10.1.5.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.1.6.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.1.7.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.1.8.0/24 (1 entry, 1 announced)      
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0, selected
+                Next hop: 10.2.12.2 via em1.0
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.2.3.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 606
+                Address: 0x93345b0
+                Next-hop reference count: 35
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535         
+                Age: 1:28:17 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.2.4.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.2.5.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2                
+                Next hop type: Router, Next hop index: 606
+                Address: 0x93345b0
+                Next-hop reference count: 35
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:17 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.2.6.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 606
+                Address: 0x93345b0
+                Next-hop reference count: 35
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:17 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I              
+
+10.2.11.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 606
+                Address: 0x93345b0
+                Next-hop reference count: 35
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:17 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.2.12.0/24 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x93342e0
+                Next-hop reference count: 2
+                Next hop: via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535         
+                Age: 1:28:32 
+                Task: IF
+                Announcement bits (3): 1-LDP 2-IS-IS 5-Resolve tree 4 
+                AS path: I
+
+10.2.12.12/32 (1 entry, 1 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 6
+                Next hop: 
+                Interface: em1.0
+                State: <Active NoReadvrt Int>
+                Local AS: 65535 
+                Age: 1:28:32 
+                Task: IF
+                Announcement bits (2): 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.3.4.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 615
+                Address: 0x9334c70
+                Next-hop reference count: 31
+                Next hop: 10.4.12.4 via em0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.3.7.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0, selected
+                Next hop: 10.2.12.2 via em1.0
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.3.8.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.3.9.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.3.10.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router
+                Address: 0x9488350
+                Next-hop reference count: 30
+                Next hop: 10.4.12.4 via em0.0, selected
+                Next hop: 10.2.12.2 via em1.0
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 30 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I              
+
+10.4.9.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 615
+                Address: 0x9334c70
+                Next-hop reference count: 31
+                Next hop: 10.4.12.4 via em0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.4.10.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 615
+                Address: 0x9334c70
+                Next-hop reference count: 31
+                Next hop: 10.4.12.4 via em0.0, selected
+                State: <Active Int>     
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.4.11.0/24 (1 entry, 1 announced)
+        *IS-IS  Preference: 18
+                Level: 2
+                Next hop type: Router, Next hop index: 615
+                Address: 0x9334c70
+                Next-hop reference count: 31
+                Next hop: 10.4.12.4 via em0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:27:48 	Metric: 20 
+                Task: IS-IS
+                Announcement bits (3): 0-KRT 1-LDP 5-Resolve tree 4 
+                AS path: I
+
+10.4.12.0/24 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334298
+                Next-hop reference count: 2
+                Next hop: via em0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:33 
+                Task: IF
+                Announcement bits (3): 1-LDP 2-IS-IS 5-Resolve tree 4 
+                AS path: I
+
+10.4.12.12/32 (1 entry, 1 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 6
+                Next hop: 
+                Interface: em0.0
+                State: <Active NoReadvrt Int>
+                Local AS: 65535 
+                Age: 1:28:33 
+                Task: IF
+                Announcement bits (2): 1-LDP 5-Resolve tree 4 
+                AS path: I              
+
+inet.3: 11 destinations, 17 routes (11 active, 0 holddown, 0 hidden)
+
+10.0.0.1/32 (1 entry, 1 announced)
+        State: <FlashAll>
+        *LDP    Preference: 9
+                Next hop type: Router
+                Address: 0x9488558
+                Next-hop reference count: 3
+                Next hop: 10.4.12.4 via em0.0
+                Label operation: Push 299776
+                Label TTL action: prop-ttl
+                Next hop: 10.2.12.2 via em1.0, selected
+                Label operation: Push 299792
+                Label TTL action: prop-ttl
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:32 	Metric: 1 
+                Task: LDP
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+
+10.0.0.2/32 (1 entry, 1 announced)      
+        State: <FlashAll>
+        *LDP    Preference: 9
+                Next hop type: Router
+                Address: 0x9334d48
+                Next-hop reference count: 3
+                Next hop: 10.2.12.2 via em1.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:32 	Metric: 1 
+                Task: LDP
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+
+10.0.0.3/32 (1 entry, 1 announced)
+        State: <FlashAll>
+        *LDP    Preference: 9
+                Next hop type: Router
+                Address: 0x94885c0
+                Next-hop reference count: 3
+                Next hop: 10.4.12.4 via em0.0
+                Label operation: Push 299808
+                Label TTL action: prop-ttl
+                Next hop: 10.2.12.2 via em1.0, selected
+                Label operation: Push 299776
+                Label TTL action: prop-ttl
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:32 	Metric: 1 
+                Task: LDP
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+
+10.0.0.4/32 (1 entry, 1 announced)
+        State: <FlashAll>
+        *LDP    Preference: 9
+                Next hop type: Router
+                Address: 0x9335408
+                Next-hop reference count: 3
+                Next hop: 10.4.12.4 via em0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:32 	Metric: 1 
+                Task: LDP
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+                                        
+10.0.0.5/32 (2 entries, 1 announced)
+        State: <FlashAll>
+        *RSVP   Preference: 7/1
+                Next hop type: Router
+                Address: 0x93360f8
+                Next-hop reference count: 6
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J5
+                Label operation: Push 300064
+                Label TTL action: prop-ttl
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 39:15 	Metric: 20 
+                Task: RSVP
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+
+10.0.0.6/32 (2 entries, 1 announced)
+        State: <FlashAll>
+        *RSVP   Preference: 7/1
+                Next hop type: Router
+                Address: 0x9336188
+                Next-hop reference count: 6
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J6
+                Label operation: Push 300144
+                Label TTL action: prop-ttl
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 39:05 	Metric: 20 
+                Task: RSVP
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+
+10.0.0.7/32 (2 entries, 1 announced)
+        State: <FlashAll>
+        *RSVP   Preference: 7/1
+                Next hop type: Router
+                Address: 0x93348c8
+                Next-hop reference count: 6
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 299968
+                Label TTL action: prop-ttl
+                State: <Active Int>
+                Local AS: 65535         
+                Age: 1:18:12 	Metric: 30 
+                Task: RSVP
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+
+10.0.0.8/32 (2 entries, 1 announced)
+        State: <FlashAll>
+        *RSVP   Preference: 7/1
+                Next hop type: Router
+                Address: 0x9334d00
+                Next-hop reference count: 6
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J8
+                Label operation: Push 299952
+                Label TTL action: prop-ttl
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:05 	Metric: 30 
+                Task: RSVP
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+
+10.0.0.9/32 (2 entries, 1 announced)    
+        State: <FlashAll>
+        *RSVP   Preference: 7/1
+                Next hop type: Router
+                Address: 0x9336410
+                Next-hop reference count: 6
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J9
+                Label operation: Push 300064
+                Label TTL action: prop-ttl
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 38:33 	Metric: 20 
+                Task: RSVP
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+
+10.0.0.10/32 (1 entry, 1 announced)
+        State: <FlashAll>
+        *LDP    Preference: 9
+                Next hop type: Router
+                Address: 0x93362a8
+                Next-hop reference count: 3
+                Next hop: 10.4.12.4 via em0.0, selected
+                Label operation: Push 299984
+                Label TTL action: prop-ttl
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 38:52 	Metric: 1 
+                Task: LDP
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+
+10.0.0.11/32 (2 entries, 1 announced)
+        State: <FlashAll>
+        *RSVP   Preference: 7/1
+                Next hop type: Router
+                Address: 0x9334568
+                Next-hop reference count: 6
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 299936
+                Label TTL action: prop-ttl
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:13 	Metric: 20 
+                Task: RSVP              
+                Announcement bits (2): 1-Resolve tree 1 3-Resolve tree 4 
+                AS path: I
+
+RI-L3VPN-MAGENTA.inet.0: 18 destinations, 35 routes (18 active, 0 holddown, 0 hidden)
+
+10.0.0.15/32 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 3 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+10.0.0.19/32 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30      
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 2 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+10.7.15.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 3 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+10.8.15.0/24 (3 entries, 1 announced)   
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 3 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+10.11.19.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 2 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I              
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+10.12.19.0/24 (2 entries, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x9334490
+                Next-hop reference count: 1
+                Next hop: via em4.0, selected
+                State: <Active Int>
+                Age: 1:28:27 
+                Task: IF
+                Announcement bits (1): 2-BGP_RT_Background 
+                AS path: I
+
+10.12.19.12/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 6
+                Next hop: 
+                Interface: em4.0
+                State: <Active NoReadvrt Int>
+                Age: 1:28:27            
+                Task: IF
+                AS path: I
+
+172.15.1.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 3 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+172.15.2.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>     
+                Age: 1:16:29 	Metric: 3 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+172.15.3.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 3 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+172.15.4.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30      
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 3 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+172.15.5.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 3 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+172.19.1.0/24 (2 entries, 1 announced)  
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 2 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+172.19.2.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 2 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I              
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+172.19.3.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 2 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+172.19.4.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29    Metric: 2 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+172.19.5.0/24 (2 entries, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: Router, Next hop index: 607
+                Address: 0x9334a30
+                Next-hop reference count: 30
+                Next hop: 10.12.19.19 via em4.0, selected
+                State: <Active Int>
+                Age: 1:16:29 	Metric: 2 	Tag: 0 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (2): 0-KRT 2-BGP_RT_Background 
+                AS path: I
+		Route learned from 10.12.19.19 expires in 176 seconds
+
+224.0.0.9/32 (1 entry, 1 announced)
+        *RIP    Preference: 100
+                Next hop type: MultiRecv
+                Address: 0x8f2a7c4
+                Next-hop reference count: 2
+                State: <Active NoReadvrt Int>
+                Age: 1:14:30 	Metric: 1 
+                Task: RI-L3VPN-MAGENTA-RIPv2
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+RI-L3VPN-RED.inet.0: 9 destinations, 13 routes (9 active, 0 holddown, 0 hidden)
+
+10.0.0.16/32 (2 entries, 1 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:2
+                Next hop type: Indirect
+                Address: 0x9335ba0
+                Next-hop reference count: 9
+                Source: 10.0.0.7
+                Next hop type: Router, Next hop index: 609
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 17, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 17
+                Indirect next hop: 93f42b8 131071
+                State: <Secondary Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:09 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                Announcement bits (1): 1-KRT 
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Primary Routing Table bgp.l3vpn.0
+
+10.0.0.20/32 (2 entries, 1 announced)
+        *Static Preference: 5
+                Next hop type: Router, Next hop index: 605
+                Address: 0x93345f8
+                Next-hop reference count: 5
+                Next hop: 10.12.20.20 via em3.0, selected
+                State: <Active Int Ext>
+                Age: 1:19:37 
+                Task: RT
+                Announcement bits (2): 1-KRT 2-BGP_RT_Background 
+                AS path: I
+
+10.7.16.0/24 (1 entry, 1 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:2
+                Next hop type: Indirect
+                Address: 0x9335ba0
+                Next-hop reference count: 9
+                Source: 10.0.0.7
+                Next hop type: Router, Next hop index: 609
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 17, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 17
+                Indirect next hop: 93f42b8 131071
+                State: <Secondary Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:09 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                Announcement bits (1): 1-KRT 
+                AS path: I              
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Primary Routing Table bgp.l3vpn.0
+
+10.8.16.0/24 (1 entry, 1 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.8:2
+                Next hop type: Indirect
+                Address: 0x9335d50
+                Next-hop reference count: 7
+                Source: 10.0.0.8
+                Next hop type: Router, Next hop index: 610
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J8
+                Label operation: Push 17, Push 299952(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.8
+                Push 17
+                Indirect next hop: 93f4488 131072
+                State: <Secondary Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:06 	Metric2: 30 
+                Task: BGP_65535.10.0.0.8+179
+                Announcement bits (1): 1-KRT 
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.8
+                Primary Routing Table bgp.l3vpn.0
+
+10.11.20.0/24 (1 entry, 1 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:2
+                Next hop type: Indirect
+                Address: 0x93359f0
+                Next-hop reference count: 7
+                Source: 10.0.0.11
+                Next hop type: Router, Next hop index: 608
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 17, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 17
+                Indirect next hop: 93f40e8 131070
+                State: <Secondary Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:17 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                Announcement bits (1): 1-KRT 
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.11
+                Primary Routing Table bgp.l3vpn.0
+
+10.12.20.0/24 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x93344d8
+                Next-hop reference count: 1
+                Next hop: via em3.0, selected
+                State: <Active Int>
+                Age: 1:19:37 
+                Task: IF
+                Announcement bits (1): 2-BGP_RT_Background 
+                AS path: I
+
+10.12.20.12/32 (1 entry, 0 announced)
+        *Local  Preference: 0
+                Next hop type: Local
+                Address: 0x8f29784
+                Next-hop reference count: 6
+                Next hop: 
+                Interface: em3.0
+                State: <Active NoReadvrt Int>
+                Age: 1:19:37 
+                Task: IF
+                AS path: I
+
+172.16.0.0/16 (2 entries, 1 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:2
+                Next hop type: Indirect
+                Address: 0x9335ba0      
+                Next-hop reference count: 9
+                Source: 10.0.0.7
+                Next hop type: Router, Next hop index: 609
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 17, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 17
+                Indirect next hop: 93f42b8 131071
+                State: <Secondary Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:09 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                Announcement bits (1): 1-KRT 
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Primary Routing Table bgp.l3vpn.0
+                                        
+172.20.0.0/16 (2 entries, 1 announced)
+        *Static Preference: 5
+                Next hop type: Router, Next hop index: 605
+                Address: 0x93345f8
+                Next-hop reference count: 5
+                Next hop: 10.12.20.20 via em3.0, selected
+                State: <Active Int Ext>
+                Age: 1:19:37 
+                Task: RT
+                Announcement bits (2): 1-KRT 2-BGP_RT_Background 
+                AS path: I
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+
+10.0000.0000.0012/56 (1 entry, 1 announced)
+        *Direct Preference: 0
+                Next hop type: Interface
+                Address: 0x93343b8
+                Next-hop reference count: 2
+                Next hop: via lo0.0, selected
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:27            
+                Task: IF
+                Announcement bits (1): 2-Resolve tree 3 
+                AS path: I
+
+mpls.0: 19 destinations, 19 routes (19 active, 0 holddown, 0 hidden)
+
+0   (1 entry, 1 announced)
+        *MPLS   Preference: 0
+                Next hop type: Receive
+                Address: 0x8f29fa4
+                Next-hop reference count: 8
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:40 	Metric: 1 
+                Task: MPLS
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+1   (1 entry, 1 announced)
+        *MPLS   Preference: 0
+                Next hop type: Receive
+                Address: 0x8f29fa4
+                Next-hop reference count: 8
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:40 	Metric: 1 
+                Task: MPLS
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+2   (1 entry, 1 announced)
+        *MPLS   Preference: 0
+                Next hop type: Receive
+                Address: 0x8f29fa4
+                Next-hop reference count: 8
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:40 	Metric: 1 
+                Task: MPLS
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+13  (1 entry, 1 announced)
+        *MPLS   Preference: 0
+                Next hop type: Receive
+                Address: 0x8f29fa4      
+                Next-hop reference count: 8
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:28:40 	Metric: 1 
+                Task: MPLS
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+16  (1 entry, 0 announced)
+        *VPN    Preference: 0
+                Next hop: 
+                Next table: RI-L3VPN-MAGENTA.inet.0
+                Label operation: Pop      
+                Address: 0x9335180
+                Next-hop reference count: 1
+                State: <Active NotInstall Int Ext>
+                Age: 1:18:37 
+                Task: RT
+                AS path: I
+
+17  (1 entry, 0 announced)
+        *VPN    Preference: 0
+                Next hop:               
+                Next table: RI-L3VPN-RED.inet.0
+                Label operation: Pop      
+                Address: 0x9334fd0
+                Next-hop reference count: 1
+                State: <Active NotInstall Int Ext>
+                Age: 1:18:37 
+                Task: RT
+                AS path: I
+
+300032 (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router, Next hop index: 613
+                Address: 0x9334640
+                Next-hop reference count: 2
+                Next hop: 10.2.12.2 via em1.0, selected
+                Label operation: Pop      
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:33 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.2/32
+
+300032(S=0) (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router, Next hop index: 614
+                Address: 0x9334688
+                Next-hop reference count: 2
+                Next hop: 10.2.12.2 via em1.0, selected
+                Label operation: Pop      
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:33 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+300048 (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router
+                Address: 0x94882e8
+                Next-hop reference count: 1
+                Next hop: 10.4.12.4 via em0.0
+                Label operation: Swap 299776
+                Next hop: 10.2.12.2 via em1.0, selected
+                Label operation: Swap 299792
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:33 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.1/32
+
+300064 (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router
+                Address: 0x94883b8
+                Next-hop reference count: 1
+                Next hop: 10.4.12.4 via em0.0, selected
+                Label operation: Swap 299808
+                Next hop: 10.2.12.2 via em1.0
+                Label operation: Swap 299776
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:33 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.3/32
+
+300080 (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router, Next hop index: 621
+                Address: 0x9335498
+                Next-hop reference count: 2
+                Next hop: 10.4.12.4 via em0.0, selected
+                Label operation: Pop      
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:33 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.4/32
+
+300080(S=0) (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router, Next hop index: 622
+                Address: 0x93353c0
+                Next-hop reference count: 2
+                Next hop: 10.4.12.4 via em0.0, selected
+                Label operation: Pop      
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:33 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+300096 (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router
+                Address: 0x9488488
+                Next-hop reference count: 1
+                Next hop: 10.4.12.4 via em0.0, selected
+                Label operation: Swap 299840
+                Next hop: 10.2.12.2 via em1.0
+                Label operation: Swap 299840
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:33 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.7/32
+
+300112 (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router
+                Address: 0x9488420
+                Next-hop reference count: 1
+                Next hop: 10.4.12.4 via em0.0, selected
+                Label operation: Swap 299824
+                Next hop: 10.2.12.2 via em1.0
+                Label operation: Swap 299824
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:33 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.8/32
+
+300128 (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router   
+                Address: 0x94884f0
+                Next-hop reference count: 1
+                Next hop: 10.4.12.4 via em0.0, selected
+                Label operation: Swap 299856
+                Next hop: 10.2.12.2 via em1.0
+                Label operation: Swap 299856
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 1:18:33 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.11/32
+
+300144 (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router, Next hop index: 611
+                Address: 0x9335e28
+                Next-hop reference count: 2
+                Next hop: 10.2.12.2 via em1.0, selected
+                Label operation: Swap 300016
+                State: <Active Int>
+                Local AS: 65535         
+                Age: 39:29 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.6/32
+
+300160 (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router, Next hop index: 612
+                Address: 0x9335f90
+                Next-hop reference count: 2
+                Next hop: 10.2.12.2 via em1.0, selected
+                Label operation: Swap 299984
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 39:28 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.5/32
+
+300176 (1 entry, 1 announced)
+        *LDP    Preference: 9           
+                Next hop type: Router, Next hop index: 616
+                Address: 0x9336140
+                Next-hop reference count: 2
+                Next hop: 10.4.12.4 via em0.0, selected
+                Label operation: Swap 299984
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 38:53 	Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.10/32
+
+300192 (1 entry, 1 announced)
+        *LDP    Preference: 9
+                Next hop type: Router, Next hop index: 618
+                Address: 0x93362f0
+                Next-hop reference count: 2
+                Next hop: 10.4.12.4 via em0.0, selected
+                Label operation: Swap 300000
+                State: <Active Int>
+                Local AS: 65535 
+                Age: 38:40      Metric: 1 
+                Task: LDP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+                Prefixes bound to route: 10.0.0.9/32
+
+bgp.l3vpn.0: 26 destinations, 26 routes (26 active, 0 holddown, 0 hidden)
+
+10.0.0.7:1:10.0.0.15/32 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:1
+                Next hop type: Indirect
+                Address: 0x9335ac8
+                Next-hop reference count: 16
+                Source: 10.0.0.7
+                Next hop type: Router
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 16, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 16
+                Indirect next hop: 93f41d0 -
+                State: <Active Int Ext> 
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric: 2 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.7:1:10.7.15.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:1
+                Next hop type: Indirect
+                Address: 0x9335ac8
+                Next-hop reference count: 16
+                Source: 10.0.0.7
+                Next hop type: Router
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 16, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 16
+                Indirect next hop: 93f41d0 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.7:1:10.8.15.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:1
+                Next hop type: Indirect
+                Address: 0x9335ac8
+                Next-hop reference count: 16
+                Source: 10.0.0.7
+                Next hop type: Router   
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 16, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 16
+                Indirect next hop: 93f41d0 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric: 2 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.7:1:172.15.1.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:1
+                Next hop type: Indirect 
+                Address: 0x9335ac8
+                Next-hop reference count: 16
+                Source: 10.0.0.7
+                Next hop type: Router
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 16, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 16
+                Indirect next hop: 93f41d0 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric: 2 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+                                        
+10.0.0.7:1:172.15.2.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:1
+                Next hop type: Indirect
+                Address: 0x9335ac8
+                Next-hop reference count: 16
+                Source: 10.0.0.7
+                Next hop type: Router
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 16, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 16
+                Indirect next hop: 93f41d0 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric: 2 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16           
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.7:1:172.15.3.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:1
+                Next hop type: Indirect
+                Address: 0x9335ac8
+                Next-hop reference count: 16
+                Source: 10.0.0.7
+                Next hop type: Router
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 16, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 16
+                Indirect next hop: 93f41d0 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric: 2 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.7:1:172.15.4.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:1
+                Next hop type: Indirect
+                Address: 0x9335ac8
+                Next-hop reference count: 16
+                Source: 10.0.0.7
+                Next hop type: Router
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 16, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 16
+                Indirect next hop: 93f41d0 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric: 2 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.7:1:172.15.5.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:1
+                Next hop type: Indirect
+                Address: 0x9335ac8
+                Next-hop reference count: 16
+                Source: 10.0.0.7
+                Next hop type: Router
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 16, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 16
+                Indirect next hop: 93f41d0 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric: 2 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.7:2:10.0.0.16/32 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:2
+                Next hop type: Indirect
+                Address: 0x9335ba0
+                Next-hop reference count: 9
+                Source: 10.0.0.7        
+                Next hop type: Router, Next hop index: 609
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 17, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 17
+                Indirect next hop: 93f42b8 131071
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-RED.inet.0
+
+10.0.0.7:2:10.7.16.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:2
+                Next hop type: Indirect
+                Address: 0x9335ba0
+                Next-hop reference count: 9
+                Source: 10.0.0.7
+                Next hop type: Router, Next hop index: 609
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 17, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 17
+                Indirect next hop: 93f42b8 131071
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-RED.inet.0
+
+10.0.0.7:2:172.16.0.0/16 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.7:2
+                Next hop type: Indirect
+                Address: 0x9335ba0
+                Next-hop reference count: 9
+                Source: 10.0.0.7
+                Next hop type: Router, Next hop index: 609
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J7
+                Label operation: Push 17, Push 299968(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.7
+                Push 17
+                Indirect next hop: 93f42b8 131071
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:10 	Metric2: 30 
+                Task: BGP_65535.10.0.0.7+179
+                AS path: I
+                Communities: target:400:400
+                Import Accepted         
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.7
+                Secondary Tables: RI-L3VPN-RED.inet.0
+
+10.0.0.8:1:10.8.15.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.8:1
+                Next hop type: Indirect
+                Address: 0x9335c78
+                Next-hop reference count: 2
+                Source: 10.0.0.8
+                Next hop type: Router
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J8
+                Label operation: Push 16, Push 299952(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.8
+                Push 16
+                Indirect next hop: 93f43a0 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:07    Metric2: 30 
+                Task: BGP_65535.10.0.0.8+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.8
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.8:2:10.0.0.16/32 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.8:2
+                Next hop type: Indirect
+                Address: 0x9335d50
+                Next-hop reference count: 7
+                Source: 10.0.0.8
+                Next hop type: Router, Next hop index: 610
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J8
+                Label operation: Push 17, Push 299952(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.8
+                Push 17                 
+                Indirect next hop: 93f4488 131072
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:07 	Metric2: 30 
+                Task: BGP_65535.10.0.0.8+179
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.8
+                Secondary Tables: RI-L3VPN-RED.inet.0
+
+10.0.0.8:2:10.8.16.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.8:2
+                Next hop type: Indirect
+                Address: 0x9335d50
+                Next-hop reference count: 7
+                Source: 10.0.0.8
+                Next hop type: Router, Next hop index: 610
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J8
+                Label operation: Push 17, Push 299952(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.8
+                Push 17
+                Indirect next hop: 93f4488 131072
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:07 	Metric2: 30 
+                Task: BGP_65535.10.0.0.8+179
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.8
+                Secondary Tables: RI-L3VPN-RED.inet.0
+
+10.0.0.8:2:172.16.0.0/16 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.8:2
+                Next hop type: Indirect
+                Address: 0x9335d50
+                Next-hop reference count: 7
+                Source: 10.0.0.8
+                Next hop type: Router, Next hop index: 610
+                Next hop: 10.2.12.2 via em1.0 weight 0x1, selected
+                Label-switched-path J12-TO-J8
+                Label operation: Push 17, Push 299952(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.8
+                Push 17
+                Indirect next hop: 93f4488 131072
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:07 	Metric2: 30 
+                Task: BGP_65535.10.0.0.8+179
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.8
+                Secondary Tables: RI-L3VPN-RED.inet.0
+
+10.0.0.11:1:10.0.0.19/32 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101    
+                Route Distinguisher: 10.0.0.11:1
+                Next hop type: Indirect
+                Address: 0x9335918
+                Next-hop reference count: 16
+                Source: 10.0.0.11
+                Next hop type: Router
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 16, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 16
+                Indirect next hop: 93f4000 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric: 2 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.11    
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.11:1:10.11.19.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:1
+                Next hop type: Indirect
+                Address: 0x9335918
+                Next-hop reference count: 16
+                Source: 10.0.0.11
+                Next hop type: Router
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 16, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 16
+                Indirect next hop: 93f4000 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.11
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.11:1:10.12.19.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:1
+                Next hop type: Indirect
+                Address: 0x9335918
+                Next-hop reference count: 16
+                Source: 10.0.0.11
+                Next hop type: Router
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 16, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 16
+                Indirect next hop: 93f4000 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric: 2 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.11
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.11:1:172.19.1.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:1
+                Next hop type: Indirect
+                Address: 0x9335918
+                Next-hop reference count: 16
+                Source: 10.0.0.11
+                Next hop type: Router
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 16, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 16
+                Indirect next hop: 93f4000 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric: 2 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.11
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.11:1:172.19.2.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:1
+                Next hop type: Indirect
+                Address: 0x9335918
+                Next-hop reference count: 16
+                Source: 10.0.0.11
+                Next hop type: Router
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 16, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 16
+                Indirect next hop: 93f4000 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric: 2 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.11
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.11:1:172.19.3.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:1
+                Next hop type: Indirect
+                Address: 0x9335918      
+                Next-hop reference count: 16
+                Source: 10.0.0.11
+                Next hop type: Router
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 16, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 16
+                Indirect next hop: 93f4000 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric: 2 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.11
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.11:1:172.19.4.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:1
+                Next hop type: Indirect
+                Address: 0x9335918
+                Next-hop reference count: 16
+                Source: 10.0.0.11
+                Next hop type: Router
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 16, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 16
+                Indirect next hop: 93f4000 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric: 2 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100          
+                Router ID: 10.0.0.11
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.11:1:172.19.5.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:1
+                Next hop type: Indirect
+                Address: 0x9335918
+                Next-hop reference count: 16
+                Source: 10.0.0.11
+                Next hop type: Router
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 16, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 16
+                Indirect next hop: 93f4000 -
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric: 2 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I              
+                Communities: target:300:300
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.11
+                Secondary Tables: RI-L3VPN-MAGENTA.inet.0
+
+10.0.0.11:2:10.0.0.20/32 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:2
+                Next hop type: Indirect
+                Address: 0x93359f0
+                Next-hop reference count: 7
+                Source: 10.0.0.11
+                Next hop type: Router, Next hop index: 608
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 17, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 17
+                Indirect next hop: 93f40e8 131070
+                State: <Active Int Ext> 
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.11
+                Secondary Tables: RI-L3VPN-RED.inet.0
+
+10.0.0.11:2:10.11.20.0/24 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:2
+                Next hop type: Indirect
+                Address: 0x93359f0
+                Next-hop reference count: 7
+                Source: 10.0.0.11
+                Next hop type: Router, Next hop index: 608
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 17, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 17
+                Indirect next hop: 93f40e8 131070
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.11
+                Secondary Tables: RI-L3VPN-RED.inet.0
+
+10.0.0.11:2:172.20.0.0/16 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.11:2
+                Next hop type: Indirect
+                Address: 0x93359f0
+                Next-hop reference count: 7
+                Source: 10.0.0.11
+                Next hop type: Router, Next hop index: 608
+                Next hop: 10.4.12.4 via em0.0 weight 0x1, selected
+                Label-switched-path J12-TO-J10
+                Label operation: Push 17, Push 299936(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.11
+                Push 17
+                Indirect next hop: 93f40e8 131070
+                State: <Active Int Ext>
+                Local AS: 65535 Peer AS: 65535
+                Age: 1:14:18 	Metric2: 20 
+                Task: BGP_65535.10.0.0.11+179
+                AS path: I
+                Communities: target:400:400
+                Import Accepted
+                VPN Label: 17
+                Localpref: 100
+                Router ID: 10.0.0.11
+                Secondary Tables: RI-L3VPN-RED.inet.0
+
+root@J12> 
+
+root@J12> 
+
+root@J12> show bgp summary 
+Groups: 1 Peers: 7 Down peers: 0
+Table          Tot Paths  Act Paths Suppressed    History Damp State    Pending
+bgp.l3vpn.0           26         26          0          0          0          0
+inet.0                 0          0          0          0          0          0
+Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...
+10.0.0.5              65535         90         91       0       0       38:39 Establ
+  bgp.l3vpn.0: 0/0/0/0
+10.0.0.6              65535         97         91       0       0       38:46 Establ
+  bgp.l3vpn.0: 0/0/0/0
+  inet.0: 0/0/0/0
+10.0.0.7              65535        164        170       0       0     1:14:25 Establ
+  bgp.l3vpn.0: 11/11/11/0
+  RI-L3VPN-MAGENTA.inet.0: 0/8/8/0
+  inet.0: 0/0/0/0
+  RI-L3VPN-RED.inet.0: 3/3/3/0
+10.0.0.8              65535        169        170       0       0     1:14:21 Establ
+  bgp.l3vpn.0: 4/4/4/0
+  RI-L3VPN-MAGENTA.inet.0: 0/1/1/0
+  RI-L3VPN-RED.inet.0: 1/3/3/0          
+10.0.0.9              65535         90         89       0       0       38:01 Establ
+  bgp.l3vpn.0: 0/0/0/0
+  inet.0: 0/0/0/0
+10.0.0.10             65535         92         90       0       0       38:22 Establ
+  bgp.l3vpn.0: 0/0/0/0
+  inet.0: 0/0/0/0
+10.0.0.11             65535        174        172       0       0     1:14:33 Establ
+  bgp.l3vpn.0: 11/11/11/0
+  RI-L3VPN-MAGENTA.inet.0: 0/8/8/0
+  inet.0: 0/0/0/0
+  RI-L3VPN-RED.inet.0: 1/3/3/0
+
+root@J12> 
+
+root@J12> 
+
+root@J12> show bgp neighbor 
+Peer: 10.0.0.5+52914 AS 65535  Local: 10.0.0.12+179 AS 65535
+  Type: Internal    State: Established    Flags: <ImportEval Sync>
+  Last State: OpenConfirm   Last Event: RecvKeepAlive
+  Last Error: None
+  Options: <Preference LocalAddress AddressFamily Rib-group Refresh>
+  Address families configured: inet-unicast inet-vpn-unicast
+  Local Address: 10.0.0.12 Holdtime: 90 Preference: 170
+  Number of flaps: 0
+  Peer ID: 10.0.0.5        Local ID: 10.0.0.12         Active Holdtime: 90
+  Keepalive Interval: 30         Peer index: 4   
+  BFD: disabled, down
+  NLRI for restart configured on peer: inet-unicast inet-vpn-unicast
+  NLRI advertised by peer: inet-vpn-unicast
+  NLRI for this session: inet-vpn-unicast
+  Peer supports Refresh capability (2)
+  Stale routes from peer are kept for: 300
+  Peer does not support Restarter functionality
+  NLRI that restart is negotiated for: inet-vpn-unicast
+  NLRI of received end-of-rib markers: inet-vpn-unicast
+  NLRI of all end-of-rib markers sent: inet-vpn-unicast
+  Peer supports 4 byte AS extension (peer-as 65535)
+  Peer does not support Addpath
+  Table bgp.l3vpn.0
+    RIB State: BGP restart is complete  
+    RIB State: VPN restart is complete
+    Send state: not advertising
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+  Table RI-L3VPN-MAGENTA.inet.0 Bit: 20000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          16
+  Table RI-L3VPN-RED.inet.0 Bit: 60000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0     
+    Advertised prefixes:          3
+  Last traffic (seconds): Received 21   Sent 11   Checked 18  
+  Input messages:  Total 90	Updates 7	Refreshes 0 	Octets 2438
+  Output messages: Total 91	Updates 4	Refreshes 0 	Octets 2308
+  Output Queue[0]: 0
+  Output Queue[1]: 0
+  Output Queue[5]: 0
+
+Peer: 10.0.0.6+59542 AS 65535  Local: 10.0.0.12+179 AS 65535
+  Type: Internal    State: Established    Flags: <ImportEval Sync>
+  Last State: OpenConfirm   Last Event: RecvKeepAlive
+  Last Error: None
+  Options: <Preference LocalAddress AddressFamily Rib-group Refresh>
+  Address families configured: inet-unicast inet-vpn-unicast
+  Local Address: 10.0.0.12 Holdtime: 90 Preference: 170
+  Number of flaps: 0
+  Peer ID: 10.0.0.6        Local ID: 10.0.0.12         Active Holdtime: 90
+  Keepalive Interval: 30         Peer index: 3   
+  BFD: disabled, down
+  NLRI for restart configured on peer: inet-unicast inet-vpn-unicast
+  NLRI advertised by peer: inet-unicast inet-vpn-unicast
+  NLRI for this session: inet-unicast inet-vpn-unicast
+  Peer supports Refresh capability (2)  
+  Stale routes from peer are kept for: 300
+  Peer does not support Restarter functionality
+  NLRI that restart is negotiated for: inet-unicast inet-vpn-unicast
+  NLRI of received end-of-rib markers: inet-unicast inet-vpn-unicast
+  NLRI of all end-of-rib markers sent: inet-unicast inet-vpn-unicast
+  Peer supports 4 byte AS extension (peer-as 65535)
+  Peer does not support Addpath
+  Table bgp.l3vpn.0
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: not advertising
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+  Table RI-L3VPN-MAGENTA.inet.0 Bit: 20000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0     
+    Advertised prefixes:          16
+  Table inet.0 Bit: 30000
+    RIB State: BGP restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          0
+  Table RI-L3VPN-RED.inet.0 Bit: 60000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          3
+  Last traffic (seconds): Received 13   Sent 11   Checked 27  
+  Input messages:  Total 97	Updates 8	Refreshes 0 	Octets 2583
+  Output messages: Total 91	Updates 4	Refreshes 0 	Octets 2331
+  Output Queue[0]: 0
+  Output Queue[1]: 0                    
+  Output Queue[2]: 0
+  Output Queue[5]: 0
+
+Peer: 10.0.0.7+179 AS 65535    Local: 10.0.0.12+62836 AS 65535
+  Type: Internal    State: Established    Flags: <ImportEval Sync>
+  Last State: OpenConfirm   Last Event: RecvKeepAlive
+  Last Error: None
+  Options: <Preference LocalAddress AddressFamily Rib-group Refresh>
+  Address families configured: inet-unicast inet-vpn-unicast
+  Local Address: 10.0.0.12 Holdtime: 90 Preference: 170
+  Number of flaps: 0
+  Peer ID: 10.0.0.7        Local ID: 10.0.0.12         Active Holdtime: 90
+  Keepalive Interval: 30         Peer index: 1   
+  BFD: disabled, down
+  NLRI for restart configured on peer: inet-unicast inet-vpn-unicast
+  NLRI advertised by peer: inet-unicast inet-vpn-unicast
+  NLRI for this session: inet-unicast inet-vpn-unicast
+  Peer supports Refresh capability (2)
+  Stale routes from peer are kept for: 300
+  Peer does not support Restarter functionality
+  NLRI that restart is negotiated for: inet-unicast inet-vpn-unicast
+  NLRI of received end-of-rib markers: inet-unicast inet-vpn-unicast
+  NLRI of all end-of-rib markers sent: inet-unicast inet-vpn-unicast
+  Peer supports 4 byte AS extension (peer-as 65535)
+  Peer does not support Addpath
+  Table bgp.l3vpn.0
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: not advertising
+    Active prefixes:              11
+    Received prefixes:            11
+    Accepted prefixes:            11
+    Suppressed due to damping:    0
+  Table RI-L3VPN-MAGENTA.inet.0 Bit: 20000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            8
+    Accepted prefixes:            8
+    Suppressed due to damping:    0
+    Advertised prefixes:          16
+  Table inet.0 Bit: 30000
+    RIB State: BGP restart is complete
+    Send state: in sync
+    Active prefixes:              0     
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          0
+  Table RI-L3VPN-RED.inet.0 Bit: 60000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              3
+    Received prefixes:            3
+    Accepted prefixes:            3
+    Suppressed due to damping:    0
+    Advertised prefixes:          3
+  Last traffic (seconds): Received 22   Sent 24   Checked 71  
+  Input messages:  Total 164	Updates 5	Refreshes 0	Octets 3454
+  Output messages: Total 170	Updates 4	Refreshes 0	Octets 3832
+  Output Queue[0]: 0
+  Output Queue[1]: 0
+  Output Queue[2]: 0
+  Output Queue[5]: 0
+
+Peer: 10.0.0.8+179 AS 65535    Local: 10.0.0.12+52004 AS 65535
+  Type: Internal    State: Established    Flags: <ImportEval Sync>
+  Last State: OpenConfirm   Last Event: RecvKeepAlive
+  Last Error: None
+  Options: <Preference LocalAddress AddressFamily Rib-group Refresh>
+  Address families configured: inet-unicast inet-vpn-unicast
+  Local Address: 10.0.0.12 Holdtime: 90 Preference: 170
+  Number of flaps: 0
+  Peer ID: 10.0.0.8        Local ID: 10.0.0.12         Active Holdtime: 90
+  Keepalive Interval: 30         Peer index: 2   
+  BFD: disabled, down
+  NLRI for restart configured on peer: inet-unicast inet-vpn-unicast
+  NLRI advertised by peer: inet-vpn-unicast
+  NLRI for this session: inet-vpn-unicast
+  Peer supports Refresh capability (2)
+  Stale routes from peer are kept for: 300
+  Peer does not support Restarter functionality
+  NLRI that restart is negotiated for: inet-vpn-unicast
+  NLRI of received end-of-rib markers: inet-vpn-unicast
+  NLRI of all end-of-rib markers sent: inet-vpn-unicast
+  Peer supports 4 byte AS extension (peer-as 65535)
+  Peer does not support Addpath
+  Table bgp.l3vpn.0
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete  
+    Send state: not advertising
+    Active prefixes:              4
+    Received prefixes:            4
+    Accepted prefixes:            4
+    Suppressed due to damping:    0
+  Table RI-L3VPN-MAGENTA.inet.0 Bit: 20000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            1
+    Accepted prefixes:            1
+    Suppressed due to damping:    0
+    Advertised prefixes:          16
+  Table RI-L3VPN-RED.inet.0 Bit: 60000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              1
+    Received prefixes:            3
+    Accepted prefixes:            3
+    Suppressed due to damping:    0
+    Advertised prefixes:          3     
+  Last traffic (seconds): Received 25   Sent 11   Checked 39  
+  Input messages:  Total 169	Updates 3	Refreshes 0	Octets 3382
+  Output messages: Total 170	Updates 4	Refreshes 0	Octets 3809
+  Output Queue[0]: 0
+  Output Queue[1]: 0
+  Output Queue[5]: 0
+
+Peer: 10.0.0.9+54161 AS 65535  Local: 10.0.0.12+179 AS 65535
+  Type: Internal    State: Established    Flags: <ImportEval Sync>
+  Last State: OpenConfirm   Last Event: RecvKeepAlive
+  Last Error: None
+  Options: <Preference LocalAddress AddressFamily Rib-group Refresh>
+  Address families configured: inet-unicast inet-vpn-unicast
+  Local Address: 10.0.0.12 Holdtime: 90 Preference: 170
+  Number of flaps: 0
+  Peer ID: 10.0.0.9        Local ID: 10.0.0.12         Active Holdtime: 90
+  Keepalive Interval: 30         Peer index: 6   
+  BFD: disabled, down
+  NLRI for restart configured on peer: inet-unicast inet-vpn-unicast
+  NLRI advertised by peer: inet-unicast inet-vpn-unicast
+  NLRI for this session: inet-unicast inet-vpn-unicast
+  Peer supports Refresh capability (2)
+  Stale routes from peer are kept for: 300
+  Peer does not support Restarter functionality
+  NLRI that restart is negotiated for: inet-unicast inet-vpn-unicast
+  NLRI of received end-of-rib markers: inet-unicast inet-vpn-unicast
+  NLRI of all end-of-rib markers sent: inet-unicast inet-vpn-unicast
+  Peer supports 4 byte AS extension (peer-as 65535)
+  Peer does not support Addpath
+  Table bgp.l3vpn.0
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: not advertising
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+  Table RI-L3VPN-MAGENTA.inet.0 Bit: 20000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          16    
+  Table inet.0 Bit: 30000
+    RIB State: BGP restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          0
+  Table RI-L3VPN-RED.inet.0 Bit: 60000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          3
+  Last traffic (seconds): Received 4    Sent 13   Checked 52  
+  Input messages:  Total 91	Updates 7	Refreshes 0 	Octets 2389
+  Output messages: Total 89	Updates 4	Refreshes 0 	Octets 2293
+  Output Queue[0]: 0
+  Output Queue[1]: 0
+  Output Queue[2]: 0                    
+  Output Queue[5]: 0
+
+Peer: 10.0.0.10+54678 AS 65535 Local: 10.0.0.12+179 AS 65535
+  Type: Internal    State: Established    Flags: <ImportEval Sync>
+  Last State: OpenConfirm   Last Event: RecvKeepAlive
+  Last Error: None
+  Options: <Preference LocalAddress AddressFamily Rib-group Refresh>
+  Address families configured: inet-unicast inet-vpn-unicast
+  Local Address: 10.0.0.12 Holdtime: 90 Preference: 170
+  Number of flaps: 0
+  Peer ID: 10.0.0.10       Local ID: 10.0.0.12         Active Holdtime: 90
+  Keepalive Interval: 30         Peer index: 5   
+  BFD: disabled, down
+  NLRI for restart configured on peer: inet-unicast inet-vpn-unicast
+  NLRI advertised by peer: inet-unicast inet-vpn-unicast
+  NLRI for this session: inet-unicast inet-vpn-unicast
+  Peer supports Refresh capability (2)
+  Stale routes from peer are kept for: 300
+  Peer does not support Restarter functionality
+  NLRI that restart is negotiated for: inet-unicast inet-vpn-unicast
+  NLRI of received end-of-rib markers: inet-unicast inet-vpn-unicast
+  NLRI of all end-of-rib markers sent: inet-unicast inet-vpn-unicast
+  Peer supports 4 byte AS extension (peer-as 65535)
+  Peer does not support Addpath
+  Table bgp.l3vpn.0
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: not advertising
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+  Table RI-L3VPN-MAGENTA.inet.0 Bit: 20000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          16
+  Table inet.0 Bit: 30000
+    RIB State: BGP restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0     
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          0
+  Table RI-L3VPN-RED.inet.0 Bit: 60000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          3
+  Last traffic (seconds): Received 21   Sent 11   Checked 5   
+  Input messages:  Total 92	Updates 7	Refreshes 0 	Octets 2408
+  Output messages: Total 90	Updates 4	Refreshes 0 	Octets 2312
+  Output Queue[0]: 0
+  Output Queue[1]: 0
+  Output Queue[2]: 0
+  Output Queue[5]: 0
+
+Peer: 10.0.0.11+179 AS 65535   Local: 10.0.0.12+54639 AS 65535
+  Type: Internal    State: Established    Flags: <ImportEval Sync>
+  Last State: OpenConfirm   Last Event: RecvKeepAlive
+  Last Error: None
+  Options: <Preference LocalAddress AddressFamily Rib-group Refresh>
+  Address families configured: inet-unicast inet-vpn-unicast
+  Local Address: 10.0.0.12 Holdtime: 90 Preference: 170
+  Number of flaps: 0
+  Peer ID: 10.0.0.11       Local ID: 10.0.0.12         Active Holdtime: 90
+  Keepalive Interval: 30         Peer index: 0   
+  BFD: disabled, down
+  NLRI for restart configured on peer: inet-unicast inet-vpn-unicast
+  NLRI advertised by peer: inet-unicast inet-vpn-unicast
+  NLRI for this session: inet-unicast inet-vpn-unicast
+  Peer supports Refresh capability (2)
+  Stale routes from peer are kept for: 300
+  Peer does not support Restarter functionality
+  NLRI that restart is negotiated for: inet-unicast inet-vpn-unicast
+  NLRI of received end-of-rib markers: inet-unicast inet-vpn-unicast
+  NLRI of all end-of-rib markers sent: inet-unicast inet-vpn-unicast
+  Peer supports 4 byte AS extension (peer-as 65535)
+  Peer does not support Addpath
+  Table bgp.l3vpn.0
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: not advertising         
+    Active prefixes:              11
+    Received prefixes:            11
+    Accepted prefixes:            11
+    Suppressed due to damping:    0
+  Table RI-L3VPN-MAGENTA.inet.0 Bit: 20000
+    RIB State: BGP restart is complete
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            8
+    Accepted prefixes:            8
+    Suppressed due to damping:    0
+    Advertised prefixes:          16
+  Table inet.0 Bit: 30000
+    RIB State: BGP restart is complete
+    Send state: in sync
+    Active prefixes:              0
+    Received prefixes:            0
+    Accepted prefixes:            0
+    Suppressed due to damping:    0
+    Advertised prefixes:          0
+  Table RI-L3VPN-RED.inet.0 Bit: 60000
+    RIB State: BGP restart is complete  
+    RIB State: VPN restart is complete
+    Send state: in sync
+    Active prefixes:              1
+    Received prefixes:            3
+    Accepted prefixes:            3
+    Suppressed due to damping:    0
+    Advertised prefixes:          3
+  Last traffic (seconds): Received 20   Sent 6    Checked 37  
+  Input messages:  Total 174	Updates 5	Refreshes 0	Octets 3644
+  Output messages: Total 172	Updates 4	Refreshes 0	Octets 3870
+  Output Queue[0]: 0
+  Output Queue[1]: 0
+  Output Queue[2]: 0
+  Output Queue[5]: 0
+
+root@J12> 
+
+root@J12> 
+
+root@J12> show isis adjacency 
+Interface             System         L State        Hold (secs) SNPA
+em0.0                 J4             2  Up                   23  0:ab:63:6a:7c:4
+em1.0                 J2             2  Up                    8  0:ab:e0:8:29:6
+
+root@J12> 
+
+root@J12> show isis interface    
+IS-IS interface database:
+Interface             L CirID Level 1 DR        Level 2 DR        L1/L2 Metric
+em0.0                 2   0x2 Disabled          J12.02                 10/10
+em1.0                 2   0x1 Disabled          J2.05                  10/10
+lo0.0                 0   0x1 Disabled          Passive                 0/0
+
+root@J12> 
+
+root@J12> show isis interface detail 
+IS-IS interface database:
+em0.0
+  Index: 65, State: 0x6, Circuit id: 0x2, Circuit type: 2
+  LSP interval: 100 ms, CSNP interval: 10 s
+  Adjacency advertisement: Advertise
+  Level Adjacencies Priority Metric Hello (s) Hold (s) Designated Router
+    2             1       64     10     3.000        9 J12.02 (us)
+em1.0
+  Index: 70, State: 0x6, Circuit id: 0x1, Circuit type: 2
+  LSP interval: 100 ms, CSNP interval: 10 s
+  Adjacency advertisement: Advertise
+  Level Adjacencies Priority Metric Hello (s) Hold (s) Designated Router
+    2             1       64     10     9.000       27 J2.05 (not us)
+lo0.0
+  Index: 72, State: 0x6, Circuit id: 0x1, Circuit type: 0
+  LSP interval: 100 ms, CSNP interval: disabled
+  Adjacency advertisement: Advertise
+  Level Adjacencies Priority Metric Hello (s) Hold (s) Designated Router
+    2             0       64      0 Passive
+
+root@J12> 
+
+root@J12> 
+
+root@J12> 

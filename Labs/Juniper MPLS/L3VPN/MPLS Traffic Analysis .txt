@@ -1,0 +1,617 @@
+
+Basic MPLS Operations : 
+
+
+
+Let’s focus on two IP addresses per CEs. Both J13_CE1 and J17_CE5 resides on VRF-BLUE and they’re communicating to each other. We’ll send PING across.
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+SCENARIO 1: From J13_CE1 Loopback0 (172.13.1.1/32) to J17_CE5 (172.17.1.1/32)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ 
+J13_CE1: 
+
+
+Verify OSPF peering with 2 possible paths, J13_PE1 (primary) and J14_PE2 (secondary). 
+
+root@J13> show ospf neighbor 
+Address          Interface              State     ID               Pri  Dead
+10.5.13.5        em0.0                  Full      10.5.13.5        128    36
+10.6.13.6        em1.0                  Full      10.6.13.6        128    35
+
+root@J13>
+
+
+Verify the unicast routing table. To get to 172.17.1.1/32 the best-path or next-hop is 10.5.13.5 via em0.0 (J5_PE1) as the primary path and a secondary path 10.6.13.6 via em1.0 (J6_PE2). If the primary path fails, should reroute to the secondary path. 
+
+root@J13> show route 172.17.1.1/32 detail    
+
+inet.0: 30 destinations, 30 routes (30 active, 0 holddown, 0 hidden)
+172.17.1.1/32 (1 entry, 1 announced)
+        *OSPF   Preference: 10
+                Next hop type: Router
+                Address: 0x93f0078
+                Next-hop reference count: 13
+                Next hop: 10.5.13.5 via em0.0, selected
+                Next hop: 10.6.13.6 via em1.0
+                State: <Active Int>
+                Age: 2:56:01 	Metric: 2 
+                Area: 0.0.0.100
+                Task: OSPF
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+root@J13> 
+
+
+Ping from J13_CE1 to J17_CE5 Loopback0. 
+
+root@J13> ping 172.17.1.1 source 172.13.1.1 count 2 
+PING 172.17.1.1 (172.17.1.1): 56 data bytes
+64 bytes from 172.17.1.1: icmp_seq=0 ttl=63 time=3.262 ms
+64 bytes from 172.17.1.1: icmp_seq=1 ttl=63 time=2.377 ms
+
+--- 172.17.1.1 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.377/2.819/3.262/0.443 ms
+
+root@J13> 
+
+root@J13> traceroute 172.17.1.1 source 172.13.1.1 
+traceroute to 172.17.1.1 (172.17.1.1) from 172.13.1.1, 30 hops max, 40 byte packets
+ 1  10.5.13.5 (10.5.13.5)  1.145 ms  0.819 ms  0.476 ms
+ 2  10.1.5.1 (10.1.5.1)  2.220 ms  1.997 ms  1.863 ms
+     MPLS Label=300000 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.1.3.3 (10.1.3.3)  2.383 ms  3.096 ms  2.504 ms
+     MPLS Label=299808 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.17.1.1 (172.17.1.1)  2.757 ms  2.722 ms  2.386 ms
+
+root@J13> 
+
+Note:
+S=0, an outer MPLS header, with a label that causes the packet to be label-switched to the egress PE.
+S=1, An inner MPLS header, with a label that identifies the egress VRF on which to base the forwarding decision.
+
+
+Therefore, the trace-path is J13_CE1 -> J1_P1 -> J3_P3 -> J9_PE5 -> J17_CE5.
+
+From J5_PE1, 
+
+root@J5> show route table bgp.l3vpn.0 172.17.1.1/32 detail active-path    
+
+bgp.l3vpn.0: 61 destinations, 61 routes (61 active, 0 holddown, 0 hidden)
+10.0.0.9:1:172.17.1.1/32 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.9:1
+                Next hop type: Indirect
+                Address: 0x9334c70
+                Next-hop reference count: 38
+                Source: 10.0.0.9
+                Next hop type: Router, Next hop index: 610
+                Next hop: 10.1.5.1 via em0.0 weight 0x1, selected
+                Label-switched-path J5-TO-J9
+                Label operation: Push 16, Push 300000(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.9
+                Push 16
+                Indirect next hop: 9538828 131071
+                State: <Active Int Ext>
+                Peer AS: 65535
+                Age: 7:06 	Metric: 1 	Metric2: 30 
+                Task: BGP_65535_65535.10.0.0.9+61880
+                AS path: I
+                Communities: target:100:100 rte-type:0.0.0.100:1:0
+                Import Accepted         
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.9
+                Secondary Tables: RI-L3VPN-BLUE.inet.0
+
+10.0.0.10:1:172.17.1.1/32 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.10:1
+                Next hop type: Indirect
+                Address: 0x9334e20
+                Next-hop reference count: 27
+                Source: 10.0.0.10
+                Next hop type: Router, Next hop index: 613
+                Next hop: 10.2.5.2 via em1.0 weight 0x1, selected
+                Label-switched-path J5-TO-J10
+                Label operation: Push 16, Push 299776(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.10
+                Push 16
+                Indirect next hop: 953a188 131074
+                State: <Active Int Ext>
+                Peer AS: 65535
+                Age: 6:52       Metric: 1 	Metric2: 30 
+                Task: BGP_65535_65535.10.0.0.10+179
+                AS path: I
+                Communities: target:100:100 rte-type:0.0.0.100:1:0
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.10
+                Secondary Tables: RI-L3VPN-BLUE.inet.0
+
+root@J5> 
+
+
+J1_P1 received label 300000 and Swap label to 299808, next-hop 10.1.3.3 (J3_P3).
+
+root@J1> show route table mpls.0 label 300000 detail    
+
+mpls.0: 19 destinations, 19 routes (19 active, 0 holddown, 0 hidden)
+300000 (1 entry, 1 announced)
+        *RSVP   Preference: 7/1
+                Next hop type: Router, Next hop index: 591
+                Address: 0x9334958
+                Next-hop reference count: 3
+                Next hop: 10.1.3.3 via em1.0 weight 0x1, selected
+                Label-switched-path J5-TO-J9
+                Label operation: Swap 299808
+                State: <Active Int AckRequest>
+                Age: 12:07 	Metric: 1 
+                Task: RSVP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+root@J1> 
+
+
+J3_P3 received label 299808. Since this router is the Next-To-Last, a Penultimate-Hop-Popping will occur. Which means, a Pop label. next-hop 10.3.9.9 (J9_PE5).
+
+
+root@J3> show route table mpls.0 label 299808 detail 
+
+mpls.0: 8 destinations, 8 routes (8 active, 0 holddown, 0 hidden)
+299808 (1 entry, 1 announced)
+        *RSVP   Preference: 7/1
+                Next hop type: Router, Next hop index: 580
+                Address: 0x9334718
+                Next-hop reference count: 3
+                Next hop: 10.3.9.9 via em3.0 weight 0x1, selected
+                Label-switched-path J5-TO-J9
+                Label operation: Pop      
+                State: <Active Int AckRequest>
+                Age: 31:22 	Metric: 1 
+                Task: RSVP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+299808(S=0) (1 entry, 1 announced)
+        *RSVP   Preference: 7/1
+                Next hop type: Router, Next hop index: 581
+                Address: 0x9334760
+                Next-hop reference count: 2
+                Next hop: 10.3.9.9 via em3.0 weight 0x1, selected
+                Label-switched-path J5-TO-J9
+                Label operation: Pop      
+                State: <Active Int AckRequest>
+                Age: 31:22 	Metric: 1 
+                Task: RSVP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+root@J3> 
+
+
+In J9_PE5, it received the Pop label from J3_P3 and next table lookup is the VRF table, RI-L3VPN-BLUE Label 16.
+
+root@J9> show route table mpls.0 label 16 detail 
+
+mpls.0: 6 destinations, 6 routes (6 active, 0 holddown, 0 hidden)
+16  (1 entry, 0 announced)
+        *VPN    Preference: 0
+                Next hop: 
+                Next table: RI-L3VPN-BLUE.inet.0
+                Label operation: Pop      
+                Address: 0x9334298
+                Next-hop reference count: 1
+                State: <Active NotInstall Int Ext>
+                Age: 1:15:13 
+                Task: RT
+                AS path: I
+
+root@J9> 
+
+
+Now, MPLS labels process has been done. Next, we’ll look at the unicast routing table in RI-L3VPN-BLUE.net.0, so next-hop is 10.9.17.17 (J17_CE5) via OSPF Area 100 (0.0.0.100) to the final destination.
+
+
+root@J9> show route table RI-L3VPN-BLUE.inet.0 172.17.1.1/32 detail 
+
+RI-L3VPN-BLUE.inet.0: 29 destinations, 56 routes (29 active, 0 holddown, 0 hidden)
+172.17.1.1/32 (2 entries, 1 announced)
+        *OSPF   Preference: 10
+                Next hop type: Router, Next hop index: 605
+                Address: 0x9335408
+                Next-hop reference count: 24
+                Next hop: 10.9.17.17 via em3.0, selected
+                State: <Active Int>
+                Age: 51:32 	Metric: 1 
+                Area: 0.0.0.100
+                Task: RI-L3VPN-BLUE-OSPF
+                Announcement bits (2): 1-KRT 2-BGP_RT_Background 
+                AS path: I
+                Communities: rte-type:0.0.0.100:1:0
+         BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.10:1
+                Next hop type: Indirect
+                Address: 0x9335888
+                Next-hop reference count: 26
+                Source: 10.0.0.10
+                Next hop type: Router, Next hop index: 614
+                Next hop: 10.4.9.4 via em1.0 weight 0x1, selected
+                Label-switched-path J9-TO-J10
+                Label operation: Push 16, Push 300080(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.10
+                Push 16
+                Indirect next hop: 9516270 131075
+                State: <Secondary Int Ext>
+                Inactive reason: Route Preference
+                Peer AS: 65535
+                Age: 51:32 	Metric: 1 	Metric2: 20 
+                Task: BGP_65535_65535.10.0.0.10+60806
+                AS path: I
+                Communities: target:100:100 rte-type:0.0.0.100:1:0
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.10
+                Primary Routing Table bgp.l3vpn.0
+
+root@J9> 
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+SCENARIO 2 : From J17_CE5 Loopback0 (172.17.2.1/32  To J13_CE1 (172.13.2.1/32)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+In J17_CE5, verify the OSPF neighbor peer with J9_PE5 and J10_PE6. Yes, both are working as shown below.
+
+root@J17> show ospf neighbor 
+Address          Interface              State     ID               Pri  Dead
+10.9.17.9        em0.0                  Full      10.9.17.9        128    36
+10.10.17.10      em1.0                  Full      10.10.17.10      128    31
+
+root@J17>
+
+
+There are 2 possible path destined to J13_CE1 (172.13.2.1/32). Either via J9_PE5 or J10_PE6. But, in this case the best-path is via 10.9.17.9 (J9_PE5).
+
+root@J17> show route 172.13.2.1/32 detail    
+
+inet.0: 30 destinations, 30 routes (30 active, 0 holddown, 0 hidden)
+172.13.2.1/32 (1 entry, 1 announced)
+        *OSPF   Preference: 10
+                Next hop type: Router
+                Address: 0x93f0078
+                Next-hop reference count: 14
+                Next hop: 10.9.17.9 via em0.0, selected
+                Next hop: 10.10.17.10 via em1.0
+                State: <Active Int>
+                Age: 1:05:49 	Metric: 2 
+                Area: 0.0.0.100
+                Task: OSPF
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+root@J17> 
+
+Let’s Ping to 172.13.2.1 and it’s responding.
+
+root@J17> ping 172.13.2.1 source 172.17.2.1 count 2 
+PING 172.13.2.1 (172.13.2.1): 56 data bytes
+64 bytes from 172.13.2.1: icmp_seq=0 ttl=63 time=4.119 ms
+64 bytes from 172.13.2.1: icmp_seq=1 ttl=63 time=2.738 ms
+
+--- 172.13.2.1 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 2.738/3.428/4.119/0.691 ms
+
+root@J17> 
+
+
+root@J17> traceroute 172.13.2.1 source 172.17.2.1            
+traceroute to 172.13.2.1 (172.13.2.1) from 172.17.2.1, 30 hops max, 40 byte packets
+ 1  10.9.17.9 (10.9.17.9)  2.630 ms  0.681 ms  0.578 ms
+ 2  10.4.9.4 (10.4.9.4)  6.515 ms  1.930 ms  1.819 ms
+     MPLS Label=300240 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=1 S=1
+ 3  10.1.4.1 (10.1.4.1)  3.501 ms  3.513 ms  4.017 ms
+     MPLS Label=299952 CoS=0 TTL=1 S=0
+     MPLS Label=16 CoS=0 TTL=2 S=1
+ 4  172.13.2.1 (172.13.2.1)  5.999 ms  3.655 ms  6.566 ms
+
+root@J17> 
+
+
+Therefore, the trace-path is J17_CE5 -> J9_PE5 -> J4_P4 -> J1_P1 -> J13_CE1.
+
+
+Let’s look at J9_PE5. To get the final destination, Push label 16 as inner label and 300240 as the outer label, next-hop is 10.4.9.4 (J4_P4).  
+
+
+root@J9> show route table bgp.l3vpn.0 172.13.2.1/32 detail    
+
+bgp.l3vpn.0: 62 destinations, 62 routes (62 active, 0 holddown, 0 hidden)
+10.0.0.5:1:172.13.2.1/32 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.5:1
+                Next hop type: Indirect
+                Address: 0x9334a78
+                Next-hop reference count: 41
+                Source: 10.0.0.5
+                Next hop type: Router, Next hop index: 609
+                Next hop: 10.4.9.4 via em1.0 weight 0x1, selected
+                Label-switched-path J9-TO-J5
+                Label operation: Push 16, Push 300240(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.5
+                Push 16
+                Indirect next hop: 9515050 131071
+                State: <Active Int Ext>
+                Peer AS: 65535
+                Age: 1:02:07 	Metric: 1 	Metric2: 30 
+                Task: BGP_65535_65535.10.0.0.5+179
+                AS path: I
+                Communities: target:100:100 rte-type:0.0.0.100:1:0
+                Import Accepted         
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.5
+                Secondary Tables: RI-L3VPN-BLUE.inet.0
+
+10.0.0.6:1:172.13.2.1/32 (1 entry, 0 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.6:1
+                Next hop type: Indirect
+                Address: 0x9335210
+                Next-hop reference count: 29
+                Source: 10.0.0.6
+                Next hop type: Router, Next hop index: 612
+                Next hop: 10.4.9.4 via em1.0 weight 0x1, selected
+                Label-switched-path J9-TO-J6
+                Label operation: Push 16, Push 300128(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.6
+                Push 16
+                Indirect next hop: 9515ed0 131073
+                State: <Active Int Ext>
+                Peer AS: 65535
+                Age: 1:21:32    Metric: 1 	Metric2: 30 
+                Task: BGP_65535_65535.10.0.0.6+179
+                AS path: I
+                Communities: target:100:100 rte-type:0.0.0.100:1:0
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.6
+                Secondary Tables: RI-L3VPN-BLUE.inet.0
+
+root@J9> 
+
+
+
+Verify the unicast routing table in VRF:RI-L3PN-BLUE. Our Label-switched-path (LSP) J9-TO-J5 is via 10.4.9.4 (J4_P4), and still same outer label 16 and inner label 300240. In J4_P4, we should expect and received label 300240.
+
+root@J9> show route table RI-L3VPN-BLUE.inet.0 172.13.2.1/32 detail    
+
+RI-L3VPN-BLUE.inet.0: 29 destinations, 56 routes (29 active, 0 holddown, 0 hidden)
+172.13.2.1/32 (2 entries, 1 announced)
+        *BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.5:1
+                Next hop type: Indirect
+                Address: 0x9334a78
+                Next-hop reference count: 41
+                Source: 10.0.0.5
+                Next hop type: Router, Next hop index: 609
+                Next hop: 10.4.9.4 via em1.0 weight 0x1, selected
+                Label-switched-path J9-TO-J5
+                Label operation: Push 16, Push 300240(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.5
+                Push 16
+                Indirect next hop: 9515050 131071
+                State: <Secondary Active Int Ext>
+                Peer AS: 65535
+                Age: 1:05:36 	Metric: 1 	Metric2: 30 
+                Task: BGP_65535_65535.10.0.0.5+179
+                Announcement bits (2): 0-RI-L3VPN-BLUE-OSPF 1-KRT 
+                AS path: I              
+                Communities: target:100:100 rte-type:0.0.0.100:1:0
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.5
+                Primary Routing Table bgp.l3vpn.0
+         BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.6:1
+                Next hop type: Indirect
+                Address: 0x9335210
+                Next-hop reference count: 29
+                Source: 10.0.0.6
+                Next hop type: Router, Next hop index: 612
+                Next hop: 10.4.9.4 via em1.0 weight 0x1, selected
+                Label-switched-path J9-TO-J6
+                Label operation: Push 16, Push 300128(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.6
+                Push 16
+                Indirect next hop: 9515ed0 131073
+                State: <Secondary NotBest Int Ext>
+                Inactive reason: Not Best in its group - Router ID
+                Peer AS: 65535          
+                Age: 1:25:01 	Metric: 1 	Metric2: 30 
+                Task: BGP_65535_65535.10.0.0.6+179
+                AS path: I
+                Communities: target:100:100 rte-type:0.0.0.100:1:0
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.6
+                Primary Routing Table bgp.l3vpn.0
+
+root@J9>
+
+
+In J4_P4, indeed we received label 300240 from J9_PE5. Next, will do Swap label to 29952 via 10.1.4.1 (J1_P1). Again, we should expect that J1_P1 should received label 29952.
+
+root@J4> show route table mpls.0 label 300240 detail   
+
+mpls.0: 16 destinations, 16 routes (16 active, 0 holddown, 0 hidden)
+300240 (1 entry, 1 announced)
+        *RSVP   Preference: 7/1
+                Next hop type: Router, Next hop index: 579
+                Address: 0x9334718
+                Next-hop reference count: 3
+                Next hop: 10.1.4.1 via em7.0 weight 0x1, selected
+                Label-switched-path J9-TO-J5
+                Label operation: Swap 299952
+                State: <Active Int AckRequest>
+                Age: 1:10:16 	Metric: 1 
+                Task: RSVP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+root@J4> 
+
+
+In J1_P1, indeed we received label 29952. This time, it will Pop label.
+
+root@J1> show route table mpls.0 label 299952 detail 
+
+mpls.0: 19 destinations, 19 routes (19 active, 0 holddown, 0 hidden)
+299952 (1 entry, 1 announced)
+        *RSVP   Preference: 7/1
+                Next hop type: Router, Next hop index: 584
+                Address: 0x9334880
+                Next-hop reference count: 3
+                Next hop: 10.1.5.5 via em3.0 weight 0x1, selected
+                Label-switched-path J9-TO-J5
+                Label operation: Pop      
+                State: <Active Int AckRequest>
+                Age: 1:09:07 	Metric: 1 
+                Task: RSVP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+299952(S=0) (1 entry, 1 announced)
+        *RSVP   Preference: 7/1
+                Next hop type: Router, Next hop index: 585
+                Address: 0x9334a78
+                Next-hop reference count: 2
+                Next hop: 10.1.5.5 via em3.0 weight 0x1, selected
+                Label-switched-path J9-TO-J5
+                Label operation: Pop      
+                State: <Active Int AckRequest>
+                Age: 1:09:07 	Metric: 1 
+                Task: RSVP
+                Announcement bits (1): 0-KRT 
+                AS path: I
+
+root@J1> 
+
+
+In J5_PE1, let’s look at the following. Label 16 belongs to VRF:RI-L3VPN-BLUE. So, from J1_P1 29952 and was pop label, it goes now to Label 16. 
+
+
+root@J5> show route table mpls.0          
+
+mpls.0: 6 destinations, 6 routes (6 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:20:23, metric 1
+                      Receive
+1                  *[MPLS/0] 01:20:23, metric 1
+                      Receive
+2                  *[MPLS/0] 01:20:23, metric 1
+                      Receive
+13                 *[MPLS/0] 01:20:23, metric 1
+                      Receive
+16                 *[VPN/0] 01:20:20
+                      to table RI-L3VPN-BLUE.inet.0, Pop      
+17                 *[VPN/0] 01:20:20
+                      to table RI-L3VPN-GREEN.inet.0, Pop      
+
+root@J5> 
+
+root@J5> show route table mpls.0 label 16 detail                          
+
+mpls.0: 6 destinations, 6 routes (6 active, 0 holddown, 0 hidden)
+16  (1 entry, 0 announced)
+        *VPN    Preference: 0
+                Next hop: 
+                Next table: RI-L3VPN-BLUE.inet.0
+                Label operation: Pop      
+                Address: 0x9334298
+                Next-hop reference count: 1
+                State: <Active NotInstall Int Ext>
+                Age: 1:22:36 
+                Task: RT
+                AS path: I
+
+root@J5> 
+
+
+Now, we’ll look at the unicast routing table in VRF:RI-L3VPN-BLUE. Therefore, the next-hop is 10.5.13.13 (J13_CE1) and as Final Destionation.
+
+root@J5> show route table RI-L3VPN-BLUE.inet.0 172.13.2.1/32 detail 
+
+RI-L3VPN-BLUE.inet.0: 29 destinations, 56 routes (29 active, 0 holddown, 0 hidden)
+172.13.2.1/32 (2 entries, 1 announced)
+        *OSPF   Preference: 10
+                Next hop type: Router, Next hop index: 601
+                Address: 0x9334688
+                Next-hop reference count: 26
+                Next hop: 10.5.13.13 via em3.0, selected
+                State: <Active Int>
+                Age: 1:23:49 	Metric: 1 
+                Area: 0.0.0.100
+                Task: RI-L3VPN-BLUE-OSPF
+                Announcement bits (2): 1-KRT 2-BGP_RT_Background 
+                AS path: I
+                Communities: rte-type:0.0.0.100:1:0
+         BGP    Preference: 170/-101
+                Route Distinguisher: 10.0.0.6:1
+                Next hop type: Indirect
+                Address: 0x9334b50
+                Next-hop reference count: 28
+                Source: 10.0.0.6
+                Next hop type: Router
+                Next hop: 10.1.5.1 via em0.0 weight 0x1, selected
+                Label-switched-path J5-TO-J6
+                Label operation: Push 16, Push 299984(top)
+                Label TTL action: prop-ttl, prop-ttl(top)
+                Protocol next hop: 10.0.0.6
+                Push 16
+                Indirect next hop: 9538488 -
+                State: <Secondary Int Ext>
+                Inactive reason: Route Preference
+                Peer AS: 65535
+                Age: 1:22:38 	Metric: 1 	Metric2: 20 
+                Task: BGP_65535_65535.10.0.0.6+179
+                AS path: I
+                Communities: target:100:100 rte-type:0.0.0.100:1:0
+                Import Accepted
+                VPN Label: 16
+                Localpref: 100
+                Router ID: 10.0.0.6
+                Primary Routing Table bgp.l3vpn.0
+
+root@J5> 
+
+
+
+++++ END ++++
+
+
+

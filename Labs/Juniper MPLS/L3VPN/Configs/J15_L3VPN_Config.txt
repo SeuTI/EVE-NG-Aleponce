@@ -1,0 +1,94 @@
+root@J15> show configuration | display set 
+set version 12.1R1.9
+set system host-name J15
+set system root-authentication encrypted-password "$1$jr1nTP2g$zUu7wD3RkzWT6U0t0eA8R/"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces em0 unit 0 family inet address 10.7.15.15/24
+set interfaces em1 unit 0 family inet address 10.8.15.15/24
+set interfaces lo0 unit 0 family inet address 10.0.0.15/32
+set interfaces lo0 unit 0 family inet address 172.15.1.1/24
+set interfaces lo0 unit 0 family inet address 172.15.2.1/24
+set interfaces lo0 unit 0 family inet address 172.15.3.1/24
+set interfaces lo0 unit 0 family inet address 172.15.4.1/24
+set interfaces lo0 unit 0 family inet address 172.15.5.1/24
+set protocols rip group CE2PE export ADVERTISE
+set protocols rip group CE2PE neighbor em0.0
+set protocols rip group CE2PE neighbor em1.0
+set policy-options policy-statement ADVERTISE term 1 from protocol direct
+set policy-options policy-statement ADVERTISE term 1 from protocol rip
+set policy-options policy-statement ADVERTISE term 1 then accept
+set policy-options policy-statement ADVERTISE term 2 then reject
+                                        
+root@J15> show configuration                  
+version 12.1R1.9;
+system {
+    host-name J15;
+    root-authentication {
+        encrypted-password "$1$jr1nTP2g$zUu7wD3RkzWT6U0t0eA8R/"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}
+interfaces {
+    em0 {
+        unit 0 {
+            family inet {
+                address 10.7.15.15/24;  
+            }
+        }
+    }
+    em1 {
+        unit 0 {
+            family inet {
+                address 10.8.15.15/24;
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 10.0.0.15/32;
+                address 172.15.1.1/24;
+                address 172.15.2.1/24;
+                address 172.15.3.1/24;
+                address 172.15.4.1/24;
+                address 172.15.5.1/24;
+            }
+        }
+    }
+}                                       
+protocols {
+    rip {
+        group CE2PE {
+            export ADVERTISE;
+            neighbor em0.0;
+            neighbor em1.0;
+        }
+    }
+}
+policy-options {
+    policy-statement ADVERTISE {
+        term 1 {
+            from protocol [ direct rip ];
+            then accept;
+        }
+        term 2 {
+            then reject;
+        }
+    }
+}
+
+root@J15> 

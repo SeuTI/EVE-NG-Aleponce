@@ -1,0 +1,790 @@
+root@J1> show mpls interface 
+Interface        State       Administrative groups (x: extended)
+em0.0            Up         <none>
+em1.0            Up         <none>
+em3.0            Up         <none>
+em4.0            Up         <none>
+em5.0            Up         <none>
+em6.0            Up         <none>
+em7.0            Up         <none>
+
+
+
+root@J1> show mpls lsp                  
+Ingress LSP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+Egress LSP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+Transit LSP: 20 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.5        10.0.0.6        Up       0  1 FF  299856        3 J6-TO-J5
+10.0.0.5        10.0.0.8        Up       0  1 FF  300048        3 J8-TO-J5
+10.0.0.5        10.0.0.7        Up       0  1 FF  300080        3 J7-TO-J5
+10.0.0.5        10.0.0.9        Up       0  1 FF  300272        3 J9-TO-J5
+10.0.0.6        10.0.0.8        Up       0  1 FF  300064        3 J8-TO-J6
+10.0.0.6        10.0.0.7        Up       0  1 FF  300096        3 J7-TO-J6
+10.0.0.6        10.0.0.10       Up       0  1 FF  300256        3 J10-TO-J6
+10.0.0.6        10.0.0.5        Up       0  1 FF  299872        3 J5-TO-J6
+10.0.0.7        10.0.0.6        Up       0  1 FF  300000        3 J6-TO-J7
+10.0.0.7        10.0.0.5        Up       0  1 FF  300016        3 J5-TO-J7
+10.0.0.8        10.0.0.6        Up       0  1 FF  299952        3 J6-TO-J8
+10.0.0.8        10.0.0.5        Up       0  1 FF  300176        3 J5-TO-J8
+10.0.0.8        10.0.0.12       Up       0  1 FF  300416        3 J12-TO-J8
+10.0.0.9        10.0.0.5        Up       0  1 FF  300240   299952 J5-TO-J9
+10.0.0.10       10.0.0.6        Up       0  1 FF  300288   300272 J6-TO-J10
+10.0.0.10       10.0.0.5        Up       0  1 FF  300224   300048 J5-TO-J10
+10.0.0.11       10.0.0.8        Up       0  1 FF  300448   300848 J8-TO-J11
+10.0.0.11       10.0.0.7        Dn       0  0  -       -        - J7-TO-J11
+10.0.0.12       10.0.0.8        Up       0  1 FF  300336   300208 J8-TO-J12
+10.0.0.12       10.0.0.7        Up       0  1 FF  300320   300192 J7-TO-J12
+Total 20 displayed, Up 19, Down 1
+
+root@J1> 
+
+root@J1> show rsvp neighbor 
+RSVP neighbor: 7 learned
+Address            Idle Up/Dn LastChange HelloInt HelloTx/Rx MsgRcvd
+10.1.4.4              0  1/0       53:30        9   344/344  433
+10.1.8.8              0  1/0     1:03:38        9   424/424  524
+10.1.6.6              0  1/0     1:04:47        9   434/432  927
+10.1.7.7              0  1/0     1:03:31        9   423/423  496
+10.1.5.5              0  1/0     1:05:06        9   443/443  834
+10.1.3.3              5  1/0     1:04:02        9   427/427  151
+10.1.2.2              5  1/0       52:23        9   346/346  74
+
+root@J1> show rsvp ?           
+Possible completions:
+  interface            Show RSVP interfaces
+  neighbor             Show RSVP neighbors
+  session              Show active RSVP sessions
+  statistics           Show RSVP statistics
+  version              Show RSVP version
+root@J1> show rsvp interface  
+RSVP interface: 7 active
+                  Active Subscr- Static      Available   Reserved    Highwater
+Interface   State resv   iption  BW          BW          BW          mark
+em0.0       Up         1   100%  1000Mbps    1000Mbps    0bps        0bps       
+em1.0       Up         2   100%  1000Mbps    1000Mbps    0bps        0bps       
+em3.0       Up         4   100%  1000Mbps    1000Mbps    0bps        0bps       
+em4.0       Up         2   100%  1000Mbps    1000Mbps    0bps        0bps       
+em5.0       Up         4   100%  1000Mbps    1000Mbps    0bps        0bps       
+em6.0       Up         3   100%  1000Mbps    1000Mbps    0bps        0bps       
+em7.0       Up         3   100%  1000Mbps    1000Mbps    0bps        0bps       
+
+root@J1>                        
+
+root@J1> show rsvp ?            
+Possible completions:
+  interface            Show RSVP interfaces
+  neighbor             Show RSVP neighbors
+  session              Show active RSVP sessions
+  statistics           Show RSVP statistics
+  version              Show RSVP version
+root@J1> show rsvp session     
+Ingress RSVP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+Egress RSVP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+Transit RSVP: 20 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.5        10.0.0.6        Up       0  1 FF  299856        3 J6-TO-J5
+10.0.0.5        10.0.0.8        Up       0  1 FF  300048        3 J8-TO-J5
+10.0.0.5        10.0.0.7        Up       0  1 FF  300080        3 J7-TO-J5
+10.0.0.5        10.0.0.9        Up       0  1 FF  300272        3 J9-TO-J5
+10.0.0.6        10.0.0.8        Up       0  1 FF  300064        3 J8-TO-J6
+10.0.0.6        10.0.0.7        Up       0  1 FF  300096        3 J7-TO-J6
+10.0.0.6        10.0.0.10       Up       0  1 FF  300256        3 J10-TO-J6
+10.0.0.6        10.0.0.5        Up       0  1 FF  299872        3 J5-TO-J6
+10.0.0.7        10.0.0.6        Up       0  1 FF  300000        3 J6-TO-J7
+10.0.0.7        10.0.0.5        Up       0  1 FF  300016        3 J5-TO-J7
+10.0.0.8        10.0.0.6        Up       0  1 FF  299952        3 J6-TO-J8
+10.0.0.8        10.0.0.5        Up       0  1 FF  300176        3 J5-TO-J8
+10.0.0.8        10.0.0.12       Up       0  1 FF  300416        3 J12-TO-J8
+10.0.0.9        10.0.0.5        Up       0  1 FF  300240   299952 J5-TO-J9
+10.0.0.10       10.0.0.6        Up       0  1 FF  300288   300272 J6-TO-J10
+10.0.0.10       10.0.0.5        Up       0  1 FF  300224   300048 J5-TO-J10
+10.0.0.11       10.0.0.8        Up       0  1 FF  300448   300848 J8-TO-J11
+10.0.0.11       10.0.0.7        Dn       0  0  -       -        - J7-TO-J11
+10.0.0.12       10.0.0.8        Up       0  1 FF  300336   300208 J8-TO-J12
+10.0.0.12       10.0.0.7        Up       0  1 FF  300320   300192 J7-TO-J12
+Total 20 displayed, Up 19, Down 1
+
+root@J1> 
+
+root@J1> show rsvp session detail 
+Ingress RSVP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+Egress RSVP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+Transit RSVP: 20 sessions
+
+10.0.0.5
+  From: 10.0.0.6, LSPstate: Up, ActiveRoute: 0
+  LSPname: J6-TO-J5, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 299856, Label out: 3
+  Time left:  156, Since: Thu Mar 27 22:08:30 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 4505 protocol 0
+  PATH rcvfrom: 10.1.6.6 (em5.0) 95 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.5.5 (em3.0) 93 pkts
+  RESV rcvfrom: 10.1.5.5 (em3.0) 94 pkts
+  Record route: 10.1.6.6 <self> 10.1.5.5  
+
+10.0.0.5                                
+  From: 10.0.0.8, LSPstate: Up, ActiveRoute: 0
+  LSPname: J8-TO-J5, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 300048, Label out: 3
+  Time left:  113, Since: Thu Mar 27 22:10:14 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 9066 protocol 0
+  PATH rcvfrom: 10.1.8.8 (em6.0) 71 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.5.5 (em3.0) 89 pkts
+  RESV rcvfrom: 10.1.5.5 (em3.0) 91 pkts
+  Record route: 10.1.8.8 <self> 10.1.5.5  
+
+10.0.0.5
+  From: 10.0.0.7, LSPstate: Up, ActiveRoute: 0
+  LSPname: J7-TO-J5, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 300080, Label out: 3
+  Time left:  106, Since: Thu Mar 27 22:10:21 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 34635 protocol 0
+  PATH rcvfrom: 10.1.7.7 (em4.0) 77 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.5.5 (em3.0) 90 pkts
+  RESV rcvfrom: 10.1.5.5 (em3.0) 91 pkts
+  Record route: 10.1.7.7 <self> 10.1.5.5  
+
+10.0.0.5
+  From: 10.0.0.9, LSPstate: Up, ActiveRoute: 0
+  LSPname: J9-TO-J5, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 300272, Label out: 3
+  Time left:  148, Since: Thu Mar 27 22:20:22 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 41184 protocol 0
+  PATH rcvfrom: 10.1.4.4 (em7.0) 73 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.5.5 (em3.0) 75 pkts
+  RESV rcvfrom: 10.1.5.5 (em3.0) 77 pkts
+  Record route: 10.4.9.9 10.1.4.4 <self> 10.1.5.5  
+
+10.0.0.6
+  From: 10.0.0.8, LSPstate: Up, ActiveRoute: 0
+  LSPname: J8-TO-J6, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 300064, Label out: 3
+  Time left:  125, Since: Thu Mar 27 22:10:14 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 9067 protocol 0
+  PATH rcvfrom: 10.1.8.8 (em6.0) 71 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.6.6 (em5.0) 89 pkts
+  RESV rcvfrom: 10.1.6.6 (em5.0) 91 pkts
+  Record route: 10.1.8.8 <self> 10.1.6.6  
+
+10.0.0.6
+  From: 10.0.0.7, LSPstate: Up, ActiveRoute: 0
+  LSPname: J7-TO-J6, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 300096, Label out: 3
+  Time left:  111, Since: Thu Mar 27 22:10:21 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 34636 protocol 0
+  PATH rcvfrom: 10.1.7.7 (em4.0) 76 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.6.6 (em5.0) 89 pkts
+  RESV rcvfrom: 10.1.6.6 (em5.0) 91 pkts
+  Record route: 10.1.7.7 <self> 10.1.6.6  
+
+10.0.0.6
+  From: 10.0.0.10, LSPstate: Up, ActiveRoute: 0
+  LSPname: J10-TO-J6, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 300256, Label out: 3
+  Time left:  123, Since: Thu Mar 27 22:20:22 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 36849 protocol 0
+  PATH rcvfrom: 10.1.4.4 (em7.0) 74 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.6.6 (em5.0) 75 pkts
+  RESV rcvfrom: 10.1.6.6 (em5.0) 77 pkts
+  Record route: 10.4.10.10 10.1.4.4 <self> 10.1.6.6  
+
+10.0.0.6
+  From: 10.0.0.5, LSPstate: Up, ActiveRoute: 0
+  LSPname: J5-TO-J6, LSPpath: Primary   
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 299872, Label out: 3
+  Time left:  141, Since: Thu Mar 27 22:08:54 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 37292 protocol 0
+  PATH rcvfrom: 10.1.5.5 (em3.0) 93 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.6.6 (em5.0) 91 pkts
+  RESV rcvfrom: 10.1.6.6 (em5.0) 93 pkts
+  Record route: 10.1.5.5 <self> 10.1.6.6  
+
+10.0.0.7
+  From: 10.0.0.6, LSPstate: Up, ActiveRoute: 0
+  LSPname: J6-TO-J7, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 300000, Label out: 3
+  Time left:  124, Since: Thu Mar 27 22:10:04 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 4506 protocol 0
+  PATH rcvfrom: 10.1.6.6 (em5.0) 92 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.7.7 (em4.0) 89 pkts
+  RESV rcvfrom: 10.1.7.7 (em4.0) 83 pkts
+  Record route: 10.1.6.6 <self> 10.1.7.7  
+
+10.0.0.7
+  From: 10.0.0.5, LSPstate: Up, ActiveRoute: 0
+  LSPname: J5-TO-J7, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 300016, Label out: 3
+  Time left:  150, Since: Thu Mar 27 22:08:54 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 37293 protocol 0
+  PATH rcvfrom: 10.1.5.5 (em3.0) 98 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.7.7 (em4.0) 97 pkts
+  RESV rcvfrom: 10.1.7.7 (em4.0) 85 pkts
+  Record route: 10.1.5.5 <self> 10.1.7.7  
+
+10.0.0.8
+  From: 10.0.0.6, LSPstate: Up, ActiveRoute: 0
+  LSPname: J6-TO-J8, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 299952, Label out: 3
+  Time left:  118, Since: Thu Mar 27 22:09:58 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 4507 protocol 0
+  PATH rcvfrom: 10.1.6.6 (em5.0) 91 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.8.8 (em6.0) 90 pkts
+  RESV rcvfrom: 10.1.8.8 (em6.0) 72 pkts
+  Record route: 10.1.6.6 <self> 10.1.8.8  
+
+10.0.0.8
+  From: 10.0.0.5, LSPstate: Up, ActiveRoute: 0
+  LSPname: J5-TO-J8, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 300176, Label out: 3
+  Time left:  132, Since: Thu Mar 27 22:12:13 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 37294 protocol 0
+  PATH rcvfrom: 10.1.5.5 (em3.0) 90 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.8.8 (em6.0) 87 pkts 
+  RESV rcvfrom: 10.1.8.8 (em6.0) 70 pkts
+  Record route: 10.1.5.5 <self> 10.1.8.8  
+
+10.0.0.8
+  From: 10.0.0.12, LSPstate: Up, ActiveRoute: 0
+  LSPname: J12-TO-J8, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 3
+  Resv style: 1 FF, Label in: 300416, Label out: 3
+  Time left:  159, Since: Thu Mar 27 22:21:42 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 56780 protocol 0
+  PATH rcvfrom: 10.1.4.4 (em7.0) 73 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.8.8 (em6.0) 75 pkts
+  RESV rcvfrom: 10.1.8.8 (em6.0) 59 pkts
+  Record route: 10.4.12.12 10.1.4.4 <self> 10.1.8.8  
+
+10.0.0.9
+  From: 10.0.0.5, LSPstate: Up, ActiveRoute: 0
+  LSPname: J5-TO-J9, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 299952
+  Resv style: 1 FF, Label in: 300240, Label out: 299952
+  Time left:  119, Since: Thu Mar 27 22:08:54 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 37295 protocol 0
+  PATH rcvfrom: 10.1.5.5 (em3.0) 95 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.4.4 (em7.0) 95 pkts
+  RESV rcvfrom: 10.1.4.4 (em7.0) 73 pkts
+  Record route: 10.1.5.5 <self> 10.1.4.4 10.4.9.9  
+
+10.0.0.10
+  From: 10.0.0.6, LSPstate: Up, ActiveRoute: 0
+  LSPname: J6-TO-J10, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 300272
+  Resv style: 1 FF, Label in: 300288, Label out: 300272
+  Time left:  147, Since: Thu Mar 27 22:20:04 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 4502 protocol 0
+  PATH rcvfrom: 10.1.6.6 (em5.0) 79 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.3.3 (em1.0) 77 pkts
+  RESV rcvfrom: 10.1.3.3 (em1.0) 76 pkts
+  Record route: 10.1.6.6 <self> 10.1.3.3 10.3.10.10  
+
+10.0.0.10
+  From: 10.0.0.5, LSPstate: Up, ActiveRoute: 0
+  LSPname: J5-TO-J10, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 300048
+  Resv style: 1 FF, Label in: 300224, Label out: 300048
+  Time left:  156, Since: Thu Mar 27 22:08:54 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 37289 protocol 0
+  PATH rcvfrom: 10.1.5.5 (em3.0) 96 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.3.3 (em1.0) 95 pkts
+  RESV rcvfrom: 10.1.3.3 (em1.0) 76 pkts
+  Record route: 10.1.5.5 <self> 10.1.3.3 10.3.10.10  
+
+10.0.0.11
+  From: 10.0.0.8, LSPstate: Up, ActiveRoute: 0
+  LSPname: J8-TO-J11, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 300848
+  Resv style: 1 FF, Label in: 300448, Label out: 300848
+  Time left:  121, Since: Thu Mar 27 22:10:14 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 9064 protocol 0
+  PATH rcvfrom: 10.1.8.8 (em6.0) 76 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.2.2 (em0.0) 95 pkts
+  RESV rcvfrom: 10.1.2.2 (em0.0) 74 pkts
+  Record route: 10.1.8.8 <self> 10.1.2.2 10.2.11.11  
+
+10.0.0.11
+  From: 10.0.0.7, LSPstate: Dn, ActiveRoute: 0
+  LSPname: J7-TO-J11, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: -
+  Resv style: 0 -, Label in: -, Label out: -
+  Time left:  142, Since: Thu Mar 27 22:10:21 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 34633 protocol 0
+  PATH rcvfrom: 10.1.7.7 (em4.0) 80 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.2.2 (em0.0) 94 pkts
+  Record route: 10.1.7.7 <self> ...incomplete
+                                        
+10.0.0.12
+  From: 10.0.0.8, LSPstate: Up, ActiveRoute: 0
+  LSPname: J8-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 300208
+  Resv style: 1 FF, Label in: 300336, Label out: 300208
+  Time left:  154, Since: Thu Mar 27 22:10:14 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 9065 protocol 0
+  PATH rcvfrom: 10.1.8.8 (em6.0) 73 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.4.4 (em7.0) 92 pkts
+  RESV rcvfrom: 10.1.4.4 (em7.0) 72 pkts
+  Record route: 10.1.8.8 <self> 10.1.4.4 10.4.12.12  
+
+10.0.0.12
+  From: 10.0.0.7, LSPstate: Up, ActiveRoute: 0
+  LSPname: J7-TO-J12, LSPpath: Primary
+  Suggested label received: -, Suggested label sent: -
+  Recovery label received: -, Recovery label sent: 300192
+  Resv style: 1 FF, Label in: 300320, Label out: 300192
+  Time left:  125, Since: Thu Mar 27 22:10:21 2014
+  Tspec: rate 0bps size 0bps peak Infbps m 20 M 1500
+  Port number: sender 1 receiver 34634 protocol 0
+  PATH rcvfrom: 10.1.7.7 (em4.0) 78 pkts
+  Adspec: received MTU 1500 sent MTU 1500
+  PATH sentto: 10.1.4.4 (em7.0) 92 pkts
+  RESV rcvfrom: 10.1.4.4 (em7.0) 72 pkts
+  Record route: 10.1.7.7 <self> 10.1.4.4 10.4.12.12  
+Total 20 displayed, Up 19, Down 1
+
+root@J1> 
+
+
+root@J1> show ldp neighbor    
+Address            Interface          Label space ID         Hold time
+10.1.2.2           em0.0              10.0.0.2:0               14
+10.1.3.3           em1.0              10.0.0.3:0               13
+10.1.5.5           em3.0              10.0.0.5:0               10
+10.1.7.7           em4.0              10.0.0.7:0               14
+10.1.6.6           em5.0              10.0.0.6:0               13
+10.1.8.8           em6.0              10.0.0.8:0               12
+10.1.4.4           em7.0              10.0.0.4:0               13
+
+root@J1> 
+
+root@J1> show ldp interface 
+Interface            Label space ID        Nbr count   Next hello
+em0.0                10.0.0.1:0               1           1
+em1.0                10.0.0.1:0               1           2
+em3.0                10.0.0.1:0               1           3
+em4.0                10.0.0.1:0               1           3
+em5.0                10.0.0.1:0               1           3
+em6.0                10.0.0.1:0               1           0
+em7.0                10.0.0.1:0               1           4
+
+root@J1> 
+
+
+root@J1> show route 
+
+inet.0: 42 destinations, 42 routes (42 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.0/24        *[IS-IS/18] 01:10:16, metric 10
+                    > to 10.1.6.6 via em5.0
+10.0.0.1/32        *[Direct/0] 01:19:50
+                    > via lo0.0
+10.0.0.2/32        *[IS-IS/18] 01:18:40, metric 10
+                    > to 10.1.2.2 via em0.0
+10.0.0.3/32        *[IS-IS/18] 01:18:44, metric 10
+                    > to 10.1.3.3 via em1.0
+10.0.0.4/32        *[IS-IS/18] 01:18:44, metric 10
+                    > to 10.1.4.4 via em7.0
+10.0.0.5/32        *[IS-IS/18] 01:10:25, metric 10
+                    > to 10.1.5.5 via em3.0
+10.0.0.6/32        *[IS-IS/18] 01:10:16, metric 10
+                    > to 10.1.6.6 via em5.0
+10.0.0.7/32        *[IS-IS/18] 01:08:23, metric 10
+                    > to 10.1.7.7 via em4.0
+10.0.0.8/32        *[IS-IS/18] 01:08:30, metric 10
+                    > to 10.1.8.8 via em6.0
+10.0.0.9/32        *[IS-IS/18] 00:58:26, metric 20
+                      to 10.1.3.3 via em1.0
+                    > to 10.1.4.4 via em7.0
+10.0.0.10/32       *[IS-IS/18] 00:58:25, metric 20
+                    > to 10.1.3.3 via em1.0
+                      to 10.1.4.4 via em7.0
+10.0.0.11/32       *[IS-IS/18] 00:56:50, metric 20
+                      to 10.1.2.2 via em0.0
+                    > to 10.1.4.4 via em7.0
+10.0.0.12/32       *[IS-IS/18] 00:56:54, metric 20
+                      to 10.1.2.2 via em0.0
+                    > to 10.1.4.4 via em7.0
+10.1.2.0/24        *[Direct/0] 01:20:02
+                    > via em0.0
+10.1.2.1/32        *[Local/0] 01:20:02
+                      Local via em0.0
+10.1.3.0/24        *[Direct/0] 01:20:01
+                    > via em1.0
+10.1.3.1/32        *[Local/0] 01:20:01
+                      Local via em1.0
+10.1.4.0/24        *[Direct/0] 01:19:51
+                    > via em7.0
+10.1.4.1/32        *[Local/0] 01:19:51
+                      Local via em7.0
+10.1.5.0/24        *[Direct/0] 01:20:00 
+                    > via em3.0
+10.1.5.1/32        *[Local/0] 01:20:00
+                      Local via em3.0
+10.1.6.0/24        *[Direct/0] 01:19:55
+                    > via em5.0
+10.1.6.1/32        *[Local/0] 01:19:55
+                      Local via em5.0
+10.1.7.0/24        *[Direct/0] 01:19:56
+                    > via em4.0
+10.1.7.1/32        *[Local/0] 01:19:56
+                      Local via em4.0
+10.1.8.0/24        *[Direct/0] 01:19:54
+                    > via em6.0
+10.1.8.1/32        *[Local/0] 01:19:54
+                      Local via em6.0
+10.2.3.0/24        *[IS-IS/18] 01:18:40, metric 20
+                    > to 10.1.2.2 via em0.0
+                      to 10.1.3.3 via em1.0
+10.2.4.0/24        *[IS-IS/18] 01:18:40, metric 20
+                      to 10.1.2.2 via em0.0
+                    > to 10.1.4.4 via em7.0
+10.2.5.0/24        *[IS-IS/18] 01:10:25, metric 20
+                      to 10.1.2.2 via em0.0
+                    > to 10.1.5.5 via em3.0
+10.2.6.0/24        *[IS-IS/18] 01:10:16, metric 20
+                    > to 10.1.2.2 via em0.0
+                      to 10.1.6.6 via em5.0
+10.2.11.0/24       *[IS-IS/18] 01:18:40, metric 20
+                    > to 10.1.2.2 via em0.0
+10.2.12.0/24       *[IS-IS/18] 01:18:40, metric 20
+                    > to 10.1.2.2 via em0.0
+10.3.4.0/24        *[IS-IS/18] 01:18:44, metric 20
+                      to 10.1.3.3 via em1.0
+                    > to 10.1.4.4 via em7.0
+10.3.7.0/24        *[IS-IS/18] 01:08:23, metric 20
+                    > to 10.1.3.3 via em1.0
+                      to 10.1.7.7 via em4.0
+10.3.8.0/24        *[IS-IS/18] 01:08:30, metric 20
+                      to 10.1.3.3 via em1.0
+                    > to 10.1.8.8 via em6.0
+10.3.9.0/24        *[IS-IS/18] 01:18:44, metric 20
+                    > to 10.1.3.3 via em1.0
+10.3.10.0/24       *[IS-IS/18] 01:18:44, metric 20
+                    > to 10.1.3.3 via em1.0
+10.4.9.0/24        *[IS-IS/18] 01:18:44, metric 20
+                    > to 10.1.4.4 via em7.0
+10.4.10.0/24       *[IS-IS/18] 01:18:44, metric 20
+                    > to 10.1.4.4 via em7.0
+10.4.11.0/24       *[IS-IS/18] 01:18:44, metric 20
+                    > to 10.1.4.4 via em7.0
+10.4.12.0/24       *[IS-IS/18] 01:18:44, metric 20
+                    > to 10.1.4.4 via em7.0
+
+inet.3: 11 destinations, 11 routes (11 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.2/32        *[LDP/9] 01:18:39, metric 1
+                    > to 10.1.2.2 via em0.0
+10.0.0.3/32        *[LDP/9] 01:18:38, metric 1
+                    > to 10.1.3.3 via em1.0
+10.0.0.4/32        *[LDP/9] 01:18:39, metric 1
+                    > to 10.1.4.4 via em7.0
+10.0.0.5/32        *[LDP/9] 01:10:19, metric 1
+                    > to 10.1.5.5 via em3.0
+10.0.0.6/32        *[LDP/9] 01:10:16, metric 1
+                    > to 10.1.6.6 via em5.0
+10.0.0.7/32        *[LDP/9] 01:08:23, metric 1
+                    > to 10.1.7.7 via em4.0
+10.0.0.8/32        *[LDP/9] 01:08:30, metric 1
+                    > to 10.1.8.8 via em6.0
+10.0.0.9/32        *[LDP/9] 00:58:26, metric 1
+                    > to 10.1.3.3 via em1.0, Push 300000
+                      to 10.1.4.4 via em7.0, Push 299888
+10.0.0.10/32       *[LDP/9] 00:58:25, metric 1
+                    > to 10.1.3.3 via em1.0, Push 299984
+                      to 10.1.4.4 via em7.0, Push 299904
+10.0.0.11/32       *[LDP/9] 00:56:50, metric 1
+                    > to 10.1.2.2 via em0.0, Push 300064
+                      to 10.1.4.4 via em7.0, Push 300352
+10.0.0.12/32       *[LDP/9] 00:56:54, metric 1
+                    > to 10.1.2.2 via em0.0, Push 300032
+                      to 10.1.4.4 via em7.0, Push 300160
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0000.0000.0001/56                
+                   *[Direct/0] 01:19:50
+                    > via lo0.0
+
+mpls.0: 54 destinations, 54 routes (54 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 01:20:09, metric 1
+                      Receive
+1                  *[MPLS/0] 01:20:09, metric 1
+                      Receive
+2                  *[MPLS/0] 01:20:09, metric 1
+                      Receive
+13                 *[MPLS/0] 01:20:09, metric 1
+                      Receive
+299776             *[LDP/9] 01:18:39, metric 1
+                    > to 10.1.4.4 via em7.0, Pop      
+299776(S=0)        *[LDP/9] 01:18:39, metric 1
+                    > to 10.1.4.4 via em7.0, Pop      
+299792             *[LDP/9] 01:18:39, metric 1
+                    > to 10.1.2.2 via em0.0, Pop      
+299792(S=0)        *[LDP/9] 01:18:39, metric 1
+                    > to 10.1.2.2 via em0.0, Pop      
+299808             *[LDP/9] 01:18:38, metric 1
+                    > to 10.1.3.3 via em1.0, Pop      
+299808(S=0)        *[LDP/9] 01:18:38, metric 1
+                    > to 10.1.3.3 via em1.0, Pop      
+299824             *[LDP/9] 01:10:16, metric 1
+                    > to 10.1.6.6 via em5.0, Pop      
+299824(S=0)        *[LDP/9] 01:10:16, metric 1
+                    > to 10.1.6.6 via em5.0, Pop      
+299840             *[LDP/9] 01:10:19, metric 1
+                    > to 10.1.5.5 via em3.0, Pop      
+299840(S=0)        *[LDP/9] 01:10:19, metric 1
+                    > to 10.1.5.5 via em3.0, Pop      
+299856             *[RSVP/7/1] 01:09:52, metric 1
+                    > to 10.1.5.5 via em3.0, label-switched-path J6-TO-J5
+299856(S=0)        *[RSVP/7/1] 01:09:52, metric 1
+                    > to 10.1.5.5 via em3.0, label-switched-path J6-TO-J5
+299872             *[RSVP/7/1] 01:09:28, metric 1
+                    > to 10.1.6.6 via em5.0, label-switched-path J5-TO-J6
+299872(S=0)        *[RSVP/7/1] 01:09:28, metric 1
+                    > to 10.1.6.6 via em5.0, label-switched-path J5-TO-J6
+299888             *[LDP/9] 01:08:30, metric 1
+                    > to 10.1.8.8 via em6.0, Pop      
+299888(S=0)        *[LDP/9] 01:08:30, metric 1
+                    > to 10.1.8.8 via em6.0, Pop      
+299904             *[LDP/9] 01:08:23, metric 1
+                    > to 10.1.7.7 via em4.0, Pop      
+299904(S=0)        *[LDP/9] 01:08:23, metric 1
+                    > to 10.1.7.7 via em4.0, Pop      
+299952             *[RSVP/7/1] 01:08:24, metric 1
+                    > to 10.1.8.8 via em6.0, label-switched-path J6-TO-J8
+299952(S=0)        *[RSVP/7/1] 01:08:24, metric 1
+                    > to 10.1.8.8 via em6.0, label-switched-path J6-TO-J8
+300000             *[RSVP/7/1] 01:08:18, metric 1
+                    > to 10.1.7.7 via em4.0, label-switched-path J6-TO-J7
+300000(S=0)        *[RSVP/7/1] 01:08:18, metric 1
+                    > to 10.1.7.7 via em4.0, label-switched-path J6-TO-J7
+300016             *[RSVP/7/1] 01:08:18, metric 1
+                    > to 10.1.7.7 via em4.0, label-switched-path J5-TO-J7
+300016(S=0)        *[RSVP/7/1] 01:08:18, metric 1
+                    > to 10.1.7.7 via em4.0, label-switched-path J5-TO-J7
+300048             *[RSVP/7/1] 01:08:09, metric 1
+                    > to 10.1.5.5 via em3.0, label-switched-path J8-TO-J5
+300048(S=0)        *[RSVP/7/1] 01:08:09, metric 1
+                    > to 10.1.5.5 via em3.0, label-switched-path J8-TO-J5
+300064             *[RSVP/7/1] 01:08:09, metric 1
+                    > to 10.1.6.6 via em5.0, label-switched-path J8-TO-J6
+300064(S=0)        *[RSVP/7/1] 01:08:09, metric 1
+                    > to 10.1.6.6 via em5.0, label-switched-path J8-TO-J6
+300080             *[RSVP/7/1] 01:08:02, metric 1
+                    > to 10.1.5.5 via em3.0, label-switched-path J7-TO-J5
+300080(S=0)        *[RSVP/7/1] 01:08:02, metric 1
+                    > to 10.1.5.5 via em3.0, label-switched-path J7-TO-J5
+300096             *[RSVP/7/1] 01:08:02, metric 1
+                    > to 10.1.6.6 via em5.0, label-switched-path J7-TO-J6
+300096(S=0)        *[RSVP/7/1] 01:08:02, metric 1
+                    > to 10.1.6.6 via em5.0, label-switched-path J7-TO-J6
+300176             *[RSVP/7/1] 01:06:10, metric 1
+                    > to 10.1.8.8 via em6.0, label-switched-path J5-TO-J8
+300176(S=0)        *[RSVP/7/1] 01:06:10, metric 1
+                    > to 10.1.8.8 via em6.0, label-switched-path J5-TO-J8
+300192             *[LDP/9] 00:58:25, metric 1
+                      to 10.1.3.3 via em1.0, Swap 299984
+                    > to 10.1.4.4 via em7.0, Swap 299904
+300208             *[LDP/9] 00:58:26, metric 1
+                    > to 10.1.3.3 via em1.0, Swap 300000
+                      to 10.1.4.4 via em7.0, Swap 299888
+300224             *[RSVP/7/1] 00:58:16, metric 1
+                    > to 10.1.3.3 via em1.0, label-switched-path J5-TO-J10
+300240             *[RSVP/7/1] 00:58:14, metric 1
+                    > to 10.1.4.4 via em7.0, label-switched-path J5-TO-J9
+300256             *[RSVP/7/1] 00:58:01, metric 1
+                    > to 10.1.6.6 via em5.0, label-switched-path J10-TO-J6
+300256(S=0)        *[RSVP/7/1] 00:58:01, metric 1
+                    > to 10.1.6.6 via em5.0, label-switched-path J10-TO-J6
+300272             *[RSVP/7/1] 00:58:01, metric 1
+                    > to 10.1.5.5 via em3.0, label-switched-path J9-TO-J5
+300272(S=0)        *[RSVP/7/1] 00:58:01, metric 1
+                    > to 10.1.5.5 via em3.0, label-switched-path J9-TO-J5
+300288             *[RSVP/7/1] 00:57:49, metric 1
+                    > to 10.1.3.3 via em1.0, label-switched-path J6-TO-J10
+300304             *[LDP/9] 00:56:54, metric 1
+                    > to 10.1.2.2 via em0.0, Swap 300032
+                      to 10.1.4.4 via em7.0, Swap 300160
+300320             *[RSVP/7/1] 00:57:19, metric 1
+                    > to 10.1.4.4 via em7.0, label-switched-path J7-TO-J12
+300336             *[RSVP/7/1] 00:57:19, metric 1
+                    > to 10.1.4.4 via em7.0, label-switched-path J8-TO-J12
+300352             *[LDP/9] 00:56:51, metric 1
+                    > to 10.1.2.2 via em0.0, Swap 300064
+                      to 10.1.4.4 via em7.0, Swap 300352
+300416             *[RSVP/7/1] 00:56:42, metric 1
+                    > to 10.1.8.8 via em6.0, label-switched-path J12-TO-J8
+300416(S=0)        *[RSVP/7/1] 00:56:42, metric 1
+                    > to 10.1.8.8 via em6.0, label-switched-path J12-TO-J8
+300448             *[RSVP/7/1] 00:55:01, metric 1
+                    > to 10.1.2.2 via em0.0, label-switched-path J8-TO-J11
+
+root@J1> 
+
+
+root@J1> show ldp interface 
+Interface            Label space ID        Nbr count   Next hello
+em0.0                10.0.0.1:0               1           4
+em1.0                10.0.0.1:0               1           1
+em3.0                10.0.0.1:0               1           0
+em4.0                10.0.0.1:0               1           1
+em5.0                10.0.0.1:0               1           3
+em6.0                10.0.0.1:0               1           1
+em7.0                10.0.0.1:0               1           1
+
+root@J1> show ldp neighbor     
+Address            Interface          Label space ID         Hold time
+10.1.2.2           em0.0              10.0.0.2:0               12
+10.1.3.3           em1.0              10.0.0.3:0               13
+10.1.5.5           em3.0              10.0.0.5:0               13
+10.1.7.7           em4.0              10.0.0.7:0               12
+10.1.6.6           em5.0              10.0.0.6:0               10
+10.1.8.8           em6.0              10.0.0.8:0               9
+10.1.4.4           em7.0              10.0.0.4:0               10
+
+root@J1> show ldp route       
+Destination         Next-hop intf/lsp                Next-hop address
+ 10.0.0.0/24        em5.0                            10.1.6.6
+ 10.0.0.1/32        lo0.0
+ 10.0.0.2/32        em0.0                            10.1.2.2
+ 10.0.0.3/32        em1.0                            10.1.3.3
+ 10.0.0.4/32        em7.0                            10.1.4.4
+ 10.0.0.5/32        em3.0                            10.1.5.5
+ 10.0.0.6/32        em5.0                            10.1.6.6
+ 10.0.0.7/32        em4.0                            10.1.7.7
+ 10.0.0.8/32        em6.0                            10.1.8.8
+ 10.0.0.9/32        em7.0                            10.1.4.4
+                    em1.0                            10.1.3.3
+ 10.0.0.10/32       em1.0                            10.1.3.3
+                    em7.0                            10.1.4.4
+ 10.0.0.11/32       em0.0                            10.1.2.2
+                    em7.0                            10.1.4.4
+ 10.0.0.12/32       em7.0                            10.1.4.4
+                    em0.0                            10.1.2.2
+ 10.1.2.0/24        em0.0
+ 10.1.2.1/32       
+ 10.1.3.0/24        em1.0
+ 10.1.3.1/32       
+ 10.1.4.0/24        em7.0
+ 10.1.4.1/32                            
+ 10.1.5.0/24        em3.0
+ 10.1.5.1/32       
+ 10.1.6.0/24        em5.0
+ 10.1.6.1/32       
+ 10.1.7.0/24        em4.0
+ 10.1.7.1/32       
+ 10.1.8.0/24        em6.0
+ 10.1.8.1/32       
+ 10.2.3.0/24        em1.0                            10.1.3.3
+                    em0.0                            10.1.2.2
+ 10.2.4.0/24        em7.0                            10.1.4.4
+                    em0.0                            10.1.2.2
+ 10.2.5.0/24        em0.0                            10.1.2.2
+                    em3.0                            10.1.5.5
+ 10.2.6.0/24        em0.0                            10.1.2.2
+                    em5.0                            10.1.6.6
+ 10.2.11.0/24       em0.0                            10.1.2.2
+ 10.2.12.0/24       em0.0                            10.1.2.2
+ 10.3.4.0/24        em7.0                            10.1.4.4
+                    em1.0                            10.1.3.3
+ 10.3.7.0/24        em1.0                            10.1.3.3
+                    em4.0                            10.1.7.7
+ 10.3.8.0/24        em1.0                            10.1.3.3
+                    em6.0                            10.1.8.8
+ 10.3.9.0/24        em1.0                            10.1.3.3
+ 10.3.10.0/24       em1.0                            10.1.3.3
+ 10.4.9.0/24        em7.0                            10.1.4.4
+ 10.4.10.0/24       em7.0                            10.1.4.4
+ 10.4.11.0/24       em7.0                            10.1.4.4
+ 10.4.12.0/24       em7.0                            10.1.4.4
+
+root@J1> 
+
+root@J1> 

@@ -1,0 +1,74 @@
+root@J7> show configuration | display set 
+set version 12.1R1.9
+set system host-name J7
+set system root-authentication encrypted-password "$1$jjzNztNo$QvAarFzZtkFJNZew8nRxE."
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces em0 unit 0 family inet address 10.1.7.7/24
+set interfaces em0 unit 0 family iso
+set interfaces em0 unit 0 family mpls
+set interfaces em1 unit 0 family inet address 10.3.7.7/24
+set interfaces em1 unit 0 family iso
+set interfaces em1 unit 0 family mpls
+set interfaces em3 unit 0 family inet address 10.7.15.7/24
+set interfaces em4 unit 0 family inet address 10.7.16.7/24
+set interfaces lo0 unit 0 family inet address 10.0.0.7/32
+set interfaces lo0 unit 0 family iso address 10.0000.0000.0007.00
+set routing-options router-id 10.0.0.7
+set protocols rsvp interface all
+set protocols mpls label-switched-path J7-TO-J5 to 10.0.0.5
+set protocols mpls label-switched-path J7-TO-J5 no-cspf
+set protocols mpls label-switched-path J7-TO-J6 to 10.0.0.6
+set protocols mpls label-switched-path J7-TO-J6 no-cspf
+set protocols mpls label-switched-path J7-TO-J8 to 10.0.0.8
+set protocols mpls label-switched-path J7-TO-J8 no-cspf
+set protocols mpls label-switched-path J7-TO-J9 to 10.0.0.9
+set protocols mpls label-switched-path J7-TO-J9 no-cspf
+set protocols mpls label-switched-path J7-TO-J10 to 10.0.0.10
+set protocols mpls label-switched-path J7-TO-J10 no-cspf
+set protocols mpls label-switched-path J7-TO-J11 to 10.0.0.11
+set protocols mpls label-switched-path J7-TO-J11 no-cspf
+set protocols mpls label-switched-path J7-TO-J12 to 10.0.0.12
+set protocols mpls label-switched-path J7-TO-J12 no-cspf
+set protocols mpls interface em0.0
+set protocols mpls interface em1.0
+set protocols bgp family inet unicast
+set protocols bgp family inet-vpn unicast
+set protocols bgp group PE-MPBGP-PEERS type internal
+set protocols bgp group PE-MPBGP-PEERS local-address 10.0.0.7
+set protocols bgp group PE-MPBGP-PEERS peer-as 65535
+set protocols bgp group PE-MPBGP-PEERS local-as 65535
+set protocols bgp group PE-MPBGP-PEERS neighbor 10.0.0.5
+set protocols bgp group PE-MPBGP-PEERS neighbor 10.0.0.6
+set protocols bgp group PE-MPBGP-PEERS neighbor 10.0.0.8
+set protocols bgp group PE-MPBGP-PEERS neighbor 10.0.0.9
+set protocols bgp group PE-MPBGP-PEERS neighbor 10.0.0.10
+set protocols bgp group PE-MPBGP-PEERS neighbor 10.0.0.11
+set protocols bgp group PE-MPBGP-PEERS neighbor 10.0.0.12
+set protocols isis interface em0.0 level 1 disable
+set protocols isis interface em1.0 level 1 disable
+set protocols isis interface lo0.0 level 1 disable
+set protocols ldp interface em0.0
+set protocols ldp interface em1.0
+set protocols lldp management-address 10.0.0.7
+set protocols lldp interface all
+set policy-options policy-statement EXPORT-BGP term 1 from protocol bgp
+set policy-options policy-statement EXPORT-BGP term 1 then accept
+set routing-instances RI-L3VPN-MAGENTA instance-type vrf
+set routing-instances RI-L3VPN-MAGENTA interface em3.0
+set routing-instances RI-L3VPN-MAGENTA route-distinguisher 10.0.0.7:1
+set routing-instances RI-L3VPN-MAGENTA vrf-target target:300:300
+set routing-instances RI-L3VPN-MAGENTA vrf-table-label
+set routing-instances RI-L3VPN-MAGENTA protocols rip group PE2CE export EXPORT-BGP
+set routing-instances RI-L3VPN-MAGENTA protocols rip group PE2CE neighbor em3.0
+set routing-instances RI-L3VPN-RED instance-type vrf
+set routing-instances RI-L3VPN-RED interface em4.0
+set routing-instances RI-L3VPN-RED route-distinguisher 10.0.0.7:2
+set routing-instances RI-L3VPN-RED vrf-target target:400:400
+set routing-instances RI-L3VPN-RED vrf-table-label
+set routing-instances RI-L3VPN-RED routing-options static route 172.16.0.0/16 next-hop 10.7.16.16
+set routing-instances RI-L3VPN-RED routing-options static route 10.0.0.16/32 next-hop 10.7.16.16
+
+root@J7>

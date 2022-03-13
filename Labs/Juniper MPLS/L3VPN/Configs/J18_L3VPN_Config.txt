@@ -1,0 +1,199 @@
+root@J18> show configuration | display set 
+set version 12.1R1.9
+set system host-name J18
+set system root-authentication encrypted-password "$1$rRVKZsfK$POU2koSVLEXgogjLWUAw60"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces em0 unit 0 family inet address 10.10.18.18/24
+set interfaces em1 unit 0 family inet address 10.9.18.18/24
+set interfaces lo0 unit 0 family inet address 10.0.0.18/32
+set interfaces lo0 unit 0 family inet address 172.18.1.1/24
+set interfaces lo0 unit 0 family inet address 172.18.2.1/24
+set interfaces lo0 unit 0 family inet address 172.18.3.1/24
+set interfaces lo0 unit 0 family inet address 172.18.4.1/24
+set interfaces lo0 unit 0 family inet address 172.18.5.1/24
+set routing-options router-id 10.0.0.18
+set protocols bgp group CE-PE-EBGP type external
+set protocols bgp group CE-PE-EBGP export REDISTRIBUTE-TO-BGP
+set protocols bgp group CE-PE-EBGP local-as 18
+set protocols bgp group CE-PE-EBGP neighbor 10.10.18.10 peer-as 10
+set protocols bgp group CE-PE-EBGP neighbor 10.9.18.9 peer-as 9
+set policy-options policy-statement REDISTRIBUTE-TO-BGP term 1 from protocol direct
+set policy-options policy-statement REDISTRIBUTE-TO-BGP term 1 then accept
+
+root@J18> show configuration                  
+version 12.1R1.9;
+system {
+    host-name J18;
+    root-authentication {
+        encrypted-password "$1$rRVKZsfK$POU2koSVLEXgogjLWUAw60"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}
+interfaces {
+    em0 {
+        unit 0 {
+            family inet {
+                address 10.10.18.18/24; 
+            }
+        }
+    }
+    em1 {
+        unit 0 {
+            family inet {
+                address 10.9.18.18/24;
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 10.0.0.18/32;
+                address 172.18.1.1/24;
+                address 172.18.2.1/24;
+                address 172.18.3.1/24;
+                address 172.18.4.1/24;
+                address 172.18.5.1/24;
+            }
+        }
+    }
+}                                       
+routing-options {
+    router-id 10.0.0.18;
+}
+protocols {
+    bgp {
+        group CE-PE-EBGP {
+            type external;
+            export REDISTRIBUTE-TO-BGP;
+            local-as 18;
+            neighbor 10.10.18.10 {
+                peer-as 10;
+            }
+            neighbor 10.9.18.9 {
+                peer-as 9;
+            }
+        }
+    }
+}
+policy-options {
+    policy-statement REDISTRIBUTE-TO-BGP {
+        term 1 {
+            from protocol direct;
+            then accept;                
+        }
+    }
+}
+
+root@J18> 
+
+
++++++++++++
+
+
+eroot@J18> show route 
+
+inet.0: 23 destinations, 33 routes (23 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.14/32       *[BGP/170] 00:01:01, localpref 100
+                      AS path: 10 65535 5 14 I
+                    > to 10.10.18.10 via em0.0
+                    [BGP/170] 00:00:57, localpref 100
+                      AS path: 9 65535 5 14 I
+                    > to 10.9.18.9 via em1.0
+10.0.0.18/32       *[Direct/0] 00:01:00
+                    > via lo0.0
+10.5.14.0/24       *[BGP/170] 00:01:01, localpref 100
+                      AS path: 10 65535 I
+                    > to 10.10.18.10 via em0.0
+                    [BGP/170] 00:00:57, localpref 100
+                      AS path: 9 65535 I
+                    > to 10.9.18.9 via em1.0
+10.6.14.0/24       *[BGP/170] 00:01:01, localpref 100
+                      AS path: 10 65535 I
+                    > to 10.10.18.10 via em0.0
+                    [BGP/170] 00:00:57, localpref 100
+                      AS path: 9 65535 I
+                    > to 10.9.18.9 via em1.0
+10.9.18.0/24       *[Direct/0] 00:01:05
+                    > via em1.0
+                    [BGP/170] 00:01:01, localpref 100
+                      AS path: 10 65535 I
+                    > to 10.10.18.10 via em0.0
+10.9.18.18/32      *[Local/0] 00:01:05
+                      Local via em1.0
+10.10.18.0/24      *[Direct/0] 00:01:06
+                    > via em0.0
+                    [BGP/170] 00:00:57, localpref 100
+                      AS path: 9 65535 I
+                    > to 10.9.18.9 via em1.0
+10.10.18.18/32     *[Local/0] 00:01:06
+                      Local via em0.0
+172.14.1.0/24      *[BGP/170] 00:01:01, localpref 100
+                      AS path: 10 65535 5 14 I
+                    > to 10.10.18.10 via em0.0
+                    [BGP/170] 00:00:57, localpref 100
+                      AS path: 9 65535 5 14 I
+                    > to 10.9.18.9 via em1.0
+172.14.2.0/24      *[BGP/170] 00:01:01, localpref 100
+                      AS path: 10 65535 5 14 I
+                    > to 10.10.18.10 via em0.0
+                    [BGP/170] 00:00:57, localpref 100
+                      AS path: 9 65535 5 14 I
+                    > to 10.9.18.9 via em1.0
+172.14.3.0/24      *[BGP/170] 00:01:01, localpref 100
+                      AS path: 10 65535 5 14 I
+                    > to 10.10.18.10 via em0.0
+                    [BGP/170] 00:00:57, localpref 100
+                      AS path: 9 65535 5 14 I
+                    > to 10.9.18.9 via em1.0
+172.14.4.0/24      *[BGP/170] 00:01:01, localpref 100
+                      AS path: 10 65535 5 14 I
+                    > to 10.10.18.10 via em0.0
+                    [BGP/170] 00:00:57, localpref 100
+                      AS path: 9 65535 5 14 I
+                    > to 10.9.18.9 via em1.0
+172.14.5.0/24      *[BGP/170] 00:01:01, localpref 100
+                      AS path: 10 65535 5 14 I
+                    > to 10.10.18.10 via em0.0
+                    [BGP/170] 00:00:57, localpref 100
+                      AS path: 9 65535 5 14 I
+                    > to 10.9.18.9 via em1.0
+172.18.1.0/24      *[Direct/0] 00:01:00
+                    > via lo0.0         
+172.18.1.1/32      *[Local/0] 00:01:00
+                      Local via lo0.0
+172.18.2.0/24      *[Direct/0] 00:01:00
+                    > via lo0.0
+172.18.2.1/32      *[Local/0] 00:01:00
+                      Local via lo0.0
+172.18.3.0/24      *[Direct/0] 00:01:00
+                    > via lo0.0
+172.18.3.1/32      *[Local/0] 00:01:00
+                      Local via lo0.0
+172.18.4.0/24      *[Direct/0] 00:01:00
+                    > via lo0.0
+172.18.4.1/32      *[Local/0] 00:01:00
+                      Local via lo0.0
+172.18.5.0/24      *[Direct/0] 00:01:00
+                    > via lo0.0
+172.18.5.1/32      *[Local/0] 00:01:00
+                      Local via lo0.0
+
+root@J18> 
+
+
