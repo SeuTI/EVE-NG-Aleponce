@@ -1,0 +1,98 @@
+root@J11# show 
+## Last changed: 2014-03-21 19:15:48 UTC
+version 12.1R1.9;
+system {
+    host-name J11;
+    root-authentication {
+        encrypted-password "$1$cgDXLZ7M$b90lLpVy4rDKkYPBRO.qZ1"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}
+interfaces {
+    em0 {
+        unit 0 {
+            family inet {               
+                address 10.2.11.11/24;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    em1 {
+        unit 0 {
+            family inet {
+                address 10.4.11.11/24;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    em3 {
+        unit 0 {
+            family inet {
+                address 10.11.19.11/24;
+            }
+        }
+    }
+    lo0 {                               
+        unit 0 {
+            family inet {
+                address 10.0.0.11/32;
+            }
+            family iso {
+                address 10.0000.0000.0011.00;
+            }
+        }
+    }
+}
+routing-options {
+    router-id 10.0.0.11;
+}
+protocols {
+    mpls {
+        interface all;
+    }
+    isis {
+        interface all;
+        interface em0.0 {
+            level 2 disable;
+        }
+        interface em1.0 {               
+            level 2 disable;
+        }
+        interface em3.0 {
+            level 1 disable;
+            level 2 disable;
+        }
+        interface lo0.0 {
+            level 2 disable;
+        }
+    }
+    ospf {
+        disable;
+        area 0.0.0.0 {
+            interface em0.0;
+            interface em1.0;
+            interface lo0.0;
+        }
+    }
+    ldp {
+        interface em0.0;
+        interface em1.0;
+    }
+}                                       
+
+[edit]
+root@J11# 
+

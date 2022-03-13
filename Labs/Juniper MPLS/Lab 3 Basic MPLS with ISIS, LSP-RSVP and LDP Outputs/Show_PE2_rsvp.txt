@@ -1,0 +1,86 @@
+root@J6> show rsvp neighbor 
+RSVP neighbor: 2 learned
+Address            Idle Up/Dn LastChange HelloInt HelloTx/Rx MsgRcvd
+10.1.6.1              0  1/0       22:47        9   159/159  469
+10.2.6.2              0  1/0       22:47        9   159/159  259
+
+root@J6> show rsvp interface 
+RSVP interface: 3 active
+                  Active Subscr- Static      Available   Reserved    Highwater
+Interface   State resv   iption  BW          BW          BW          mark
+em0.0       Up         7   100%  1000Mbps    1000Mbps    0bps        0bps       
+em1.0       Up         4   100%  1000Mbps    1000Mbps    0bps        0bps       
+em3.0       Up         0   100%  1000Mbps    1000Mbps    0bps        0bps       
+
+root@J6> show rsvp session 
+Ingress RSVP: 7 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.5        10.0.0.6        Up       0  1 FF       -   299872 J6-TO-J5
+10.0.0.7        10.0.0.6        Up       0  1 FF       -   300016 J6-TO-J7
+10.0.0.8        10.0.0.6        Up       0  1 FF       -   300000 J6-TO-J8
+10.0.0.9        10.0.0.6        Up       0  1 FF       -   300080 J6-TO-J9
+10.0.0.10       10.0.0.6        Dn       0  0  -       -        - J6-TO-J10
+10.0.0.11       10.0.0.6        Up       0  1 FF       -   300256 J6-TO-J11
+10.0.0.12       10.0.0.6        Up       0  1 FF       -   299952 J6-TO-J12
+Total 7 displayed, Up 6, Down 1
+
+Egress RSVP: 6 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.6        10.0.0.5        Up       0  1 FF       3        - J5-TO-J6
+10.0.0.6        10.0.0.11       Up       0  1 FF       3        - J11-TO-J6
+10.0.0.6        10.0.0.9        Up       0  1 FF       3        - J9-TO-J6
+10.0.0.6        10.0.0.7        Up       0  1 FF       3        - J7-TO-J6
+10.0.0.6        10.0.0.8        Up       0  1 FF       3        - J8-TO-J6
+10.0.0.6        10.0.0.12       Up       0  1 FF       3        - J12-TO-J6
+Total 6 displayed, Up 6, Down 0
+
+Transit RSVP: 5 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.8        10.0.0.12       Up       0  1 FF  299856   300352 J12-TO-J8
+10.0.0.11       10.0.0.7        Up       0  1 FF  299824   300240 J7-TO-J11
+10.0.0.11       10.0.0.8        Up       0  1 FF  299840   300272 J8-TO-J11
+10.0.0.12       10.0.0.7        Up       0  1 FF  299776   299920 J7-TO-J12
+10.0.0.12       10.0.0.8        Up       0  1 FF  299792   299968 J8-TO-J12
+Total 5 displayed, Up 5, Down 0
+
+root@J6> show route table mpls 
+
+mpls.0: 9 destinations, 9 routes (9 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 00:24:16, metric 1
+                      Receive
+1                  *[MPLS/0] 00:24:16, metric 1
+                      Receive
+2                  *[MPLS/0] 00:24:16, metric 1
+                      Receive
+13                 *[MPLS/0] 00:24:16, metric 1
+                      Receive
+299776             *[RSVP/7/1] 00:15:01, metric 1
+                    > to 10.2.6.2 via em0.0, label-switched-path J7-TO-J12
+299792             *[RSVP/7/1] 00:14:51, metric 1
+                    > to 10.2.6.2 via em0.0, label-switched-path J8-TO-J12
+299824             *[RSVP/7/1] 00:11:31, metric 1
+                    > to 10.2.6.2 via em0.0, label-switched-path J7-TO-J11
+299840             *[RSVP/7/1] 00:11:19, metric 1
+                    > to 10.2.6.2 via em0.0, label-switched-path J8-TO-J11
+299856             *[RSVP/7/1] 00:10:03, metric 1
+                    > to 10.1.6.1 via em1.0, label-switched-path J12-TO-J8
+
+root@J6> show rsvp neighbor detail 
+RSVP neighbor: 2 learned
+Address: 10.1.6.1 via: em1.0 status: Up
+  Last changed time: 23:17, Idle: 0 sec, Up cnt: 1, Down cnt: 0
+  Message received: 478
+  Hello: sent 162, received: 162, interval: 9 sec
+  Remote instance: 0x7b89a07d, Local instance: 0x1563e234
+  Refresh reduction:  not operational
+
+Address: 10.2.6.2 via: em0.0 status: Up
+  Last changed time: 23:17, Idle: 0 sec, Up cnt: 1, Down cnt: 0
+  Message received: 264
+  Hello: sent 162, received: 162, interval: 9 sec
+  Remote instance: 0x2c64cb1e, Local instance: 0xf1fa6b2e
+  Refresh reduction:  not operational
+
+root@J6> 

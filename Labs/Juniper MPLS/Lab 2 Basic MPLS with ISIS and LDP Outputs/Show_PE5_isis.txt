@@ -1,0 +1,183 @@
+root@J9> show isis interface brief 
+IS-IS interface database:
+Interface             L CirID Level 1 DR        Level 2 DR        L1/L2 Metric
+em0.0                 1   0x3 J9.03             Disabled               10/10
+em1.0                 1   0x2 J9.02             Disabled               10/10
+lo0.0                 0   0x1 Passive           Disabled                0/0
+
+root@J9> 
+
+root@J9> show isis adjacency 
+Interface             System         L State        Hold (secs) SNPA
+em0.0                 J3             1  Up                   24  0:ab:56:39:65:3
+em1.0                 J4             1  Up                   26  0:ab:63:6a:7c:5
+
+root@J9> show isis route 
+ IS-IS routing table             Current version: L1: 48 L2: 30
+IPv4/IPv6 Routes
+----------------
+Prefix             L Version   Metric Type Interface       NH   Via
+10.0.0.0/24        1      48       40 int  em1.0           IPV4 J4                 
+                                           em0.0           IPV4 J3                 
+10.0.0.5/32        1      48       40 int  em1.0           IPV4 J4                 
+                                           em0.0           IPV4 J3                 
+10.0.0.6/32        1      48       40 int  em1.0           IPV4 J4                 
+                                           em0.0           IPV4 J3                 
+10.0.0.7/32        1      48       20 int  em0.0           IPV4 J3                 
+10.0.0.8/32        1      48       20 int  em0.0           IPV4 J3                 
+10.0.0.10/32       1      48       20 int  em0.0           IPV4 J3                 
+                                           em1.0           IPV4 J4                 
+10.0.0.11/32       1      48       20 int  em1.0           IPV4 J4                 
+10.0.0.12/32       1      48       20 int  em1.0           IPV4 J4                 
+10.1.5.0/24        1      48       40 int  em0.0           IPV4 J3                 
+10.1.6.0/24        1      48       40 int  em0.0           IPV4 J3                 
+10.1.7.0/24        1      48       30 int  em0.0           IPV4 J3                 
+10.1.8.0/24        1      48       30 int  em0.0           IPV4 J3                 
+10.2.5.0/24        1      48       40 int  em1.0           IPV4 J4                 
+10.2.6.0/24        1      48       40 int  em1.0           IPV4 J4                 
+10.2.11.0/24       1      48       30 int  em1.0           IPV4 J4                 
+10.2.12.0/24       1      48       30 int  em1.0           IPV4 J4                 
+10.3.7.0/24        1      48       20 int  em0.0           IPV4 J3                 
+10.3.8.0/24        1      48       20 int  em0.0           IPV4 J3                 
+10.3.10.0/24       1      48       20 int  em0.0           IPV4 J3                 
+10.4.10.0/24       1      48       20 int  em1.0           IPV4 J4                 
+10.4.11.0/24       1      48       20 int  em1.0           IPV4 J4                 
+10.4.12.0/24       1      48       20 int  em1.0           IPV4 J4                 
+
+root@J9> 
+
+root@J9> show mpls interface 
+Interface        State       Administrative groups (x: extended)
+em0.0            Up         <none>
+em1.0            Up         <none>
+
+root@J9> show ldp neighbor 
+Address            Interface          Label space ID         Hold time
+10.3.9.3           em0.0              10.0.0.3:0               14
+10.4.9.4           em1.0              10.0.0.4:0               12
+
+root@J9> 
+
+root@J9> show route 
+
+inet.0: 29 destinations, 29 routes (29 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.0/24        *[IS-IS/15] 00:13:58, metric 40
+                    > to 10.3.9.3 via em0.0
+                      to 10.4.9.4 via em1.0
+10.0.0.5/32        *[IS-IS/15] 00:13:59, metric 40
+                      to 10.3.9.3 via em0.0
+                    > to 10.4.9.4 via em1.0
+10.0.0.6/32        *[IS-IS/15] 00:13:58, metric 40
+                      to 10.3.9.3 via em0.0
+                    > to 10.4.9.4 via em1.0
+10.0.0.7/32        *[IS-IS/15] 00:21:46, metric 20
+                    > to 10.3.9.3 via em0.0
+10.0.0.8/32        *[IS-IS/15] 00:21:54, metric 20
+                    > to 10.3.9.3 via em0.0
+10.0.0.9/32        *[Direct/0] 02:26:50
+                    > via lo0.0
+10.0.0.10/32       *[IS-IS/15] 00:19:11, metric 20
+                      to 10.3.9.3 via em0.0
+                    > to 10.4.9.4 via em1.0
+10.0.0.11/32       *[IS-IS/15] 00:19:04, metric 20
+                    > to 10.4.9.4 via em1.0
+10.0.0.12/32       *[IS-IS/15] 00:19:09, metric 20
+                    > to 10.4.9.4 via em1.0
+10.1.5.0/24        *[IS-IS/15] 00:15:43, metric 40
+                    > to 10.3.9.3 via em0.0
+10.1.6.0/24        *[IS-IS/15] 00:15:43, metric 40
+                    > to 10.3.9.3 via em0.0
+10.1.7.0/24        *[IS-IS/15] 00:21:46, metric 30
+                    > to 10.3.9.3 via em0.0
+10.1.8.0/24        *[IS-IS/15] 00:21:54, metric 30
+                    > to 10.3.9.3 via em0.0
+10.2.5.0/24        *[IS-IS/15] 00:14:19, metric 40
+                    > to 10.4.9.4 via em1.0
+10.2.6.0/24        *[IS-IS/15] 00:14:19, metric 40
+                    > to 10.4.9.4 via em1.0
+10.2.11.0/24       *[IS-IS/15] 00:19:04, metric 30
+                    > to 10.4.9.4 via em1.0
+10.2.12.0/24       *[IS-IS/15] 00:19:09, metric 30
+                    > to 10.4.9.4 via em1.0
+10.3.7.0/24        *[IS-IS/15] 00:21:54, metric 20
+                    > to 10.3.9.3 via em0.0
+10.3.8.0/24        *[IS-IS/15] 00:21:54, metric 20
+                    > to 10.3.9.3 via em0.0
+10.3.9.0/24        *[Direct/0] 02:26:55 
+                    > via em0.0
+10.3.9.9/32        *[Local/0] 02:26:55
+                      Local via em0.0
+10.3.10.0/24       *[IS-IS/15] 00:21:54, metric 20
+                    > to 10.3.9.3 via em0.0
+10.4.9.0/24        *[Direct/0] 02:26:54
+                    > via em1.0
+10.4.9.9/32        *[Local/0] 02:26:54
+                      Local via em1.0
+10.4.10.0/24       *[IS-IS/15] 00:19:11, metric 20
+                    > to 10.4.9.4 via em1.0
+10.4.11.0/24       *[IS-IS/15] 00:19:11, metric 20
+                    > to 10.4.9.4 via em1.0
+10.4.12.0/24       *[IS-IS/15] 00:19:11, metric 20
+                    > to 10.4.9.4 via em1.0
+10.9.17.0/24       *[Direct/0] 02:26:53
+                    > via em3.0
+10.9.17.9/32       *[Local/0] 02:26:53
+                      Local via em3.0
+
+inet.3: 6 destinations, 6 routes (6 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+                                        
+10.0.0.5/32        *[LDP/9] 00:13:59, metric 1
+                      to 10.3.9.3 via em0.0, Push 300096
+                    > to 10.4.9.4 via em1.0, Push 300032
+10.0.0.7/32        *[LDP/9] 00:15:21, metric 1
+                    > to 10.3.9.3 via em0.0, Push 300016
+10.0.0.8/32        *[LDP/9] 00:15:20, metric 1
+                    > to 10.3.9.3 via em0.0, Push 300080
+10.0.0.10/32       *[LDP/9] 00:15:20, metric 1
+                      to 10.3.9.3 via em0.0, Push 300032
+                    > to 10.4.9.4 via em1.0, Push 299936
+10.0.0.11/32       *[LDP/9] 00:15:20, metric 1
+                    > to 10.4.9.4 via em1.0, Push 299968
+10.0.0.12/32       *[LDP/9] 00:15:20, metric 1
+                    > to 10.4.9.4 via em1.0, Push 299952
+
+iso.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0000.0000.0009/56                
+                   *[Direct/0] 00:57:34
+                    > via lo0.0
+                                        
+mpls.0: 10 destinations, 10 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 02:26:59, metric 1
+                      Receive
+1                  *[MPLS/0] 02:26:59, metric 1
+                      Receive
+2                  *[MPLS/0] 02:26:59, metric 1
+                      Receive
+13                 *[MPLS/0] 02:26:59, metric 1
+                      Receive
+300240             *[LDP/9] 00:15:21, metric 1
+                    > to 10.3.9.3 via em0.0, Swap 300016
+300256             *[LDP/9] 00:15:20, metric 1
+                      to 10.3.9.3 via em0.0, Swap 300032
+                    > to 10.4.9.4 via em1.0, Swap 299936
+300272             *[LDP/9] 00:15:20, metric 1
+                    > to 10.4.9.4 via em1.0, Swap 299952
+300288             *[LDP/9] 00:15:20, metric 1
+                    > to 10.4.9.4 via em1.0, Swap 299968
+300304             *[LDP/9] 00:15:20, metric 1
+                    > to 10.3.9.3 via em0.0, Swap 300080
+300320             *[LDP/9] 00:13:59, metric 1
+                      to 10.3.9.3 via em0.0, Swap 300096
+                    > to 10.4.9.4 via em1.0, Swap 300032
+
+root@J9> 
+
+root@J9> 
+

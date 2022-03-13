@@ -1,0 +1,236 @@
+root@J2> show interfaces terse | match /    
+em0.0                   up    up   inet     10.1.2.2/24     
+em1.0                   up    up   inet     10.2.4.2/24     
+em3.0                   up    up   inet     10.2.6.2/24     
+em4.0                   up    up   inet     10.2.11.2/24    
+em5.0                   up    up   inet     10.2.5.2/24     
+em6.0                   up    up   inet     10.2.12.2/24    
+em7.0                   up    up   inet     10.2.3.2/24     
+lo0.0                   up    up   inet     10.0.0.2            --> 0/0
+lo0.16384               up    up   inet     127.0.0.1           --> 0/0
+lo0.16385               up    up   inet     128.0.0.4           --> 0/0
+
+root@J2> 
+
+root@J2> show ospf neighbor                 
+Address          Interface              State     ID               Pri  Dead
+10.1.2.1         em0.0                  Full      10.0.0.1         128    39
+10.2.4.4         em1.0                  Full      10.0.0.4         128    31
+10.2.6.6         em3.0                  Full      10.0.0.6         128    32
+10.2.11.11       em4.0                  Full      10.0.0.11        128    32
+10.2.5.5         em5.0                  Full      10.0.0.5         128    36
+10.2.12.12       em6.0                  Full      10.0.0.12        128    39
+10.2.3.3         em7.0                  Full      10.0.0.3         128    39
+
+root@J2> 
+
+root@J2> show mpls interface                
+Interface        State       Administrative groups (x: extended)
+em0.0            Up         <none>
+em1.0            Up         <none>
+em7.0            Up         <none>
+em3.0            Up         <none>
+em4.0            Up         <none>
+em5.0            Up         <none>
+em6.0            Up         <none>
+
+root@J2> 
+
+root@J2> show ldp neighbor                  
+Address            Interface          Label space ID         Hold time
+10.1.2.1           em0.0              10.0.0.1:0               10
+10.2.4.4           em1.0              10.0.0.4:0               10
+10.2.6.6           em3.0              10.0.0.6:0               11
+10.2.11.11         em4.0              10.0.0.11:0              14
+10.2.5.5           em5.0              10.0.0.5:0               13
+10.2.12.12         em6.0              10.0.0.12:0              14
+10.2.3.3           em7.0              10.0.0.3:0               14
+
+root@J2> 
+
+root@J2> show route                         
+
+inet.0: 43 destinations, 43 routes (43 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.0/24        *[OSPF/10] 00:53:55, metric 1
+                    > to 10.2.6.6 via em3.0
+10.0.0.1/32        *[OSPF/10] 00:54:00, metric 1
+                    > to 10.1.2.1 via em0.0
+10.0.0.2/32        *[Direct/0] 02:44:01
+                    > via lo0.0
+10.0.0.3/32        *[OSPF/10] 00:54:00, metric 1
+                    > to 10.2.3.3 via em7.0
+10.0.0.4/32        *[OSPF/10] 00:53:47, metric 1
+                    > to 10.2.4.4 via em1.0
+10.0.0.5/32        *[OSPF/10] 00:54:00, metric 1
+                    > to 10.2.5.5 via em5.0
+10.0.0.6/32        *[OSPF/10] 00:53:55, metric 1
+                    > to 10.2.6.6 via em3.0
+10.0.0.7/32        *[OSPF/10] 00:53:38, metric 2
+                    > to 10.1.2.1 via em0.0
+                      to 10.2.3.3 via em7.0
+10.0.0.8/32        *[OSPF/10] 00:48:29, metric 2
+                    > to 10.1.2.1 via em0.0
+                      to 10.2.3.3 via em7.0
+10.0.0.9/32        *[OSPF/10] 00:37:30, metric 2
+                    > to 10.2.4.4 via em1.0
+                      to 10.2.3.3 via em7.0
+10.0.0.10/32       *[OSPF/10] 00:21:22, metric 2
+                    > to 10.2.4.4 via em1.0
+                      to 10.2.3.3 via em7.0
+10.0.0.11/32       *[OSPF/10] 00:18:16, metric 1
+                    > to 10.2.11.11 via em4.0
+10.0.0.12/32       *[OSPF/10] 00:14:37, metric 1
+                    > to 10.2.12.12 via em6.0
+10.1.2.0/24        *[Direct/0] 02:44:09
+                    > via em0.0
+10.1.2.2/32        *[Local/0] 02:44:09
+                      Local via em0.0
+10.1.3.0/24        *[OSPF/10] 00:54:00, metric 2
+                      to 10.1.2.1 via em0.0
+                    > to 10.2.3.3 via em7.0
+10.1.4.0/24        *[OSPF/10] 00:53:47, metric 2
+                    > to 10.1.2.1 via em0.0
+                      to 10.2.4.4 via em1.0
+10.1.5.0/24        *[OSPF/10] 00:54:00, metric 2
+                      to 10.1.2.1 via em0.0
+                    > to 10.2.5.5 via em5.0
+10.1.6.0/24        *[OSPF/10] 00:53:55, metric 2
+                      to 10.1.2.1 via em0.0
+                    > to 10.2.6.6 via em3.0
+10.1.7.0/24        *[OSPF/10] 00:54:00, metric 2
+                    > to 10.1.2.1 via em0.0
+10.1.8.0/24        *[OSPF/10] 00:54:00, metric 2
+                    > to 10.1.2.1 via em0.0
+10.2.3.0/24        *[Direct/0] 02:29:54
+                    > via em7.0
+10.2.3.2/32        *[Local/0] 02:29:54
+                      Local via em7.0
+10.2.4.0/24        *[Direct/0] 02:44:08
+                    > via em1.0
+10.2.4.2/32        *[Local/0] 02:44:08
+                      Local via em1.0
+10.2.5.0/24        *[Direct/0] 02:44:04
+                    > via em5.0
+10.2.5.2/32        *[Local/0] 02:44:04
+                      Local via em5.0
+10.2.6.0/24        *[Direct/0] 02:44:06
+                    > via em3.0
+10.2.6.2/32        *[Local/0] 02:44:06
+                      Local via em3.0   
+10.2.11.0/24       *[Direct/0] 02:44:05
+                    > via em4.0
+10.2.11.2/32       *[Local/0] 02:44:05
+                      Local via em4.0
+10.2.12.0/24       *[Direct/0] 02:44:02
+                    > via em6.0
+10.2.12.2/32       *[Local/0] 02:44:02
+                      Local via em6.0
+10.3.4.0/24        *[OSPF/10] 00:53:47, metric 2
+                    > to 10.2.4.4 via em1.0
+                      to 10.2.3.3 via em7.0
+10.3.7.0/24        *[OSPF/10] 00:54:00, metric 2
+                    > to 10.2.3.3 via em7.0
+10.3.8.0/24        *[OSPF/10] 00:54:00, metric 2
+                    > to 10.2.3.3 via em7.0
+10.3.9.0/24        *[OSPF/10] 00:54:00, metric 2
+                    > to 10.2.3.3 via em7.0
+10.3.10.0/24       *[OSPF/10] 00:54:00, metric 2
+                    > to 10.2.3.3 via em7.0
+10.4.9.0/24        *[OSPF/10] 00:53:47, metric 2
+                    > to 10.2.4.4 via em1.0
+10.4.10.0/24       *[OSPF/10] 00:53:47, metric 2
+                    > to 10.2.4.4 via em1.0
+10.4.11.0/24       *[OSPF/10] 00:18:13, metric 2
+                    > to 10.2.4.4 via em1.0
+                      to 10.2.11.11 via em4.0
+10.4.12.0/24       *[OSPF/10] 00:14:37, metric 2
+                      to 10.2.4.4 via em1.0
+                    > to 10.2.12.12 via em6.0
+224.0.0.5/32       *[OSPF/10] 02:44:13, metric 1
+                      MultiRecv
+
+inet.3: 11 destinations, 11 routes (11 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+10.0.0.1/32        *[LDP/9] 00:53:49, metric 1
+                    > to 10.1.2.1 via em0.0
+10.0.0.3/32        *[LDP/9] 00:53:49, metric 1
+                    > to 10.2.3.3 via em7.0
+10.0.0.4/32        *[LDP/9] 00:53:47, metric 1
+                    > to 10.2.4.4 via em1.0
+10.0.0.5/32        *[LDP/9] 00:53:49, metric 1
+                    > to 10.2.5.5 via em5.0
+10.0.0.6/32        *[LDP/9] 00:53:49, metric 1
+                    > to 10.2.6.6 via em3.0
+10.0.0.7/32        *[LDP/9] 00:53:38, metric 1
+                    > to 10.1.2.1 via em0.0, Push 299856
+                      to 10.2.3.3 via em7.0, Push 299856
+10.0.0.8/32        *[LDP/9] 00:48:29, metric 1
+                    > to 10.1.2.1 via em0.0, Push 299872
+                      to 10.2.3.3 via em7.0, Push 299872
+10.0.0.9/32        *[LDP/9] 00:37:30, metric 1
+                    > to 10.2.4.4 via em1.0, Push 299920
+                      to 10.2.3.3 via em7.0, Push 299888
+10.0.0.10/32       *[LDP/9] 00:21:19, metric 1
+                    > to 10.2.4.4 via em1.0, Push 299936
+                      to 10.2.3.3 via em7.0, Push 299904
+10.0.0.11/32       *[LDP/9] 00:18:14, metric 1
+                    > to 10.2.11.11 via em4.0
+10.0.0.12/32       *[LDP/9] 00:14:36, metric 1
+                    > to 10.2.12.12 via em6.0
+
+mpls.0: 22 destinations, 22 routes (22 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 02:13:50, metric 1
+                      Receive
+1                  *[MPLS/0] 02:13:50, metric 1
+                      Receive           
+2                  *[MPLS/0] 02:13:50, metric 1
+                      Receive
+13                 *[MPLS/0] 02:13:50, metric 1
+                      Receive
+299776             *[LDP/9] 00:53:49, metric 1
+                    > to 10.1.2.1 via em0.0, Pop      
+299776(S=0)        *[LDP/9] 00:53:49, metric 1
+                    > to 10.1.2.1 via em0.0, Pop      
+299792             *[LDP/9] 00:53:49, metric 1
+                    > to 10.2.3.3 via em7.0, Pop      
+299792(S=0)        *[LDP/9] 00:53:49, metric 1
+                    > to 10.2.3.3 via em7.0, Pop      
+299824             *[LDP/9] 00:53:49, metric 1
+                    > to 10.2.5.5 via em5.0, Pop      
+299824(S=0)        *[LDP/9] 00:53:49, metric 1
+                    > to 10.2.5.5 via em5.0, Pop      
+299856             *[LDP/9] 00:53:38, metric 1
+                      to 10.1.2.1 via em0.0, Swap 299856
+                    > to 10.2.3.3 via em7.0, Swap 299856
+299888             *[LDP/9] 00:53:49, metric 1
+                    > to 10.2.6.6 via em3.0, Pop      
+299888(S=0)        *[LDP/9] 00:53:49, metric 1
+                    > to 10.2.6.6 via em3.0, Pop      
+299904             *[LDP/9] 00:53:47, metric 1
+                    > to 10.2.4.4 via em1.0, Pop      
+299904(S=0)        *[LDP/9] 00:53:47, metric 1
+                    > to 10.2.4.4 via em1.0, Pop      
+299920             *[LDP/9] 00:48:29, metric 1
+                      to 10.1.2.1 via em0.0, Swap 299872
+                    > to 10.2.3.3 via em7.0, Swap 299872
+299936             *[LDP/9] 00:37:30, metric 1
+                    > to 10.2.4.4 via em1.0, Swap 299920
+                      to 10.2.3.3 via em7.0, Swap 299888
+299952             *[LDP/9] 00:21:19, metric 1
+                      to 10.2.4.4 via em1.0, Swap 299936
+                    > to 10.2.3.3 via em7.0, Swap 299904
+299968             *[LDP/9] 00:18:14, metric 1
+                    > to 10.2.11.11 via em4.0, Pop      
+299968(S=0)        *[LDP/9] 00:18:14, metric 1
+                    > to 10.2.11.11 via em4.0, Pop      
+299984             *[LDP/9] 00:14:36, metric 1
+                    > to 10.2.12.12 via em6.0, Pop      
+299984(S=0)        *[LDP/9] 00:14:36, metric 1
+                    > to 10.2.12.12 via em6.0, Pop      
+
+root@J2> 

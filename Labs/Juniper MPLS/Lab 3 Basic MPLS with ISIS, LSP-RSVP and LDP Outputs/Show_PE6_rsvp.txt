@@ -1,0 +1,87 @@
+root@J10> show rsvp neighbor 
+RSVP neighbor: 2 learned
+Address            Idle Up/Dn LastChange HelloInt HelloTx/Rx MsgRcvd
+10.4.10.4             5  0/0          14        9     1/1    3
+10.3.10.3             0  0/0          14        9     1/1    12
+
+root@J10> show rsvp interface 
+RSVP interface: 3 active
+                  Active Subscr- Static      Available   Reserved    Highwater
+Interface   State resv   iption  BW          BW          BW          mark
+em0.0       Up         3   100%  1000Mbps    1000Mbps    0bps        0bps       
+em1.0       Up         1   100%  1000Mbps    1000Mbps    0bps        0bps       
+em3.0       Up         0   100%  1000Mbps    1000Mbps    0bps        0bps       
+
+root@J10> show rsvp session 
+Ingress RSVP: 7 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.5        10.0.0.10       Dn       0  0  -       -        - J10-TO-J5
+10.0.0.6        10.0.0.10       Dn       0  0  -       -        - J10-TO-J6
+10.0.0.7        10.0.0.10       Up       0  1 FF       -   300368 J10-TO-J7
+10.0.0.8        10.0.0.10       Up       0  1 FF       -   300352 J10-TO-J8
+10.0.0.9        10.0.0.10       Up       0  1 FF       -   300336 J10-TO-J9
+10.0.0.11       10.0.0.10       Up       0  1 FF       -   300064 J10-TO-J11
+10.0.0.12       10.0.0.10       Dn       0  0  -       -        - J10-TO-J12
+Total 7 displayed, Up 4, Down 3
+
+Egress RSVP: 4 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.10       10.0.0.5        Up       0  1 FF       3        - J5-TO-J10
+10.0.0.10       10.0.0.11       Up       0  1 FF       3        - J11-TO-J10
+10.0.0.10       10.0.0.7        Up       0  1 FF       3        - J7-TO-J10
+10.0.0.10       10.0.0.6        Up       0  1 FF       3        - J6-TO-J10
+Total 4 displayed, Up 4, Down 0
+
+Transit RSVP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+root@J10> shw
+          ^
+unknown command.
+root@J10> show route table mpls 
+
+mpls.0: 11 destinations, 11 routes (11 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 00:22:40, metric 1
+                      Receive
+1                  *[MPLS/0] 00:22:40, metric 1
+                      Receive
+2                  *[MPLS/0] 00:22:40, metric 1
+                      Receive
+13                 *[MPLS/0] 00:22:40, metric 1
+                      Receive
+299776             *[LDP/9] 00:21:41, metric 1
+                    > to 10.3.10.3 via em0.0, Swap 299824
+                      to 10.4.10.4 via em1.0, Swap 299824
+299792             *[LDP/9] 00:22:06, metric 1
+                    > to 10.3.10.3 via em0.0, Swap 299840
+299808             *[LDP/9] 00:22:06, metric 1
+                    > to 10.3.10.3 via em0.0, Swap 299872
+299824             *[LDP/9] 00:21:52, metric 1
+                      to 10.3.10.3 via em0.0, Swap 300016
+                    > to 10.4.10.4 via em1.0, Swap 299872
+299840             *[LDP/9] 00:21:41, metric 1
+                    > to 10.4.10.4 via em1.0, Swap 299904
+299856             *[LDP/9] 00:21:22, metric 1
+                    > to 10.4.10.4 via em1.0, Swap 299952
+299872             *[RSVP/7/1] 00:00:11, metric 1
+                    > to 10.3.10.3 via em0.0, label-switched-path J11-TO-J8
+
+root@J10> show rsvp neighbor detail 
+RSVP neighbor: 2 learned
+Address: 10.4.10.4 via: em1.0 status: Up
+  Last changed time: 17, Idle: 0 sec, Up cnt: 1, Down cnt: 0
+  Message received: 16
+  Hello: sent 4, received: 4, interval: 9 sec
+  Remote instance: 0x18859115, Local instance: 0xed28ef05
+  Refresh reduction:  not operational
+
+Address: 10.3.10.3 via: em0.0 status: Up
+  Last changed time: 17, Idle: 0 sec, Up cnt: 1, Down cnt: 0
+  Message received: 25
+  Hello: sent 4, received: 4, interval: 9 sec
+  Remote instance: 0xdcdaf017, Local instance: 0xe15a0440
+  Refresh reduction:  not operational
+
+root@J10> 

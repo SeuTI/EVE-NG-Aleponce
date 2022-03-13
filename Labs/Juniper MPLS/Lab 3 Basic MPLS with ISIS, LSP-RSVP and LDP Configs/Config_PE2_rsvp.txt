@@ -1,0 +1,128 @@
+root@J6# show 
+## Last changed: 2014-03-22 20:00:36 UTC
+version 12.1R1.9;
+system {
+    host-name J6;
+    root-authentication {
+        encrypted-password "$1$yP3Hg71E$a8Jz7F0hFpOxnbVHJHa5G."; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}
+interfaces {
+    em0 {
+        unit 0 {
+            family inet {               
+                address 10.2.6.6/24;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    em1 {
+        unit 0 {
+            family inet {
+                address 10.1.6.6/24;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    em3 {
+        unit 0 {
+            family inet {
+                address 10.6.14.6/24;
+            }
+        }
+    }
+    lo0 {                               
+        unit 0 {
+            family inet {
+                address 10.0.0.6/24;
+            }
+            family iso {
+                address 10.0000.0000.0006.00;
+            }
+        }
+    }
+}
+routing-options {
+    router-id 10.0.0.6;
+}
+protocols {
+    rsvp {
+        interface all;
+    }
+    mpls {
+        label-switched-path J6-TO-J5 {
+            to 10.0.0.5;
+            no-cspf;
+        }
+        label-switched-path J6-TO-J7 {  
+            to 10.0.0.7;
+            no-cspf;
+        }
+        label-switched-path J6-TO-J8 {
+            to 10.0.0.8;
+            no-cspf;
+        }
+        label-switched-path J6-TO-J9 {
+            to 10.0.0.9;
+            no-cspf;
+        }
+        label-switched-path J6-TO-J10 {
+            to 10.0.0.10;
+            no-cspf;
+        }
+        label-switched-path J6-TO-J11 {
+            to 10.0.0.11;
+            no-cspf;
+        }
+        label-switched-path J6-TO-J12 {
+            to 10.0.0.12;
+            no-cspf;
+        }                               
+        interface all;
+    }
+    isis {
+        interface all;
+        interface em0.0 {
+            level 2 disable;
+        }
+        interface em1.0 {
+            level 2 disable;
+        }
+        interface em3.0 {
+            level 1 disable;
+            level 2 disable;
+        }
+        interface lo0.0 {
+            level 2 disable;
+        }
+    }
+    ospf {
+        disable;
+        area 0.0.0.0 {
+            interface em0.0;
+            interface em1.0;            
+            interface lo0.0;
+        }
+    }
+    ldp {
+        interface em0.0;
+        interface em1.0;
+    }
+}
+
+[edit]
+root@J6# 

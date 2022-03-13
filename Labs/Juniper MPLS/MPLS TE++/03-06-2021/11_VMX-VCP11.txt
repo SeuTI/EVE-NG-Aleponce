@@ -1,0 +1,61 @@
+set version 17.4R1.16
+set groups IBGP protocols bgp group <*> type internal
+set groups EBGP protocols bgp group <*> type external
+set groups EBGP protocols bgp group <*> mtu-discovery
+set groups EBGP protocols bgp group <*> log-updown
+set groups EBGP protocols bgp group <*> authentication-key-chain KEY-EBGP
+set groups EBGP protocols bgp group <*> peer-as 60909
+set groups EBGP protocols bgp group <*> graceful-restart
+set groups EBGP protocols bgp group <*> multipath
+set groups ISIS protocols isis reference-bandwidth 10g
+set system host-name VMX11
+set system root-authentication encrypted-password "$6$dBuBSXMf$L6N5YrhZGCiG9yPf0HpHw5K/m9i/bQ27zR33PfmTQgG60KXhw.1QETqu/k0jwnkiFSd55.xjVByDUTHOEwHzW0"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system processes dhcp-service traceoptions file dhcp_logfile
+set system processes dhcp-service traceoptions file size 10m
+set system processes dhcp-service traceoptions level all
+set system processes dhcp-service traceoptions flag all
+set chassis aggregated-devices ethernet device-count 20
+set chassis fpc 0 pic 0 tunnel-services bandwidth 10g
+set chassis fpc 0 pic 0 interface-type xe
+set chassis network-services enhanced-ip
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 secret "$9$8rHXdbs2aZGiJGpBEhvMDikmQF"
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 start-time "2013-12-1.00:00:00 +0000"
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 algorithm hmac-sha-1
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 options isis-enhanced
+set security authentication-key-chains key-chain KEY-EBGP description "PE-CE BGP Authentication Key"
+set security authentication-key-chains key-chain KEY-EBGP key 1 secret "$9$a6Zik.PQF39z3vLN-g469AuIE"
+set security authentication-key-chains key-chain KEY-EBGP key 1 start-time "2013-12-1.00:00:00 +0000"
+set interfaces xe-0/0/0 flexible-vlan-tagging
+set interfaces xe-0/0/0 encapsulation flexible-ethernet-services
+set interfaces xe-0/0/0 unit 1000 vlan-id 1000
+set interfaces xe-0/0/0 unit 1000 family inet address 172.100.117.11/24
+set interfaces xe-0/0/1 unit 0 family inet
+set interfaces xe-0/0/2 unit 0 family inet
+set interfaces xe-0/0/3 unit 0 family inet
+set interfaces xe-0/0/4 unit 0 family inet
+set interfaces xe-0/0/5 unit 0 family inet
+set interfaces fxp0 unit 0 family inet dhcp vendor-id Juniper-vmx-VM604308F9E0
+set interfaces lo0 unit 0 family inet address 172.100.0.11/32
+set routing-options router-id 172.100.0.11
+set routing-options autonomous-system 65011
+set protocols bgp group BGP_60909 authentication-key-chain KEY-EBGP
+set protocols bgp group BGP-60909 import IMPORT-BGP
+set protocols bgp group BGP-60909 family inet unicast
+set protocols bgp group BGP-60909 export EXPORT-BGP
+set protocols bgp group BGP-60909 peer-as 60909
+set protocols bgp group BGP-60909 graceful-restart
+set protocols bgp group BGP-60909 bfd-liveness-detection minimum-interval 1500
+set protocols bgp group BGP-60909 bfd-liveness-detection minimum-receive-interval 1500
+set protocols bgp group BGP-60909 bfd-liveness-detection multiplier 3
+set protocols bgp group BGP-60909 multipath
+set protocols bgp group BGP-60909 neighbor 172.100.117.7 description VMX07-PE
+set protocols lldp interface all
+set policy-options policy-statement EXPORT-BGP from protocol bgp
+set policy-options policy-statement EXPORT-BGP from protocol direct
+set policy-options policy-statement EXPORT-BGP then accept
+set policy-options policy-statement IMPORT-BGP from protocol bgp
+set policy-options policy-statement IMPORT-BGP then accept

@@ -1,0 +1,97 @@
+root@J12> show rsvp neighbor  
+RSVP neighbor: 2 learned
+Address            Idle Up/Dn LastChange HelloInt HelloTx/Rx MsgRcvd
+10.2.12.2             0  1/0       22:56        9   160/160  366
+10.4.12.4             0  1/0       22:21        9   156/156  153
+
+root@J12> show rsvp interface   
+RSVP interface: 3 active
+                  Active Subscr- Static      Available   Reserved    Highwater
+Interface   State resv   iption  BW          BW          BW          mark
+em0.0       Up         2   100%  1000Mbps    1000Mbps    0bps        0bps       
+em1.0       Up         7   100%  1000Mbps    1000Mbps    0bps        0bps       
+em3.0       Up         0   100%  1000Mbps    1000Mbps    0bps        0bps       
+
+root@J12> show rsvp session      
+Ingress RSVP: 6 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.5        10.0.0.12       Up       0  1 FF       -   300320 J12-TO-J5
+10.0.0.6        10.0.0.12       Up       0  1 FF       -   300304 J12-TO-J6
+10.0.0.7        10.0.0.12       Up       0  1 FF       -   300048 J12-TO-J7
+10.0.0.8        10.0.0.12       Up       0  1 FF       -   300336 J12-TO-J8
+10.0.0.9        10.0.0.12       Up       0  1 FF       -   300032 J12-TO-J9
+10.0.0.11       10.0.0.12       Up       0  1 FF       -   300288 J12-TO-J10
+Total 6 displayed, Up 6, Down 0
+
+Egress RSVP: 7 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.12       10.0.0.5        Up       0  1 FF       3        - J5-TO-J12
+10.0.0.12       10.0.0.11       Up       0  1 FF       3        - J11-TO-J12
+10.0.0.12       10.0.0.10       Up       0  1 FF       3        - J10-TO-J12
+10.0.0.12       10.0.0.9        Up       0  1 FF       3        - J9-TO-J12
+10.0.0.12       10.0.0.7        Up       0  1 FF       3        - J7-TO-J12
+10.0.0.12       10.0.0.8        Up       0  1 FF       3        - J8-TO-J12
+10.0.0.12       10.0.0.6        Up       0  1 FF       3        - J6-TO-J12
+Total 7 displayed, Up 7, Down 0
+
+Transit RSVP: 3 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.5        10.0.0.10       Up       0  1 FF  299920   300368 J10-TO-J5
+10.0.0.5        10.0.0.9        Up       0  1 FF  299888   300032 J9-TO-J5
+10.0.0.6        10.0.0.10       Up       0  1 FF  299936   300352 J10-TO-J6
+Total 3 displayed, Up 3, Down 0
+
+root@J12> show route table mpls 
+
+mpls.0: 13 destinations, 13 routes (13 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 00:24:08, metric 1
+                      Receive
+1                  *[MPLS/0] 00:24:08, metric 1
+                      Receive
+2                  *[MPLS/0] 00:24:08, metric 1
+                      Receive
+13                 *[MPLS/0] 00:24:08, metric 1
+                      Receive
+299776             *[LDP/9] 00:23:29, metric 1
+                    > to 10.2.12.2 via em1.0, Swap 299824
+299792             *[LDP/9] 00:23:20, metric 1
+                    > to 10.4.12.4 via em0.0, Swap 299840
+                      to 10.2.12.2 via em1.0, Swap 299840
+299808             *[LDP/9] 00:23:20, metric 1
+                      to 10.4.12.4 via em0.0, Swap 299856
+                    > to 10.2.12.2 via em1.0, Swap 299856
+299824             *[LDP/9] 00:23:20, metric 1
+                    > to 10.4.12.4 via em0.0, Swap 299872
+299840             *[LDP/9] 00:23:20, metric 1
+                    > to 10.4.12.4 via em0.0, Swap 299888
+299856             *[LDP/9] 00:22:54, metric 1
+                    > to 10.4.12.4 via em0.0, Swap 299952
+                      to 10.2.12.2 via em1.0, Swap 300048
+299888             *[RSVP/7/1] 00:22:37, metric 1
+                    > to 10.2.12.2 via em1.0, label-switched-path J9-TO-J5
+299920             *[RSVP/7/1] 00:02:42, metric 1
+                    > to 10.2.12.2 via em1.0, label-switched-path J10-TO-J5
+299936             *[RSVP/7/1] 00:02:12, metric 1
+                    > to 10.2.12.2 via em1.0, label-switched-path J10-TO-J6
+
+root@J12> 
+
+root@J12> show rsvp neighbor detail 
+RSVP neighbor: 2 learned
+Address: 10.2.12.2 via: em1.0 status: Up
+  Last changed time: 23:20, Idle: 0 sec, Up cnt: 1, Down cnt: 0
+  Message received: 373
+  Hello: sent 162, received: 162, interval: 9 sec
+  Remote instance: 0x8a57871b, Local instance: 0xe1237b6f
+  Refresh reduction:  not operational
+
+Address: 10.4.12.4 via: em0.0 status: Up
+  Last changed time: 22:45, Idle: 5 sec, Up cnt: 1, Down cnt: 0
+  Message received: 156
+  Hello: sent 158, received: 158, interval: 9 sec
+  Remote instance: 0xaec74d50, Local instance: 0xa23de521
+  Refresh reduction:  not operational
+
+root@J12> 

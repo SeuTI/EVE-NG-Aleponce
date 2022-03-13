@@ -1,0 +1,654 @@
+autostart = False
+version = 0.8.6
+[qemu localhost:10525]
+    workingdir = qemu-flash-drives
+    udp = 40000
+    qemupath = /Applications/GNS3.app/Contents/Resources/Qemu-0.14.1/bin/qemu-system-i386
+    qemuimgpath = /Applications/GNS3.app/Contents/Resources/Qemu-0.14.1/bin/qemu-img
+    [[O-series]]
+        image = /Users/gerardgacusan/Documents/GNS3/IOS/Juniper/Olive12.1R1.9.img
+        ram = 128
+        netcard = e1000
+    [[JUNOS J6_PE2]]
+        ram = 512
+        e0 = J2_P2 e3
+        e1 = J1_P1 e5
+        e3 = J14_CE2 e0
+        e4 = J13_CE1 e1
+        symbol = edge_label_switch_router
+        x = -1880.5
+        y = -2981.5
+        z = 1.0
+    [[JUNOS J15_CE3]]
+        e0 = J7_PE3 e3
+        e1 = J8_PE4 e4
+        symbol = router
+        x = -2279.5
+        y = -2914.5
+        z = 1.0
+    [[JUNOS J9_PE5]]
+        ram = 512
+        e0 = J3_P3 e3
+        e1 = J4_P4 e5
+        e3 = J17_CE5 e0
+        e4 = J18_CE6 e1
+        symbol = edge_label_switch_router
+        x = -2037.5
+        y = -2634.5
+        z = 1.0
+    [[JUNOS J19_CE7]]
+        e0 = J11_PE7 e3
+        e1 = J12_PE8 e4
+        symbol = router
+        x = -1572.5
+        y = -2916.5
+        z = 1.0
+    [[JUNOS J1_P1]]
+        ram = 384
+        nics = 8
+        e0 = J2_P2 e0
+        e1 = J3_P3 e1
+        e3 = J5_PE1 e0
+        e4 = J7_PE3 e0
+        e5 = J6_PE2 e1
+        e6 = J8_PE4 e1
+        e7 = J4_P4 e7
+        symbol = label_switch_router
+        x = -2027.0
+        y = -2848.0
+        z = 1.0
+    [[JUNOS J7_PE3]]
+        ram = 512
+        e0 = J1_P1 e4
+        e1 = J3_P3 e5
+        e3 = J15_CE3 e0
+        e4 = J16_CE4 e1
+        symbol = edge_label_switch_router
+        x = -2165.5
+        y = -2857.5
+        z = 1.0
+    [[JUNOS J16_CE4]]
+        e0 = J8_PE4 e3
+        e1 = J7_PE3 e4
+        symbol = router
+        x = -2285.5
+        y = -2681.5
+        z = 1.0
+    [[JUNOS J8_PE4]]
+        ram = 512
+        e0 = J3_P3 e4
+        e1 = J1_P1 e6
+        e3 = J16_CE4 e0
+        e4 = J15_CE3 e1
+        symbol = edge_label_switch_router
+        x = -2169.5
+        y = -2748.5
+        z = 1.0
+    [[JUNOS J2_P2]]
+        ram = 384
+        nics = 8
+        e0 = J1_P1 e0
+        e1 = J4_P4 e1
+        e3 = J6_PE2 e0
+        e4 = J11_PE7 e0
+        e5 = J5_PE1 e1
+        e6 = J12_PE8 e1
+        e7 = J3_P3 e7
+        symbol = Juniper P Router
+        x = -1884.5
+        y = -2849.5
+        z = 1.0
+    [[JUNOS J13_CE1]]
+        e0 = J5_PE1 e3
+        e1 = J6_PE2 e4
+        symbol = router
+        x = -2120.5
+        y = -3057.5
+        z = 1.0
+    [[JUNOS J11_PE7]]
+        ram = 512
+        e0 = J2_P2 e4
+        e1 = J4_P4 e6
+        e3 = J19_CE7 e0
+        e4 = J20_CE8 e1
+        symbol = edge_label_switch_router
+        x = -1717.5
+        y = -2872.5
+        z = 1.0
+    [[JUNOS J3_P3]]
+        ram = 384
+        nics = 8
+        e0 = J4_P4 e0
+        e1 = J1_P1 e1
+        e3 = J9_PE5 e0
+        e4 = J8_PE4 e0
+        e5 = J7_PE3 e1
+        e6 = J10_PE6 e0
+        e7 = J2_P2 e7
+        symbol = Juniper P Router
+        x = -2027.5
+        y = -2751.5
+        z = 1.0
+    [[JUNOS J10_PE6]]
+        ram = 512
+        e0 = J3_P3 e6
+        e1 = J4_P4 e3
+        e3 = J18_CE6 e0
+        e4 = J17_CE5 e1
+        symbol = edge_label_switch_router
+        x = -1878.5
+        y = -2631.5
+        z = 1.0
+    [[JUNOS J12_PE8]]
+        ram = 512
+        e0 = J4_P4 e4
+        e1 = J2_P2 e6
+        e3 = J20_CE8 e0
+        e4 = J19_CE7 e1
+        symbol = edge_label_switch_router
+        x = -1716.5
+        y = -2752.5
+        z = 1.0
+    [[JUNOS J18_CE6]]
+        e0 = J10_PE6 e3
+        e1 = J9_PE5 e4
+        symbol = router
+        x = -1758.5
+        y = -2549.5
+        z = 1.0
+    [[JUNOS J5_PE1]]
+        ram = 512
+        e0 = J1_P1 e3
+        e1 = J2_P2 e5
+        e3 = J13_CE1 e0
+        e4 = J14_CE2 e1
+        symbol = edge_label_switch_router
+        x = -2020.5
+        y = -2979.5
+        z = 1.0
+    [[JUNOS J4_P4]]
+        ram = 384
+        nics = 8
+        e0 = J3_P3 e0
+        e1 = J2_P2 e1
+        e3 = J10_PE6 e1
+        e4 = J12_PE8 e0
+        e5 = J9_PE5 e1
+        e6 = J11_PE7 e1
+        e7 = J1_P1 e7
+        symbol = Juniper P Router
+        x = -1883.5
+        y = -2756.5
+        z = 1.0
+    [[JUNOS J17_CE5]]
+        e0 = J9_PE5 e3
+        e1 = J10_PE6 e4
+        symbol = router
+        x = -2128.5
+        y = -2550.5
+        z = 1.0
+    [[JUNOS J20_CE8]]
+        e0 = J12_PE8 e3
+        e1 = J11_PE7 e4
+        symbol = router
+        x = -1563.5
+        y = -2704.5
+        z = 1.0
+    [[JUNOS J14_CE2]]
+        e0 = J6_PE2 e3
+        e1 = J5_PE1 e4
+        symbol = router
+        x = -1736.5
+        y = -3048.5
+        z = 1.0
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.0
+    m22 = 1.0
+    width = 5000
+    height = 6300
+    [[NOTE 1]]
+        text = "\nJUNIPER MPLS VPNv4 LAB NETWORKS\n\nVPN BLUE  	VRF 100:100	CE1 & CE5	OSPFv2\nVPN GREEN 	VRF 200:200	CE2 & CE6	eBGP\nVPN MAGENTA	VRF 300:300	CE3 & CE7	RIPv2\nVPN RED	VRF 400:400 	CE4 & CE8	Static\n\nJ1-J2	10.1.2.x/24\nJ1-J3	10.1.3.x/24\nJ1-J4	10.1.4.x/24\nJ1-J5	10.1.5.x/24\nJ1-J6	10.1.6.x/24\nJ1-J7	10.1.7.x/24\nJ1-J8	10.1.8.x/24\nJ2-J1	10.1.2.x/24\nJ2-J3	10.2.3.x/24\nJ2-J4	10.2.4.x/24\nJ2-J5	10.2.5.x/24\nJ2-J6 	10.2.6.x/24\nJ2-J11 	10.2.11.x/24\nJ2-J12 	10.2.12.x/24 \nJ3-J1 	10.1.3.x/24\nJ3-J2 	10.2.3.x/24\nJ3-J4 	10.3.4.x/24\nJ3-J7	10.3.7.x/24\nJ3-J8 	10.3.8.x/24\nJ3-J9 	 10.3.9.x/24\nJ3-J10 	10.3.10.x/24\nJ4-J1 	10.1.4.x/24\nJ4-J2 	10.2.4.x/24\nJ4-J3 	10.3.4.x/24\nJ4-J9 	10.4.9.x/24\nJ4-J10 	10.4.10.x/24\nJ4-J11 	10.4.11.x/24\nJ4-J12 	10.4.12.x/24\nJ5-J13 	10.5.13.x/24 \nJ5-J14 	10.5.14.x/24\nJ6-J13 	10.6.13.x/24\nJ6-J14 	10.6.14.x/24\nJ7-J15 	10.7.15.x/24\nJ7-J16 	10.7.16.x/24\nJ8-J15 	10.8.15.x/24\nJ8-J16 	10.8.16.x/24\nJ9-J17 	10.9.17.x/24\nJ9-J18 	10.9.18.x/24\nJ10-j17 	10.10.17.x/24\nJ10-J18 	10.10.18.x/24\nJ11-J19 	10.11.19.x/24\nJ11-J20	10.11.20.x/24\nJ12-J19	10.12.19.x/24\nJ12-J20 	10.12.20.x/24\n\nLoopback0 	10.0.0.x/32\nRouter ID	10.0.0.x	\n\nWhere, x = Router Number\nExample: J1\n\nJ = Stands for Juniper\n1 = Router Number 1"
+        x = -1448.0
+        y = -3114.0
+        font = "Helvetica,10,-1,5,50,0,0,0,0,0"
+    [[NOTE 2]]
+        text = "e4"
+        x = 71.8692512082
+        y = 12.5564143191
+        interface = J5_PE1 e4
+    [[NOTE 3]]
+        text = "e3"
+        x = 1.45990775929
+        y = -2.60127194775
+        interface = J5_PE1 e3
+    [[NOTE 4]]
+        text = "e1"
+        x = 61.2842712475
+        y = 50.2842712475
+        interface = J5_PE1 e1
+    [[NOTE 5]]
+        text = "e0"
+        x = 30.9588670234
+        y = 61.9478882567
+        interface = J5_PE1 e0
+    [[NOTE 6]]
+        text = "e4"
+        x = 70.724947175
+        y = 35.2976825291
+        interface = J9_PE5 e4
+    [[NOTE 7]]
+        text = "e3"
+        x = 5.21621945202
+        y = 50.7760584247
+        interface = J9_PE5 e3
+    [[NOTE 8]]
+        text = "e0"
+        x = 36.3957685082
+        y = -17.8555988067
+        interface = J9_PE5 e0
+    [[NOTE 9]]
+        text = "e1"
+        x = 64.8624803608
+        y = -2.18227336828
+        interface = J9_PE5 e1
+    [[NOTE 10]]
+        text = "e1"
+        x = -5.86925120822
+        y = 31.4435856809
+        interface = J14_CE2 e1
+    [[NOTE 11]]
+        text = "e0"
+        x = -3.26660448118
+        y = 38.8740451406
+        interface = J14_CE2 e0
+    [[NOTE 12]]
+        text = "e1"
+        x = 71.133689014
+        y = 34.0756681878
+        interface = J13_CE1 e1
+    [[NOTE 13]]
+        text = "e0"
+        x = 64.5400922407
+        y = 46.6012719478
+        interface = J13_CE1 e0
+    [[NOTE 14]]
+        text = "e4"
+        x = 10.904785424
+        y = -11.3436874511
+        interface = J8_PE4 e4
+    [[NOTE 15]]
+        text = "e0"
+        x = 72.9937584066
+        y = 22.7066035054
+        interface = J8_PE4 e0
+    [[NOTE 16]]
+        text = "e3"
+        x = -1.63747690512
+        y = 42.0061289021
+        interface = J8_PE4 e3
+    [[NOTE 17]]
+        text = "e1"
+        x = 66.3541084684
+        y = -0.079480253753
+        interface = J8_PE4 e1
+    [[NOTE 18]]
+        text = "e1"
+        x = -4.72494717498
+        y = 8.70231747089
+        interface = J18_CE6 e1
+    [[NOTE 19]]
+        text = "e0"
+        x = 2.86035230975
+        y = -4.29832004345
+        interface = J18_CE6 e0
+    [[NOTE 20]]
+        text = "e5"
+        x = 4.21572875254
+        y = -0.784271247462
+        interface = J2_P2 e5
+    [[NOTE 21]]
+        text = "e4"
+        x = 71.9332610101
+        y = 20.7904600669
+        interface = J2_P2 e4
+    [[NOTE 22]]
+        text = "e7"
+        x = -0.495302408578
+        y = 50.112165287
+        interface = J2_P2 e7
+    [[NOTE 23]]
+        text = "e6"
+        x = 67.6516377936
+        y = 46.5882780897
+        interface = J2_P2 e6
+    [[NOTE 24]]
+        text = "e0"
+        x = -7.49778411766
+        y = 27.9210293065
+        interface = J2_P2 e0
+    [[NOTE 25]]
+        text = "e3"
+        x = 33.8083904049
+        y = -12.4785957051
+        interface = J2_P2 e3
+    [[NOTE 26]]
+        text = "e4"
+        x = 60.0289851407
+        y = 51.486165608
+        interface = J11_PE7 e4
+    [[NOTE 27]]
+        text = "e0"
+        x = -6.43326101005
+        y = 28.7095399331
+        interface = J11_PE7 e0
+    [[NOTE 28]]
+        text = "e1"
+        x = 0.688362085632
+        y = 45.5787628024
+        interface = J11_PE7 e1
+    [[NOTE 29]]
+        text = "e3"
+        x = 71.2765330686
+        y = 10.3850520343
+        interface = J11_PE7 e3
+    [[NOTE 30]]
+        text = "e1"
+        x = 55.095214576
+        y = 55.3436874511
+        interface = J15_CE3 e1
+    [[NOTE 31]]
+        text = "e0"
+        x = 68.77708764
+        y = 39.88854382
+        interface = J15_CE3 e0
+    [[NOTE 32]]
+        text = "e1"
+        x = 5.97101485931
+        y = -7.48616560803
+        interface = J20_CE8 e1
+    [[NOTE 33]]
+        text = "e0"
+        x = -5.16585950351
+        y = 10.0263970185
+        interface = J20_CE8 e0
+    [[NOTE 34]]
+        text = "e1"
+        x = 70.8049884873
+        y = 8.93160891796
+        interface = J17_CE5 e1
+    [[NOTE 35]]
+        text = "e0"
+        x = 60.783780548
+        y = -6.7760584247
+        interface = J17_CE5 e0
+    [[NOTE 36]]
+        text = "e7"
+        x = 65.4953024086
+        y = 4.887834713
+        interface = J3_P3 e7
+    [[NOTE 37]]
+        text = "e4"
+        x = -7.49375840661
+        y = 26.7933964946
+        interface = J3_P3 e4
+    [[NOTE 38]]
+        text = "e3"
+        x = 29.1042314918
+        y = 67.3555988067
+        interface = J3_P3 e3
+    [[NOTE 39]]
+        text = "e5"
+        x = -6.33592018135
+        y = -3.99240072887
+        interface = J3_P3 e5
+    [[NOTE 40]]
+        text = "e0"
+        x = 72.4759091271
+        y = 26.1119475998
+        interface = J3_P3 e0
+    [[NOTE 41]]
+        text = "e6"
+        x = 72.1952708447
+        y = 57.9020636235
+        interface = J3_P3 e6
+    [[NOTE 42]]
+        text = "e4"
+        x = 10.4665270143
+        y = 55.0490937123
+        interface = J7_PE3 e4
+    [[NOTE 43]]
+        text = "e3"
+        x = -2.77708764
+        y = 4.11145618
+        interface = J7_PE3 e3
+    [[NOTE 44]]
+        text = "e1"
+        x = 64.0687361451
+        y = 47.1939205831
+        interface = J7_PE3 e1
+    [[NOTE 45]]
+        text = "e0"
+        x = 72.7657785228
+        y = 26.3223672307
+        interface = J7_PE3 e0
+    [[NOTE 46]]
+        text = "e4"
+        x = 59.3920469286
+        y = -8.05760900202
+        interface = J12_PE8 e4
+    [[NOTE 47]]
+        text = "e3"
+        x = 71.1658595035
+        y = 33.9736029815
+        interface = J12_PE8 e3
+    [[NOTE 48]]
+        text = "e1"
+        x = -2.15163779358
+        y = 2.91172191031
+        interface = J12_PE8 e1
+    [[NOTE 49]]
+        text = "e0"
+        x = -6.99839617577
+        y = 22.3581945926
+        interface = J12_PE8 e0
+    [[NOTE 50]]
+        text = "e1"
+        x = 55.5334729857
+        y = -11.0490937123
+        interface = J16_CE4 e1
+    [[NOTE 51]]
+        text = "e0"
+        x = 67.6374769051
+        y = 1.9938710979
+        interface = J16_CE4 e0
+    [[NOTE 52]]
+        text = "e6"
+        x = 72.889547393
+        y = -1.97345350297
+        interface = J4_P4 e6
+    [[NOTE 53]]
+        text = "e5"
+        x = -7.32810045098
+        y = 57.7278417104
+        interface = J4_P4 e5
+    [[NOTE 54]]
+        text = "e4"
+        x = 72.4983961758
+        y = 27.1418054074
+        interface = J4_P4 e4
+    [[NOTE 55]]
+        text = "e0"
+        x = -7.47590912705
+        y = 28.8880524002
+        interface = J4_P4 e0
+    [[NOTE 56]]
+        text = "e7"
+        x = -1.2270902268
+        y = 5.99457313065
+        interface = J4_P4 e7
+    [[NOTE 57]]
+        text = "e3"
+        x = 34.3390573675
+        y = 67.4577009849
+        interface = J4_P4 e3
+    [[NOTE 58]]
+        text = "e7"
+        x = 66.2270902268
+        y = 49.0054268694
+        interface = J1_P1 e7
+    [[NOTE 59]]
+        text = "e6"
+        x = -0.854108468435
+        y = 49.5794802538
+        interface = J1_P1 e6
+    [[NOTE 60]]
+        text = "e4"
+        x = -7.26577852278
+        y = 23.1776327693
+        interface = J1_P1 e4
+    [[NOTE 61]]
+        text = "e3"
+        x = 34.5411329766
+        y = -12.4478882567
+        interface = J1_P1 e3
+    [[NOTE 62]]
+        text = "e0"
+        x = 72.4977841177
+        y = 27.0789706935
+        interface = J1_P1 e0
+    [[NOTE 63]]
+        text = "e5"
+        x = 68.8300894166
+        y = -6.85294169326
+        interface = J1_P1 e5
+    [[NOTE 64]]
+        text = "e4"
+        x = -4.80498848733
+        y = 35.068391082
+        interface = J10_PE6 e4
+    [[NOTE 65]]
+        text = "e3"
+        x = 63.1396476902
+        y = 48.2983200435
+        interface = J10_PE6 e3
+    [[NOTE 66]]
+        text = "e1"
+        x = 31.1609426325
+        y = -17.9577009849
+        interface = J10_PE6 e1
+    [[NOTE 67]]
+        text = "e0"
+        x = 1.24378332426
+        y = -2.32165089881
+        interface = J10_PE6 e0
+    [[NOTE 68]]
+        text = "e4"
+        x = -5.13368901403
+        y = 9.92433181222
+        interface = J6_PE2 e4
+    [[NOTE 69]]
+        text = "e3"
+        x = 69.2666044812
+        y = 5.12595485945
+        interface = J6_PE2 e3
+    [[NOTE 70]]
+        text = "e1"
+        x = 3.93592846671
+        y = 49.4823533546
+        interface = J6_PE2 e1
+    [[NOTE 71]]
+        text = "e0"
+        x = 31.6916095951
+        y = 61.9785957051
+        interface = J6_PE2 e0
+    [[NOTE 72]]
+        text = "e1"
+        x = 6.6079530714
+        y = 52.057609002
+        interface = J19_CE7 e1
+    [[NOTE 73]]
+        text = "e0"
+        x = -5.27653306864
+        y = 33.6149479657
+        interface = J19_CE7 e0
+    [[SHAPE 1]]
+        type = ellipse
+        x = -2159.0
+        y = -2598.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#43d2f7"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 2]]
+        type = ellipse
+        x = -2315.0
+        y = -2746.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#f76171"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 3]]
+        type = ellipse
+        x = -2153.0
+        y = -3103.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#43d2f7"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 4]]
+        type = ellipse
+        x = -2316.0
+        y = -2947.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#ef71f7"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 5]]
+        type = ellipse
+        x = -1768.0
+        y = -3102.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#30f744"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 6]]
+        type = ellipse
+        x = -1614.0
+        y = -2954.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#ef71f7"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 7]]
+        type = ellipse
+        x = -1600.0
+        y = -2749.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#f76171"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 8]]
+        type = ellipse
+        x = -1802.0
+        y = -2603.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#30f744"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 9]]
+        type = rectangle
+        x = -2056.0
+        y = -2882.0
+        width = 276.0
+        height = 192.0
+        fill_color = "#e7cc32"
+        z = -1.0

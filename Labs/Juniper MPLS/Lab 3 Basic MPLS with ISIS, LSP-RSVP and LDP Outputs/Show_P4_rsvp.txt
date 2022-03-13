@@ -1,0 +1,163 @@
+root@J4> show mpls interface 
+Interface        State       Administrative groups (x: extended)
+em0.0            Up         <none>
+em1.0            Up         <none>
+em3.0            Up         <none>
+em4.0            Up         <none>
+em5.0            Up         <none>
+em6.0            Up         <none>
+em7.0            Up         <none>
+
+root@J4> show ldp neighbor 
+Address            Interface          Label space ID         Hold time
+10.3.4.3           em0.0              10.0.0.3:0               11
+10.2.4.2           em1.0              10.0.0.2:0               13
+10.1.4.1           em7.0              10.0.0.1:0               13
+
+root@J4> show rsvp 
+                   ^
+syntax error, expecting <command>.
+
+root@J4> show rsvp neighbor 
+RSVP neighbor: 0 learned
+
+root@J4> 
+
+root@J4> show rsvp neighbor 
+RSVP neighbor: 3 learned
+Address            Idle Up/Dn LastChange HelloInt HelloTx/Rx MsgRcvd
+10.4.11.11            5  1/0        9:46        9    67/67   76
+10.4.9.9              0  1/0       12:03        9    81/81   120
+10.4.12.12            0  1/0       11:55        9    83/82   77
+
+root@J4> show rsvp interface 
+RSVP interface: 7 active
+                  Active Subscr- Static      Available   Reserved    Highwater
+Interface   State resv   iption  BW          BW          BW          mark
+em0.0       Up         0   100%  1000Mbps    1000Mbps    0bps        0bps       
+em1.0       Up         0   100%  1000Mbps    1000Mbps    0bps        0bps       
+em3.0       Up         0   100%  1000Mbps    1000Mbps    0bps        0bps       
+em4.0       Up         2   100%  1000Mbps    1000Mbps    0bps        0bps       
+em5.0       Up         4   100%  1000Mbps    1000Mbps    0bps        0bps       
+em6.0       Up         1   100%  1000Mbps    1000Mbps    0bps        0bps       
+em7.0       Up         0   100%  1000Mbps    1000Mbps    0bps        0bps       
+
+root@J4> show rsvp session 
+Ingress RSVP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+Egress RSVP: 0 sessions
+Total 0 displayed, Up 0, Down 0
+
+Transit RSVP: 9 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.5        10.0.0.9        Up       0  1 FF  299968   299888 J9-TO-J5
+10.0.0.7        10.0.0.11       Up       0  1 FF  300000   299872 J11-TO-J7
+10.0.0.7        10.0.0.12       Up       0  1 FF  300048   299888 J12-TO-J7
+10.0.0.8        10.0.0.11       Dn       0  0  -       -        - J11-TO-J8
+10.0.0.9        10.0.0.11       Up       0  1 FF  299984        3 J11-TO-J9
+10.0.0.9        10.0.0.12       Up       0  1 FF  300032        3 J12-TO-J9
+10.0.0.10       10.0.0.11       Dn       0  0  -       -        - J11-TO-J10
+10.0.0.11       10.0.0.9        Up       0  1 FF  300016        3 J9-TO-J11
+10.0.0.12       10.0.0.9        Up       0  1 FF  299936        3 J9-TO-J12
+Total 9 displayed, Up 7, Down 2
+
+root@J4> show route table mpls 
+
+mpls.0: 32 destinations, 32 routes (32 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 00:42:13, metric 1
+                      Receive
+1                  *[MPLS/0] 00:42:13, metric 1
+                      Receive
+2                  *[MPLS/0] 00:42:13, metric 1
+                      Receive
+13                 *[MPLS/0] 00:42:13, metric 1
+                      Receive
+299776             *[LDP/9] 00:41:50, metric 1
+                    > to 10.1.4.1 via em7.0, Pop      
+299776(S=0)        *[LDP/9] 00:41:50, metric 1
+                    > to 10.1.4.1 via em7.0, Pop      
+299792             *[LDP/9] 00:41:28, metric 1
+                    > to 10.3.4.3 via em0.0, Pop      
+299792(S=0)        *[LDP/9] 00:41:28, metric 1
+                    > to 10.3.4.3 via em0.0, Pop      
+299808             *[LDP/9] 00:40:54, metric 1
+                    > to 10.2.4.2 via em1.0, Pop      
+299808(S=0)        *[LDP/9] 00:40:54, metric 1
+                    > to 10.2.4.2 via em1.0, Pop      
+299824             *[LDP/9] 00:12:26, metric 1
+                      to 10.4.12.12 via em4.0, Swap 299776
+                    > to 10.4.11.11 via em6.0, Swap 299776
+299840             *[LDP/9] 00:12:54, metric 1
+                      to 10.4.10.10 via em3.0, Swap 299792
+                    > to 10.4.9.9 via em5.0, Swap 299792
+299856             *[LDP/9] 00:12:54, metric 1
+                      to 10.4.10.10 via em3.0, Swap 299808
+                    > to 10.4.9.9 via em5.0, Swap 299808
+299872             *[LDP/9] 00:13:09, metric 1
+                    > to 10.4.9.9 via em5.0, Pop      
+299872(S=0)        *[LDP/9] 00:13:09, metric 1
+                    > to 10.4.9.9 via em5.0, Pop      
+299888             *[LDP/9] 00:13:05, metric 1
+                    > to 10.4.10.10 via em3.0, Pop      
+299888(S=0)        *[LDP/9] 00:13:05, metric 1
+                    > to 10.4.10.10 via em3.0, Pop      
+299904             *[LDP/9] 00:12:53, metric 1
+                    > to 10.4.12.12 via em4.0, Pop      
+299904(S=0)        *[LDP/9] 00:12:53, metric 1
+                    > to 10.4.12.12 via em4.0, Pop      
+299936             *[RSVP/7/1] 00:12:38, metric 1
+                    > to 10.4.12.12 via em4.0, label-switched-path J9-TO-J12
+299936(S=0)        *[RSVP/7/1] 00:12:38, metric 1
+                    > to 10.4.12.12 via em4.0, label-switched-path J9-TO-J12
+299952             *[LDP/9] 00:12:26, metric 1
+                    > to 10.4.11.11 via em6.0, Pop      
+299952(S=0)        *[LDP/9] 00:12:26, metric 1
+                    > to 10.4.11.11 via em6.0, Pop      
+299968             *[RSVP/7/1] 00:11:37, metric 1
+                    > to 10.4.12.12 via em4.0, label-switched-path J9-TO-J5
+299984             *[RSVP/7/1] 00:10:29, metric 1
+                    > to 10.4.9.9 via em5.0, label-switched-path J11-TO-J9
+299984(S=0)        *[RSVP/7/1] 00:10:29, metric 1
+                    > to 10.4.9.9 via em5.0, label-switched-path J11-TO-J9
+300000             *[RSVP/7/1] 00:10:29, metric 1
+                    > to 10.4.9.9 via em5.0, label-switched-path J11-TO-J7
+300016             *[RSVP/7/1] 00:10:08, metric 1
+                    > to 10.4.11.11 via em6.0, label-switched-path J9-TO-J11
+300016(S=0)        *[RSVP/7/1] 00:10:08, metric 1
+                    > to 10.4.11.11 via em6.0, label-switched-path J9-TO-J11
+300032             *[RSVP/7/1] 00:08:06, metric 1
+                    > to 10.4.9.9 via em5.0, label-switched-path J12-TO-J9
+300032(S=0)        *[RSVP/7/1] 00:08:06, metric 1
+                    > to 10.4.9.9 via em5.0, label-switched-path J12-TO-J9
+300048             *[RSVP/7/1] 00:07:36, metric 1
+                    > to 10.4.9.9 via em5.0, label-switched-path J12-TO-J7
+
+root@J4> 
+
+root@J4> show rsvp neighbor detail 
+RSVP neighbor: 3 learned
+Address: 10.4.11.11 via: em6.0 status: Up
+  Last changed time: 10:10, Idle: 5 sec, Up cnt: 1, Down cnt: 0
+  Message received: 80
+  Hello: sent 70, received: 70, interval: 9 sec
+  Remote instance: 0x776af85f, Local instance: 0x9f147d42
+  Refresh reduction:  not operational
+
+Address: 10.4.9.9 via: em5.0 status: Up
+  Last changed time: 12:27, Idle: 0 sec, Up cnt: 1, Down cnt: 0
+  Message received: 123
+  Hello: sent 83, received: 83, interval: 9 sec
+  Remote instance: 0xa53a071e, Local instance: 0xe904db35
+  Refresh reduction:  not operational
+
+Address: 10.4.12.12 via: em4.0 status: Up
+  Last changed time: 12:19, Idle: 5 sec, Up cnt: 1, Down cnt: 0
+  Message received: 80
+  Hello: sent 85, received: 84, interval: 9 sec
+  Remote instance: 0xa23de521, Local instance: 0xaec74d50
+  Refresh reduction:  not operational
+
+root@J4>

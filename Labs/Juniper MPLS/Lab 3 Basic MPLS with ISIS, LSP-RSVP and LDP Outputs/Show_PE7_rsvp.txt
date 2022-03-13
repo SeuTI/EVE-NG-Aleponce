@@ -1,0 +1,86 @@
+root@J11> show rsvp neighbor 
+RSVP neighbor: 2 learned
+Address            Idle Up/Dn LastChange HelloInt HelloTx/Rx MsgRcvd
+10.4.11.4             5  1/0       19:13        9   135/135  127
+10.2.11.2             0  1/0       19:13        9   135/135  233
+
+root@J11> show rsvp interface 
+RSVP interface: 3 active
+                  Active Subscr- Static      Available   Reserved    Highwater
+Interface   State resv   iption  BW          BW          BW          mark
+em0.0       Up         3   100%  1000Mbps    1000Mbps    0bps        0bps       
+em1.0       Up         4   100%  1000Mbps    1000Mbps    0bps        0bps       
+em3.0       Up         0   100%  1000Mbps    1000Mbps    0bps        0bps       
+
+root@J11> show rsvp session 
+Ingress RSVP: 7 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.5        10.0.0.11       Up       0  1 FF       -   300192 J11-TO-J5
+10.0.0.6        10.0.0.11       Up       0  1 FF       -   300176 J11-TO-J6
+10.0.0.7        10.0.0.11       Up       0  1 FF       -   300000 J11-TO-J7
+10.0.0.8        10.0.0.11       Up       0  1 FF       -   300144 J11-TO-J8
+10.0.0.9        10.0.0.11       Up       0  1 FF       -   299984 J11-TO-J9
+10.0.0.10       10.0.0.11       Up       0  1 FF       -   300096 J11-TO-J10
+10.0.0.12       10.0.0.11       Up       0  1 FF       -   300160 J11-TO-J12
+Total 7 displayed, Up 7, Down 0
+
+Egress RSVP: 7 sessions
+To              From            State   Rt Style Labelin Labelout LSPname 
+10.0.0.11       10.0.0.5        Up       0  1 FF       3        - J5-TO-J11
+10.0.0.11       10.0.0.10       Up       0  1 FF       3        - J10-TO-J11
+10.0.0.11       10.0.0.9        Up       0  1 FF       3        - J9-TO-J11
+10.0.0.11       10.0.0.7        Up       0  1 FF       3        - J7-TO-J11
+10.0.0.11       10.0.0.8        Up       0  1 FF       3        - J8-TO-J11
+10.0.0.11       10.0.0.12       Up       0  1 FF       3        - J12-TO-J10
+10.0.0.11       10.0.0.6        Up       0  1 FF       3        - J6-TO-J11
+Total 7 displayed, Up 7, Down 0
+
+Transit RSVP: 0 sessions
+Total 0 displayed, Up 0, Down 0         
+
+root@J11> show route table mpls 
+
+mpls.0: 10 destinations, 10 routes (10 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0                  *[MPLS/0] 00:22:29, metric 1
+                      Receive
+1                  *[MPLS/0] 00:22:29, metric 1
+                      Receive
+2                  *[MPLS/0] 00:22:29, metric 1
+                      Receive
+13                 *[MPLS/0] 00:22:29, metric 1
+                      Receive
+299776             *[LDP/9] 00:21:52, metric 1
+                    > to 10.2.11.2 via em0.0, Swap 299824
+299792             *[LDP/9] 00:21:44, metric 1
+                      to 10.2.11.2 via em0.0, Swap 299840
+                    > to 10.4.11.4 via em1.0, Swap 299840
+299808             *[LDP/9] 00:21:44, metric 1
+                    > to 10.2.11.2 via em0.0, Swap 299856
+                      to 10.4.11.4 via em1.0, Swap 299856
+299824             *[LDP/9] 00:21:44, metric 1
+                    > to 10.4.11.4 via em1.0, Swap 299872
+299840             *[LDP/9] 00:21:44, metric 1
+                    > to 10.4.11.4 via em1.0, Swap 299888
+299856             *[LDP/9] 00:21:44, metric 1
+                    > to 10.2.11.2 via em0.0, Swap 299984
+                      to 10.4.11.4 via em1.0, Swap 299904
+
+root@J11> show rsvp neighbor detail 
+RSVP neighbor: 2 learned
+Address: 10.4.11.4 via: em1.0 status: Up
+  Last changed time: 19:34, Idle: 5 sec, Up cnt: 1, Down cnt: 0
+  Message received: 132
+  Hello: sent 138, received: 138, interval: 9 sec
+  Remote instance: 0x9f147d42, Local instance: 0x776af85f
+  Refresh reduction:  not operational
+
+Address: 10.2.11.2 via: em0.0 status: Up
+  Last changed time: 19:34, Idle: 5 sec, Up cnt: 1, Down cnt: 0
+  Message received: 236
+  Hello: sent 138, received: 138, interval: 9 sec
+  Remote instance: 0x603bd27f, Local instance: 0x19e7e57c
+  Refresh reduction:  not operational
+
+root@J11> 

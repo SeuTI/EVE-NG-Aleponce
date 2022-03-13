@@ -1,0 +1,266 @@
+set version 17.4R1.16
+set groups MPLS interfaces <*> mtu 1602
+set groups MPLS interfaces <*> unit 0 family iso
+set groups MPLS interfaces <*> unit 0 family mpls
+set groups ISIS protocols isis reference-bandwidth 1g
+set groups ISIS protocols isis lsp-lifetime 65535
+set groups ISIS protocols isis level 2 authentication-key-chain KEY-ISIS-HMAC
+set groups ISIS protocols isis level 2 wide-metrics-only
+set groups ISIS protocols isis level 1 disable
+set groups ISIS protocols isis interface lo0.0 passive
+set groups ISIS protocols isis interface <*> point-to-point
+set groups ISIS protocols isis interface <*> bfd-liveness-detection minimum-interval 300
+set groups ISIS protocols isis interface <*> bfd-liveness-detection minimum-receive-interval 300
+set groups ISIS protocols isis interface <*> bfd-liveness-detection multiplier 3
+set groups ISIS protocols isis interface <*> bfd-liveness-detection transmit-interval minimum-interval 300
+set groups ISIS protocols isis interface <*> bfd-liveness-detection authentication key-chain KEY-BFD-HMAC
+set groups ISIS protocols isis interface <*> bfd-liveness-detection authentication algorithm meticulous-keyed-sha-1
+set groups ISIS protocols isis interface <*> level 2 metric 16777210
+set groups RSVP protocols rsvp interface <*> authentication-key "$9$Hq5QFnCtpBApNb2gDj0BIhlK"
+set groups RSVP protocols rsvp interface <*> aggregate
+set groups RSVP protocols rsvp interface <*> subscription 75
+set groups RSVP protocols rsvp interface <*> update-threshold 5
+set groups RSVP protocols rsvp interface <*> link-protection admin-group exclude RR
+set groups RRBGP protocols bgp group <*> mtu-discovery
+set groups RRBGP protocols bgp group <*> family inet unicast
+set groups RRBGP protocols bgp group <*> family inet flow
+set groups RRBGP protocols bgp group <*> family inet-vpn unicast
+set groups RRBGP protocols bgp group <*> family inet-vpn flow
+set groups RRBGP protocols bgp group <*> family inet6-vpn unicast
+set groups RRBGP protocols bgp group <*> family l2vpn signaling
+set groups RRBGP protocols bgp group <*> family inet-mvpn signaling
+set groups RRBGP protocols bgp group <*> family inet6-mvpn signaling
+set groups LSP protocols mpls smart-optimize-timer 900
+set groups LSP protocols mpls no-propagate-ttl
+set groups LSP protocols mpls optimize-timer 14400
+set groups LSP protocols mpls label-switched-path <TMP-L3*> priority 2 2
+set groups LSP protocols mpls label-switched-path <TMP-L3*> admin-group exclude RR
+set groups LSP protocols mpls label-switched-path <TMP-L3*> admin-group exclude Peering
+set groups LSP protocols mpls label-switched-path <TMP-L3*> admin-group exclude Red
+set groups LSP protocols mpls label-switched-path <*_RT*> priority 1 1
+set groups LSP protocols mpls label-switched-path <*_RT*> node-link-protection
+set groups LSP protocols mpls label-switched-path <*_RT*> adaptive
+set groups LSP protocols mpls label-switched-path <*_RT*> auto-bandwidth adjust-interval 900
+set groups LSP protocols mpls label-switched-path <*_RT*> auto-bandwidth adjust-threshold 20
+set groups LSP protocols mpls label-switched-path <*_RT*> auto-bandwidth adjust-threshold-activate-bandwidth 16k
+set groups LSP protocols mpls label-switched-path <*_RT*> auto-bandwidth minimum-bandwidth 0
+set groups LSP protocols mpls label-switched-path <*_RT*> auto-bandwidth maximum-bandwidth 50m
+set groups LSP protocols mpls label-switched-path <*_RT*> auto-bandwidth adjust-threshold-overflow-limit 2
+set groups LSP protocols mpls label-switched-path <*_RT*> auto-bandwidth adjust-threshold-underflow-limit 2
+set groups LSP protocols mpls label-switched-path <*_D1*> priority 3 3
+set groups LSP protocols mpls label-switched-path <*_D1*> node-link-protection
+set groups LSP protocols mpls label-switched-path <*_D1*> adaptive
+set groups LSP protocols mpls label-switched-path <*_D1*> auto-bandwidth adjust-interval 3600
+set groups LSP protocols mpls label-switched-path <*_D1*> auto-bandwidth adjust-threshold 10
+set groups LSP protocols mpls label-switched-path <*_D1*> auto-bandwidth adjust-threshold-activate-bandwidth 64k
+set groups LSP protocols mpls label-switched-path <*_D1*> auto-bandwidth minimum-bandwidth 0
+set groups LSP protocols mpls label-switched-path <*_D1*> auto-bandwidth maximum-bandwidth 3g
+set groups LSP protocols mpls label-switched-path <*_D1*> auto-bandwidth adjust-threshold-overflow-limit 3
+set groups LSP protocols mpls label-switched-path <*_D1*> auto-bandwidth adjust-threshold-underflow-limit 3
+set groups LSP protocols mpls label-switched-path <*_D2*> priority 5 5
+set groups LSP protocols mpls label-switched-path <*_D2*> node-link-protection
+set groups LSP protocols mpls label-switched-path <*_D2*> adaptive
+set groups LSP protocols mpls label-switched-path <*_D2*> auto-bandwidth adjust-interval 3600
+set groups LSP protocols mpls label-switched-path <*_D2*> auto-bandwidth adjust-threshold 10
+set groups LSP protocols mpls label-switched-path <*_D2*> auto-bandwidth adjust-threshold-activate-bandwidth 64k
+set groups LSP protocols mpls label-switched-path <*_D2*> auto-bandwidth minimum-bandwidth 0
+set groups LSP protocols mpls label-switched-path <*_D2*> auto-bandwidth maximum-bandwidth 6g
+set groups LSP protocols mpls label-switched-path <*_D2*> auto-bandwidth adjust-threshold-overflow-limit 3
+set groups LSP protocols mpls label-switched-path <*_D2*> auto-bandwidth adjust-threshold-underflow-limit 3
+set groups LSP protocols mpls label-switched-path <*_D2*> auto-bandwidth resignal-minimum-bandwidth
+set groups LSP protocols mpls label-switched-path <EU-*_to_EU-*> admin-group exclude Transoceanic
+set groups LSP protocols mpls label-switched-path <EU-*_to_EU-*> admin-group exclude RR
+set groups LSP protocols mpls label-switched-path <EU-*_to_EU-*> admin-group exclude Peering
+set groups LSP protocols mpls label-switched-path <EU-*_to_EU-*> admin-group exclude Red
+set groups LSP protocols mpls label-switched-path <NA-*_to_NA-*> admin-group exclude Transoceanic
+set groups LSP protocols mpls label-switched-path <NA-*_to_NA-*> admin-group exclude RR
+set groups LSP protocols mpls label-switched-path <NA-*_to_NA-*> admin-group exclude Peering
+set groups LSP protocols mpls label-switched-path <NA-*_to_NA-*> admin-group exclude Red
+set groups LSP protocols mpls label-switched-path <AS-*_to_AS-*> admin-group exclude RR
+set groups LSP protocols mpls label-switched-path <AS-*_to_AS-*> admin-group exclude Peering
+set groups LSP protocols mpls label-switched-path <AS-*_to_AS-*> admin-group exclude Red
+set groups LSP protocols mpls label-switched-path <AS-AU-*_to_AS-AU-*> admin-group exclude Transoceanic
+set groups LSP protocols mpls label-switched-path "<AS-[!A][!U]-*_to_AS-[!A][!U]-*>" admin-group exclude Transoceanic
+set groups LSP protocols mpls label-switched-path <NA-*_to_EU-*> admin-group exclude RR
+set groups LSP protocols mpls label-switched-path <NA-*_to_EU-*> admin-group exclude Peering
+set groups LSP protocols mpls label-switched-path <NA-*_to_EU-*> admin-group exclude Red
+set groups LSP protocols mpls label-switched-path <NA-*_to_AS-*> admin-group exclude RR
+set groups LSP protocols mpls label-switched-path <NA-*_to_AS-*> admin-group exclude Peering
+set groups LSP protocols mpls label-switched-path <NA-*_to_AS-*> admin-group exclude Red
+set groups LSP protocols mpls label-switched-path <EU-*_to_NA-*> admin-group exclude RR
+set groups LSP protocols mpls label-switched-path <EU-*_to_NA-*> admin-group exclude Peering
+set groups LSP protocols mpls label-switched-path <EU-*_to_NA-*> admin-group exclude Red
+set groups LSP protocols mpls label-switched-path <EU-*_to_AS-*> admin-group exclude RR
+set groups LSP protocols mpls label-switched-path <EU-*_to_AS-*> admin-group exclude Peering
+set groups LSP protocols mpls label-switched-path <EU-*_to_AS-*> admin-group exclude Red
+set groups LSP protocols mpls label-switched-path <AS-*_to_NA-*> admin-group exclude RR
+set groups LSP protocols mpls label-switched-path <AS-*_to_NA-*> admin-group exclude Peering
+set groups LSP protocols mpls label-switched-path <AS-*_to_NA-*> admin-group exclude Red
+set groups LSP protocols mpls label-switched-path <AS-*_to_EU-*> admin-group exclude RR
+set groups LSP protocols mpls label-switched-path <AS-*_to_EU-*> admin-group exclude Peering
+set groups LSP protocols mpls label-switched-path <AS-*_to_EU-*> admin-group exclude Red
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_AS-*> label-switched-path-template CT1-LSP-REGION
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_AS-*> splitting-merging maximum-member-lsps 6
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_AS-*> splitting-merging minimum-member-lsps 1
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_AS-*> splitting-merging splitting-bandwidth 512m
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_AS-*> splitting-merging merging-bandwidth 384m
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_AS-*> splitting-merging normalization normalize-interval 400
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_AS-*> splitting-merging normalization failover-normalization
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_AS-*> splitting-merging sampling cut-off-threshold 1
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_AS-*> splitting-merging sampling use-percentile 90
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_NA-*> label-switched-path-template CT1-LSP-REGION
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_NA-*> splitting-merging maximum-member-lsps 6
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_NA-*> splitting-merging minimum-member-lsps 1
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_NA-*> splitting-merging splitting-bandwidth 512m
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_NA-*> splitting-merging merging-bandwidth 384m
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_NA-*> splitting-merging normalization normalize-interval 400
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_NA-*> splitting-merging normalization failover-normalization
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_NA-*> splitting-merging sampling cut-off-threshold 1
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_NA-*> splitting-merging sampling use-percentile 90
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_EU-*> label-switched-path-template CT1-LSP-REGION
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_EU-*> splitting-merging maximum-member-lsps 6
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_EU-*> splitting-merging minimum-member-lsps 1
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_EU-*> splitting-merging splitting-bandwidth 512m
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_NA-*> splitting-merging splitting-bandwidth 256m
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_NA-*> splitting-merging merging-bandwidth 192m
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_NA-*> splitting-merging normalization normalize-interval 400
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_NA-*> splitting-merging normalization failover-normalization
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_NA-*> splitting-merging sampling cut-off-threshold 1
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_NA-*> splitting-merging sampling use-percentile 90
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_AS-*> label-switched-path-template CT1-LSP-GLOBAL
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_AS-*> splitting-merging maximum-member-lsps 6
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_AS-*> splitting-merging minimum-member-lsps 1
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_AS-*> splitting-merging splitting-bandwidth 256m
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_AS-*> splitting-merging merging-bandwidth 192m
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_AS-*> splitting-merging normalization normalize-interval 400
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_AS-*> splitting-merging normalization failover-normalization
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_AS-*> splitting-merging sampling cut-off-threshold 1
+set groups LSP protocols mpls container-label-switched-path <EU-*_to_AS-*> splitting-merging sampling use-percentile 90
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_EU-*> label-switched-path-template CT1-LSP-GLOBAL
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_EU-*> splitting-merging maximum-member-lsps 6
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_EU-*> splitting-merging minimum-member-lsps 1
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_EU-*> splitting-merging splitting-bandwidth 256m
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_EU-*> splitting-merging merging-bandwidth 192m
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_EU-*> splitting-merging normalization normalize-interval 400
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_EU-*> splitting-merging normalization failover-normalization
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_EU-*> splitting-merging sampling cut-off-threshold 1
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_EU-*> splitting-merging sampling use-percentile 90
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_AS-*> label-switched-path-template CT1-LSP-GLOBAL
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_AS-*> splitting-merging maximum-member-lsps 6
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_AS-*> splitting-merging minimum-member-lsps 1
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_AS-*> splitting-merging splitting-bandwidth 256m
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_AS-*> splitting-merging merging-bandwidth 192m
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_AS-*> splitting-merging normalization normalize-interval 400
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_AS-*> splitting-merging normalization failover-normalization
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_AS-*> splitting-merging sampling cut-off-threshold 1
+set groups LSP protocols mpls container-label-switched-path <NA-*_to_AS-*> splitting-merging sampling use-percentile 90
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_NA-*> label-switched-path-template CT1-LSP-GLOBAL
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_NA-*> splitting-merging maximum-member-lsps 6
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_NA-*> splitting-merging minimum-member-lsps 1
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_EU-*> splitting-merging splitting-bandwidth 256m
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_EU-*> splitting-merging merging-bandwidth 192m
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_EU-*> splitting-merging normalization normalize-interval 400
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_EU-*> splitting-merging normalization failover-normalization
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_EU-*> splitting-merging sampling cut-off-threshold 1
+set groups LSP protocols mpls container-label-switched-path <AS-*_to_EU-*> splitting-merging sampling use-percentile 90
+set groups IBGP protocols bgp group <*> type internal
+set groups IBGP protocols bgp group <*> mtu-discovery
+set groups IBGP protocols bgp group <*> peer-as 60909
+set groups IBGP protocols bgp group <*> graceful-restart
+set system host-name VMX20
+set system root-authentication encrypted-password "$6$SQoHCljK$JQ4vkOTqr5NHNB7uthiGymy95guf6zSHRKmKl7ZkuuKv0dCdEIhRi/ZbiGldw98NL1FuAXNWMFtvTipwDeiSd1"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system processes dhcp-service traceoptions file dhcp_logfile
+set system processes dhcp-service traceoptions file size 10m
+set system processes dhcp-service traceoptions level all
+set system processes dhcp-service traceoptions flag all
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 secret "$9$8rHXdbs2aZGiJGpBEhvMDikmQF"
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 start-time "2013-12-1.00:00:00 +0000"
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 algorithm hmac-sha-1
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 options isis-enhanced
+set security authentication-key-chains key-chain KEY-BGP-KEY description "BGP Authentication Key"
+set security authentication-key-chains key-chain KEY-BGP-KEY key 1 secret "$9$odJjHqmTzF/QFK87N2gn/Cp1R"
+set security authentication-key-chains key-chain KEY-BGP-KEY key 1 start-time "2013-12-1.00:00:00 +0000"
+set security authentication-key-chains key-chain KEY-BGP-KEY key 1 algorithm hmac-sha-1
+set security authentication-key-chains key-chain KEY-BGP-KEY key 1 options isis-enhanced
+set security authentication-key-chains key-chain KEY-EBGP description "PE-CE BGP Authentication Key"
+set security authentication-key-chains key-chain KEY-EBGP key 1 secret "$9$JhGHqmfz3nCFnMX-d4o/Ct0Rh"
+set security authentication-key-chains key-chain KEY-EBGP key 1 start-time "2013-12-1.00:00:00 +0000"
+set security authentication-key-chains key-chain KEY-ISIS-HMAC description "ISIS Authentication Key"
+set security authentication-key-chains key-chain KEY-ISIS-HMAC key 0 secret "$9$LTexVwYgJGUHZUu1hcMWjHqPz3"
+set security authentication-key-chains key-chain KEY-ISIS-HMAC key 0 start-time "2013-12-1.00:00:00 +0000"
+set security authentication-key-chains key-chain KEY-ISIS-HMAC key 0 algorithm hmac-sha-1
+set security authentication-key-chains key-chain KEY-ISIS-HMAC key 0 options isis-enhanced
+set interfaces ge-0/0/0 unit 0 apply-groups MPLS
+set interfaces ge-0/0/0 unit 0 family inet
+set interfaces ge-0/0/1 unit 0 apply-groups MPLS
+set interfaces ge-0/0/1 unit 0 family inet
+set interfaces ge-0/0/2 unit 0 apply-groups MPLS
+set interfaces ge-0/0/2 unit 0 family inet
+set interfaces ge-0/0/3 unit 0 apply-groups MPLS
+set interfaces ge-0/0/3 unit 0 family inet
+set interfaces ge-0/0/4 unit 0 apply-groups MPLS
+set interfaces ge-0/0/4 unit 0 family inet
+set interfaces ge-0/0/5 unit 0 apply-groups MPLS
+set interfaces ge-0/0/5 unit 0 family inet
+set interfaces fxp0 unit 0 family inet dhcp vendor-id Juniper-vmx-VM604308F9E0
+set interfaces lo0 unit 0 family inet address 172.100.0.20/32
+set interfaces lo0 unit 0 family iso address 49.0172.0100.0000.0020.00
+set protocols rsvp apply-groups RSVP
+set protocols rsvp interface ge-0/0/0.0
+set protocols rsvp interface ge-0/0/1.0
+set protocols rsvp interface ge-0/0/2.0
+set protocols rsvp interface ge-0/0/3.0
+set protocols rsvp interface ge-0/0/4.0
+set protocols rsvp interface ge-0/0/5.0
+set protocols mpls apply-groups LSP
+set protocols mpls lsp-external-controller pccd
+set protocols mpls statistics file mpls-stat.log
+set protocols mpls statistics file size 5m
+set protocols mpls statistics file files 10
+set protocols mpls statistics auto-bandwidth
+set protocols mpls log-updown syslog
+set protocols mpls log-updown trap
+set protocols mpls log-updown trap-path-down
+set protocols mpls log-updown trap-path-up
+set protocols mpls admin-groups Peering 31
+set protocols mpls admin-groups Continental 30
+set protocols mpls admin-groups Transoceanic 29
+set protocols mpls admin-groups Metro 28
+set protocols mpls admin-groups Red 0
+set protocols mpls admin-groups RR 26
+set protocols mpls admin-groups Edge 27
+set protocols mpls sensor-based-stats
+set protocols mpls icmp-tunneling
+set protocols mpls label-switched-path CT1-LSP-REGION template
+set protocols mpls label-switched-path CT1-LSP-REGION admin-group exclude Transoceanic
+set protocols mpls label-switched-path CT1-LSP-REGION admin-group exclude Red
+set protocols mpls label-switched-path CT1-LSP-REGION admin-group exclude RR
+set protocols mpls label-switched-path CT1-LSP-REGION least-fill
+set protocols mpls label-switched-path CT1-LSP-REGION node-link-protection
+set protocols mpls label-switched-path CT1-LSP-REGION adaptive
+set protocols mpls label-switched-path CT1-LSP-REGION auto-bandwidth adjust-interval 300
+set protocols mpls label-switched-path CT1-LSP-REGION auto-bandwidth adjust-threshold 5
+set protocols mpls label-switched-path CT1-LSP-REGION auto-bandwidth adjust-threshold-activate-bandwidth 5m
+set protocols mpls label-switched-path CT1-LSP-REGION auto-bandwidth minimum-bandwidth 0
+set protocols mpls label-switched-path CT1-LSP-REGION auto-bandwidth maximum-bandwidth 1g
+set protocols mpls label-switched-path CT1-LSP-REGION auto-bandwidth adjust-threshold-overflow-limit 3
+set protocols mpls label-switched-path CT1-LSP-REGION auto-bandwidth adjust-threshold-underflow-limit 3
+set protocols mpls interface ge-0/0/0.0
+set protocols mpls interface ge-0/0/1.0
+set protocols mpls interface ge-0/0/2.0
+set protocols mpls interface ge-0/0/3.0
+set protocols mpls interface ge-0/0/4.0
+set protocols mpls interface ge-0/0/5.0
+set protocols bgp group internal apply-groups IBGP
+set protocols bgp group internal apply-groups RRBGP
+set protocols isis apply-groups ISIS
+set protocols isis interface ge-0/0/0.0
+set protocols isis interface ge-0/0/1.0
+set protocols isis interface ge-0/0/2.0
+set protocols isis interface ge-0/0/3.0
+set protocols isis interface ge-0/0/4.0
+set protocols isis interface ge-0/0/5.0

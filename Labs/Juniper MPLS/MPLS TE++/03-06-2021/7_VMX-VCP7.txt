@@ -1,0 +1,208 @@
+set version 17.4R1.16
+set groups MPLS interfaces <*> mtu 1602
+set groups MPLS interfaces <*> unit 0 family iso
+set groups MPLS interfaces <*> unit 0 family mpls
+set groups ISIS protocols isis reference-bandwidth 10g
+set groups ISIS protocols isis lsp-lifetime 65535
+set groups ISIS protocols isis level 2 authentication-key-chain KEY-ISIS-HMAC
+set groups ISIS protocols isis level 2 wide-metrics-only
+set groups ISIS protocols isis level 1 disable
+set groups ISIS protocols isis interface lo0.0 passive
+set groups ISIS protocols isis interface <*> point-to-point
+set groups ISIS protocols isis interface <*> bfd-liveness-detection minimum-interval 1500
+set groups ISIS protocols isis interface <*> bfd-liveness-detection minimum-receive-interval 1500
+set groups ISIS protocols isis interface <*> bfd-liveness-detection multiplier 3
+set groups ISIS protocols isis interface <*> bfd-liveness-detection transmit-interval minimum-interval 1500
+set groups ISIS protocols isis interface <*> bfd-liveness-detection authentication key-chain KEY-BFD-HMAC
+set groups ISIS protocols isis interface <*> bfd-liveness-detection authentication algorithm meticulous-keyed-sha-1
+set groups ISIS protocols isis interface <*> level 2 metric 10
+set groups RSVP protocols rsvp interface <*> authentication-key "$9$Hq5QFnCtpBApNb2gDj0BIhlK"
+set groups RSVP protocols rsvp interface <*> aggregate
+set groups RSVP protocols rsvp interface <*> subscription 75
+set groups RSVP protocols rsvp interface <*> update-threshold 5
+set groups RSVP protocols rsvp interface <*> link-protection admin-group exclude ADMINGROUP-RR
+set groups RRBGP protocols bgp group <*> mtu-discovery
+set groups RRBGP protocols bgp group <*> family inet unicast
+set groups RRBGP protocols bgp group <*> family inet flow
+set groups RRBGP protocols bgp group <*> family inet-vpn unicast
+set groups RRBGP protocols bgp group <*> family inet-vpn flow
+set groups RRBGP protocols bgp group <*> family inet6-vpn unicast
+set groups RRBGP protocols bgp group <*> family l2vpn signaling
+set groups RRBGP protocols bgp group <*> family inet-mvpn signaling
+set groups RRBGP protocols bgp group <*> family inet6-mvpn signaling
+set groups IBGP protocols bgp group <*> type internal
+set groups IBGP protocols bgp group <*> mtu-discovery
+set groups IBGP protocols bgp group <*> log-updown
+set groups IBGP protocols bgp group <*> authentication-key-chain KEY-IBGP
+set groups IBGP protocols bgp group <*> peer-as 60909
+set groups IBGP protocols bgp group <*> graceful-restart
+set groups LSP protocols mpls container-label-switched-path <INTRA-REGION*-TO-INTRA-REGION*> label-switched-path-template CT1-LSP-INTRA-REGION
+set groups LSP protocols mpls container-label-switched-path <INTRA-REGION*-TO-INTRA-REGION*> splitting-merging maximum-member-lsps 4
+set groups LSP protocols mpls container-label-switched-path <INTRA-REGION*-TO-INTRA-REGION*> splitting-merging minimum-member-lsps 1
+set groups LSP protocols mpls container-label-switched-path <INTRA-REGION*-TO-INTRA-REGION*> splitting-merging splitting-bandwidth 192k
+set groups LSP protocols mpls container-label-switched-path <INTRA-REGION*-TO-INTRA-REGION*> splitting-merging merging-bandwidth 128k
+set groups LSP protocols mpls container-label-switched-path <INTRA-REGION*-TO-INTRA-REGION*> splitting-merging normalization normalize-interval 300
+set groups LSP protocols mpls container-label-switched-path <INTRA-REGION*-TO-INTRA-REGION*> splitting-merging sampling use-percentile 90
+set groups LSP protocols mpls container-label-switched-path <INTER-REGION*-TO-INTER-REGION*> label-switched-path-template CT1-LSP-INTER-REGION
+set groups LSP protocols mpls container-label-switched-path <INTER-REGION*-TO-INTER-REGION*> splitting-merging maximum-member-lsps 4
+set groups LSP protocols mpls container-label-switched-path <INTER-REGION*-TO-INTER-REGION*> splitting-merging minimum-member-lsps 1
+set groups LSP protocols mpls container-label-switched-path <INTER-REGION*-TO-INTER-REGION*> splitting-merging splitting-bandwidth 192k
+set groups LSP protocols mpls container-label-switched-path <INTER-REGION*-TO-INTER-REGION*> splitting-merging merging-bandwidth 128k
+set groups LSP protocols mpls container-label-switched-path <INTER-REGION*-TO-INTER-REGION*> splitting-merging normalization normalize-interval 300
+set groups EBGP protocols bgp group <*> authentication-key-chain KEY-EBGP
+set system host-name VMX7
+set system root-authentication encrypted-password "$6$Agockzty$ZfYbK4wXFzdCHk5/1QEAlr3V7dxqNCJV7DeQMmNDWXRmkdk5..PM9K3288GojwJZCg5pYtwKPOQ7Ss3o71LWR1"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system processes dhcp-service traceoptions file dhcp_logfile
+set system processes dhcp-service traceoptions file size 10m
+set system processes dhcp-service traceoptions level all
+set system processes dhcp-service traceoptions flag all
+set chassis aggregated-devices ethernet device-count 20
+set chassis fpc 0 pic 0 tunnel-services bandwidth 10g
+set chassis fpc 0 pic 0 interface-type xe
+set chassis network-services enhanced-ip
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 secret "$9$8rHXdbs2aZGiJGpBEhvMDikmQF"
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 start-time "2013-12-1.00:00:00 +0000"
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 algorithm hmac-sha-1
+set security authentication-key-chains key-chain KEY-BFD-HMAC key 1 options isis-enhanced
+set security authentication-key-chains key-chain KEY-BGP-KEY description "BGP Authentication Key"
+set security authentication-key-chains key-chain KEY-BGP-KEY key 1 secret "$9$tO3.uIEcyKMWxvWi.5T9CLxNV24"
+set security authentication-key-chains key-chain KEY-BGP-KEY key 1 start-time "2013-12-1.00:00:00 +0000"
+set security authentication-key-chains key-chain KEY-BGP-KEY key 1 algorithm hmac-sha-1
+set security authentication-key-chains key-chain KEY-BGP-KEY key 1 options isis-enhanced
+set security authentication-key-chains key-chain KEY-EBGP description "PE-CE BGP Authentication Key"
+set security authentication-key-chains key-chain KEY-EBGP key 1 secret "$9$JhGHqmfz3nCFnMX-d4o/Ct0Rh"
+set security authentication-key-chains key-chain KEY-EBGP key 1 start-time "2013-12-1.00:00:00 +0000"
+set security authentication-key-chains key-chain KEY-IBGP description "BGP Authentication Key"
+set security authentication-key-chains key-chain KEY-IBGP key 1 secret "$9$odJjHqmTzF/QFK87N2gn/Cp1R"
+set security authentication-key-chains key-chain KEY-IBGP key 1 start-time "2013-12-1.00:00:00 +0000"
+set security authentication-key-chains key-chain KEY-IBGP key 1 algorithm hmac-sha-1
+set security authentication-key-chains key-chain KEY-IBGP key 1 options isis-enhanced
+set security authentication-key-chains key-chain KEY-ISIS-HMAC description "ISIS Authentication Key"
+set security authentication-key-chains key-chain KEY-ISIS-HMAC key 0 secret "$9$LTexVwYgJGUHZUu1hcMWjHqPz3"
+set security authentication-key-chains key-chain KEY-ISIS-HMAC key 0 start-time "2013-12-1.00:00:00 +0000"
+set security authentication-key-chains key-chain KEY-ISIS-HMAC key 0 algorithm hmac-sha-1
+set security authentication-key-chains key-chain KEY-ISIS-HMAC key 0 options isis-enhanced
+set interfaces xe-0/0/0 unit 0 apply-groups MPLS
+set interfaces xe-0/0/0 unit 0 bandwidth 100m
+set interfaces xe-0/0/0 unit 0 family inet address 172.100.37.7/24
+set interfaces xe-0/0/1 unit 0 apply-groups MPLS
+set interfaces xe-0/0/1 unit 0 bandwidth 200m
+set interfaces xe-0/0/1 unit 0 family inet address 172.100.47.7/24
+set interfaces xe-0/0/2 unit 0 apply-groups MPLS
+set interfaces xe-0/0/2 unit 0 family inet
+set interfaces xe-0/0/3 unit 0 apply-groups MPLS
+set interfaces xe-0/0/3 unit 0 family inet
+set interfaces xe-0/0/4 unit 0 apply-groups MPLS
+set interfaces xe-0/0/4 unit 0 family inet
+set interfaces xe-0/0/5 unit 0 apply-groups MPLS
+set interfaces xe-0/0/5 unit 0 family inet
+set interfaces xe-0/0/9 flexible-vlan-tagging
+set interfaces xe-0/0/9 encapsulation flexible-ethernet-services
+set interfaces xe-0/0/9 unit 1000 vlan-id 1000
+set interfaces xe-0/0/9 unit 1000 family inet address 172.100.127.7/24
+set interfaces xe-0/0/9 unit 1000 family inet address 172.100.117.7/24
+set interfaces fxp0 unit 0 family inet dhcp vendor-id Juniper-vmx-VM604308F9E0
+set interfaces lo0 unit 0 family inet address 172.100.0.7/32
+set interfaces lo0 unit 0 family iso address 49.0172.0100.0000.0007.00
+set routing-options router-id 172.100.0.7
+set routing-options autonomous-system 60909
+set routing-options auto-export
+set routing-options dynamic-tunnels dt-1 rsvp-te rsvp-te-1 label-switched-path-template default-template
+set routing-options dynamic-tunnels dt-1 rsvp-te rsvp-te-1 destination-networks 172.100.0.0/24
+set protocols rsvp apply-groups RSVP
+set protocols rsvp interface xe-0/0/0.0
+set protocols rsvp interface xe-0/0/1.0
+set protocols mpls apply-groups LSP
+set protocols mpls lsp-external-controller pccd
+set protocols mpls statistics file mpls-stat.log
+set protocols mpls statistics file size 5m
+set protocols mpls statistics file files 10
+set protocols mpls statistics auto-bandwidth
+set protocols mpls log-updown syslog
+set protocols mpls log-updown trap
+set protocols mpls log-updown trap-path-down
+set protocols mpls log-updown trap-path-up
+set protocols mpls traffic-engineering mpls-forwarding
+set protocols mpls admin-groups ADMINGROUP-INTRA-REGION 30
+set protocols mpls admin-groups ADMINGROUP-INTER-REGION 29
+set protocols mpls admin-groups ADMINGROUP-RED 0
+set protocols mpls admin-groups ADMINGROUP-EDGE 27
+set protocols mpls admin-groups ADMINGROUP-RR 26
+set protocols mpls sensor-based-stats
+set protocols mpls ipv6-tunneling
+set protocols mpls icmp-tunneling
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION template
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION admin-group exclude ADMINGROUP-RED
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION admin-group exclude ADMINGROUP-INTER-REGION
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION admin-group exclude ADMINGROUP-RR
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION least-fill
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION node-link-protection
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION adaptive
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION auto-bandwidth adjust-interval 300
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION auto-bandwidth adjust-threshold 10
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION auto-bandwidth adjust-threshold-activate-bandwidth 5m
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION auto-bandwidth minimum-bandwidth 0
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION auto-bandwidth maximum-bandwidth 10g
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION auto-bandwidth adjust-threshold-overflow-limit 3
+set protocols mpls label-switched-path CT1-LSP-INTRA-REGION auto-bandwidth adjust-threshold-underflow-limit 3
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION template
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION admin-group exclude ADMINGROUP-RED
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION admin-group exclude ADMINGROUP-RR
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION least-fill
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION node-link-protection
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION adaptive
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION auto-bandwidth adjust-interval 300
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION auto-bandwidth adjust-threshold 10
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION auto-bandwidth adjust-threshold-activate-bandwidth 5m
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION auto-bandwidth minimum-bandwidth 0
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION auto-bandwidth maximum-bandwidth 10g
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION auto-bandwidth adjust-threshold-overflow-limit 3
+set protocols mpls label-switched-path CT1-LSP-INTER-REGION auto-bandwidth adjust-threshold-underflow-limit 3
+set protocols mpls container-label-switched-path INTRA-REGION_VMX07-TO-INTRA-REGION_VMX08 to 172.100.0.8
+set protocols mpls container-label-switched-path INTER-REGION_VMX07-TO-INTER-REGION_VMX09 to 172.100.0.9
+set protocols mpls container-label-switched-path INTER-REGION_VMX07-TO-INTER-REGION_VMX10 to 172.100.0.10
+set protocols mpls interface xe-0/0/0.0 admin-group ADMINGROUP-INTRA-REGION
+set protocols mpls interface xe-0/0/1.0 admin-group ADMINGROUP-INTRA-REGION
+set protocols mpls label-range dynamic-label-range 7000 7999
+set protocols bgp group internal apply-groups IBGP
+set protocols bgp group internal apply-groups RRBGP
+set protocols bgp group internal local-address 172.100.0.7
+set protocols bgp group internal import IMPORT-BGP
+set protocols bgp group internal export EXPORT-BGP
+set protocols bgp group internal neighbor 172.100.0.201 description VMX01-LSYS-IBGP
+set protocols bgp group internal neighbor 172.100.0.202 description VMX02-LSYS-IBGP
+set protocols isis apply-groups ISIS
+set protocols isis interface xe-0/0/0.0
+set protocols isis interface xe-0/0/1.0
+set protocols lldp interface all
+set policy-options policy-statement EXPORT-BGP from protocol bgp
+set policy-options policy-statement EXPORT-BGP from protocol direct
+set policy-options policy-statement EXPORT-BGP then accept
+set policy-options policy-statement IMPORT-BGP then accept
+set policy-options policy-statement VRF-A-EXPORT term a from protocol bgp
+set policy-options policy-statement VRF-A-EXPORT term a from protocol direct
+set policy-options policy-statement VRF-A-EXPORT term a then community add VRF-A-COMMUNITY
+set policy-options policy-statement VRF-A-EXPORT term a then accept
+set policy-options policy-statement VRF-A-EXPORT term b then reject
+set policy-options policy-statement VRF-A-IMPORT term a from protocol bgp
+set policy-options policy-statement VRF-A-IMPORT term a from protocol direct
+set policy-options policy-statement VRF-A-IMPORT term a from community VRF-A-COMMUNITY
+set policy-options policy-statement VRF-A-IMPORT term a then accept
+set policy-options policy-statement VRF-A-IMPORT term b then reject
+set policy-options community VRF-A-COMMUNITY members target:60909:1000
+set routing-instances VRF-A apply-groups EBGP
+set routing-instances VRF-A instance-type vrf
+set routing-instances VRF-A interface xe-0/0/9.1000
+set routing-instances VRF-A route-distinguisher 172.100.0.7:1000
+set routing-instances VRF-A vrf-import VRF-A-IMPORT
+set routing-instances VRF-A vrf-export VRF-A-EXPORT
+set routing-instances VRF-A vrf-table-label
+set routing-instances VRF-A routing-options autonomous-system 60909
+set routing-instances VRF-A routing-options auto-export
+set routing-instances VRF-A protocols bgp family inet unicast prefix-limit maximum 500
+set routing-instances VRF-A protocols bgp group BGP-65013 neighbor 172.100.117.11 description VMX11-CE
+set routing-instances VRF-A protocols bgp group BGP-65013 neighbor 172.100.117.11 peer-as 65011

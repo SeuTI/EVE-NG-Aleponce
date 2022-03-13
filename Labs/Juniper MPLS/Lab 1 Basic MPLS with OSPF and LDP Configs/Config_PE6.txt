@@ -1,0 +1,75 @@
+root@J10# show 
+## Last changed: 2014-03-21 14:18:13 UTC
+version 12.1R1.9;
+system {
+    host-name J10;
+    root-authentication {
+        encrypted-password "$1$zgGblV6L$DgFC.JRdHWBMsASlSkzyO."; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+}
+interfaces {
+    em0 {
+        unit 0 {
+            family inet {               
+                address 10.3.10.10/24;
+            }
+            family mpls;
+        }
+    }
+    em1 {
+        unit 0 {
+            family inet {
+                address 10.4.10.10/24;
+            }
+            family mpls;
+        }
+    }
+    em3 {
+        unit 0 {
+            family inet {
+                address 10.10.18.10/24;
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {               
+                address 10.0.0.10/32;
+            }
+        }
+    }
+}
+routing-options {
+    router-id 10.0.0.10;
+}
+protocols {
+    mpls {
+        interface all;
+    }
+    ospf {
+        area 0.0.0.0 {
+            interface em0.0;
+            interface em1.0;
+            interface lo0.0;
+        }
+    }
+    ldp {
+        interface em0.0;
+        interface em1.0;
+    }                                   
+}
+
+[edit]
+root@J10# 

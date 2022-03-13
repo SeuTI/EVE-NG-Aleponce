@@ -1,0 +1,308 @@
+autostart = False
+version = 0.8.6
+[qemu localhost:10525]
+    workingdir = qemu-flash-drives
+    udp = 40000
+    qemupath = /Applications/GNS3.app/Contents/Resources/Qemu-0.14.1/bin/qemu-system-i386
+    qemuimgpath = /Applications/GNS3.app/Contents/Resources/Qemu-0.14.1/bin/qemu-img
+    [[O-series]]
+        image = /Users/gerardgacusan/Documents/GNS3/IOS/Juniper/Olive12.1R1.9.img
+        nics = 8
+        netcard = e1000
+    [[JUNOS J19_CE7]]
+        ram = 128
+        nics = 6
+        e0 = J11_PE7 e3
+        e1 = J12_PE8 e4
+        symbol = router
+        x = -1572.5
+        y = -2916.5
+        z = 1.0
+    [[JUNOS J10_PE6]]
+        ram = 384
+        nics = 6
+        e0 = J3_P3 e6
+        e1 = J4_P4 e3
+        e3 = J18_CE6 e0
+        e4 = J17_CE5 e1
+        symbol = edge_label_switch_router
+        x = -1858.5
+        y = -2647.5
+        z = 1.0
+    [[JUNOS J1_P1]]
+        e0 = J2_P2 e0
+        e1 = J3_P3 e1
+        e3 = J5_PE1 e0
+        e4 = J7_PE3 e0
+        e5 = J6_PE2 e1
+        e6 = J8_PE4 e1
+        e7 = J4_P4 e7
+        symbol = label_switch_router
+        x = -2027.0
+        y = -2848.0
+        z = 1.0
+    [[JUNOS J7_PE3]]
+        ram = 384
+        nics = 6
+        e0 = J1_P1 e4
+        e1 = J3_P3 e5
+        e3 = J15_CE3 e0
+        e4 = J16_CE4 e1
+        symbol = edge_label_switch_router
+        x = -2162.5
+        y = -2863.5
+        z = 1.0
+    [[JUNOS J5_PE1]]
+        ram = 384
+        nics = 6
+        e0 = J1_P1 e3
+        e1 = J2_P2 e5
+        e3 = J13_CE1 e0
+        e4 = J14_CE2 e1
+        symbol = edge_label_switch_router
+        x = -2035.5
+        y = -2975.5
+        z = 1.0
+    [[JUNOS J16_CE4]]
+        ram = 128
+        nics = 6
+        e0 = J8_PE4 e3
+        e1 = J7_PE3 e4
+        symbol = router
+        x = -2285.5
+        y = -2681.5
+        z = 1.0
+    [[JUNOS J6_PE2]]
+        ram = 384
+        nics = 6
+        e0 = J2_P2 e3
+        e1 = J1_P1 e5
+        e3 = J14_CE2 e0
+        e4 = J13_CE1 e1
+        symbol = edge_label_switch_router
+        x = -1872.5
+        y = -2978.5
+        z = 1.0
+    [[JUNOS J14_CE2]]
+        ram = 128
+        nics = 6
+        e0 = J6_PE2 e3
+        e1 = J5_PE1 e4
+        symbol = router
+        x = -1736.5
+        y = -3048.5
+        z = 1.0
+    [[JUNOS J11_PE7]]
+        ram = 384
+        nics = 6
+        e0 = J2_P2 e4
+        e1 = J4_P4 e6
+        e3 = J19_CE7 e0
+        e4 = J20_CE8 e1
+        symbol = edge_label_switch_router
+        x = -1720.5
+        y = -2887.5
+        z = 1.0
+    [[JUNOS J20_CE8]]
+        ram = 128
+        nics = 6
+        e0 = J12_PE8 e3
+        e1 = J11_PE7 e4
+        symbol = router
+        x = -1563.5
+        y = -2704.5
+        z = 1.0
+    [[JUNOS J4_P4]]
+        e0 = J3_P3 e0
+        e1 = J2_P2 e1
+        e3 = J10_PE6 e1
+        e4 = J12_PE8 e0
+        e5 = J9_PE5 e1
+        e6 = J11_PE7 e1
+        e7 = J1_P1 e7
+        symbol = Juniper P Router
+        x = -1883.5
+        y = -2756.5
+        z = 1.0
+    [[JUNOS J15_CE3]]
+        ram = 128
+        nics = 6
+        e0 = J7_PE3 e3
+        e1 = J8_PE4 e4
+        symbol = router
+        x = -2279.5
+        y = -2914.5
+        z = 1.0
+    [[JUNOS J8_PE4]]
+        ram = 384
+        nics = 6
+        e0 = J3_P3 e4
+        e1 = J1_P1 e6
+        e3 = J16_CE4 e0
+        e4 = J15_CE3 e1
+        symbol = edge_label_switch_router
+        x = -2168.5
+        y = -2719.5
+        z = 1.0
+    [[JUNOS J17_CE5]]
+        ram = 128
+        nics = 6
+        e0 = J9_PE5 e3
+        e1 = J10_PE6 e4
+        symbol = router
+        x = -2128.5
+        y = -2550.5
+        z = 1.0
+    [[JUNOS J2_P2]]
+        e0 = J1_P1 e0
+        e1 = J4_P4 e1
+        e3 = J6_PE2 e0
+        e4 = J11_PE7 e0
+        e5 = J5_PE1 e1
+        e6 = J12_PE8 e1
+        e7 = J3_P3 e7
+        symbol = Juniper P Router
+        x = -1884.5
+        y = -2849.5
+        z = 1.0
+    [[JUNOS J13_CE1]]
+        ram = 128
+        nics = 6
+        e0 = J5_PE1 e3
+        e1 = J6_PE2 e4
+        symbol = router
+        x = -2120.5
+        y = -3057.5
+        z = 1.0
+    [[JUNOS J18_CE6]]
+        ram = 128
+        nics = 6
+        e0 = J10_PE6 e3
+        e1 = J9_PE5 e4
+        symbol = router
+        x = -1758.5
+        y = -2549.5
+        z = 1.0
+    [[JUNOS J12_PE8]]
+        ram = 384
+        nics = 6
+        e0 = J4_P4 e4
+        e1 = J2_P2 e6
+        e3 = J20_CE8 e0
+        e4 = J19_CE7 e1
+        symbol = edge_label_switch_router
+        x = -1717.5
+        y = -2722.5
+        z = 1.0
+    [[JUNOS J9_PE5]]
+        ram = 384
+        nics = 6
+        e0 = J3_P3 e3
+        e1 = J4_P4 e5
+        e3 = J17_CE5 e0
+        e4 = J18_CE6 e1
+        symbol = edge_label_switch_router
+        x = -2049.5
+        y = -2641.5
+        z = 1.0
+    [[JUNOS J3_P3]]
+        e0 = J4_P4 e0
+        e1 = J1_P1 e1
+        e3 = J9_PE5 e0
+        e4 = J8_PE4 e0
+        e5 = J7_PE3 e1
+        e6 = J10_PE6 e0
+        e7 = J2_P2 e7
+        symbol = Juniper P Router
+        x = -2027.5
+        y = -2751.5
+        z = 1.0
+[GNS3-DATA]
+    configs = configs
+    width = 5000
+    height = 6300
+    [[NOTE 1]]
+        text = "\nJUNIPER SERVICE PROVIDER LAB NETWORK SIMULATION\n\nVPN BLUE  	VRF 100:100	CE1 & CE5	OSPFv2\nVPN GREEN 	VRF 200:200	CE2 & CE6	eBGP\nVPN MAGENTA	VRF 300:300	CE3 & CE7	RIPv2\nVPN RED	VRF 400:400 	CE4 & CE8	Static\n\nJ1-J2	10.1.2.x/24\nJ1-J3	10.1.3.x/24\nJ1-J4	10.1.4.x/24\nJ1-J5	10.1.5.x/24\nJ1-J6	10.1.6.x/24\nJ1-J7	10.1.7.x/24\nJ1-J8	10.1.8.x/24\nJ2-J1	10.1.2.x/24\nJ2-J3	10.2.3.x/24\nJ2-J4	10.2.4.x/24\nJ2-J5	10.2.5.x/24\nJ2-J6 	10.2.6.x/24\nJ2-J11 	10.2.11.x/24\nJ2-J12 	10.2.12.x/24 \nJ3-J1 	10.1.3.x/24\nJ3-J2 	10.2.3.x/24\nJ3-J4 	10.3.4.x/24\nJ3-J7	10.3.7.x/24\nJ3-J8 	10.3.8.x/24\nJ3-J9 	 10.3.9.x/24\nJ3-J10 	10.3.10.x/24\nJ4-J1 	10.1.4.x/24\nJ4-J2 	10.2.4.x/24\nJ4-J3 	10.3.4.x/24\nJ4-J9 	10.4.9.x/24\nJ4-J10 	10.4.10.x/24\nJ4-J11 	10.4.11.x/24\nJ4-J12 	10.4.12.x/24\nJ5-J13 	10.5.13.x/24 \nJ5-J14 	10.5.14.x/24\nJ6-J13 	10.6.13.x/24\nJ6-J14 	10.6.14.x/24\nJ7-J15 	10.7.15.x/24\nJ7-J16 	10.7.16.x/24\nJ8-J15 	10.8.15.x/24\nJ8-J16 	10.8.16.x/24\nJ9-J17 	10.9.17.x/24\nJ9-J18 	10.9.18.x/24\nJ10-j17 	10.10.17.x/24\nJ10-J18 	10.10.18.x/24\nJ11-J19 	10.11.19.x/24\nJ11-J20	10.11.20.x/24\nJ12-J19	10.12.19.x/24\nJ12-J20 	10.12.20.x/24\n\nLoopback0 	10.0.0.x/32\nRouter ID	10.0.0.x	\n\nWhere, x = Router Number\nExample: J1\nJ = Stands for Juniper\n1 = Router Number 1"
+        x = -1448.0
+        y = -3114.0
+        font = "Helvetica,10,-1,5,50,0,0,0,0,0"
+    [[SHAPE 1]]
+        type = ellipse
+        x = -1611.0
+        y = -2752.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#f76171"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 2]]
+        type = ellipse
+        x = -1768.0
+        y = -3102.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#30f744"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 3]]
+        type = ellipse
+        x = -2316.0
+        y = -2947.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#ef71f7"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 4]]
+        type = ellipse
+        x = -1614.0
+        y = -2954.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#ef71f7"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 5]]
+        type = ellipse
+        x = -2157.0
+        y = -2601.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#43d2f7"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 6]]
+        type = ellipse
+        x = -2153.0
+        y = -3103.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#43d2f7"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 7]]
+        type = ellipse
+        x = -2322.0
+        y = -2740.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#f76171"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 8]]
+        type = rectangle
+        x = -2056.0
+        y = -2882.0
+        width = 276.0
+        height = 192.0
+        fill_color = "#e7cc32"
+        z = -1.0
+    [[SHAPE 9]]
+        type = ellipse
+        x = -1802.0
+        y = -2603.0
+        width = 138.0
+        height = 130.0
+        fill_color = "#30f744"
+        border_style = 2
+        z = -1.0

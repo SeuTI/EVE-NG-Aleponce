@@ -1,0 +1,109 @@
+root@J1> ping 10.0.0.1 count 2 
+PING 10.0.0.1 (10.0.0.1): 56 data bytes
+64 bytes from 10.0.0.1: icmp_seq=0 ttl=64 time=1.800 ms
+64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=1.238 ms
+
+--- 10.0.0.1 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.238/1.519/1.800/0.281 ms
+
+root@J1> ping 10.0.0.2 count 2    
+PING 10.0.0.2 (10.0.0.2): 56 data bytes
+64 bytes from 10.0.0.2: icmp_seq=0 ttl=64 time=1.417 ms
+64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.852 ms
+
+--- 10.0.0.2 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.852/1.135/1.417/0.282 ms
+
+root@J1> ping 10.0.0.3 count 2   
+PING 10.0.0.3 (10.0.0.3): 56 data bytes
+64 bytes from 10.0.0.3: icmp_seq=0 ttl=64 time=0.941 ms
+64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.670 ms
+
+--- 10.0.0.3 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.670/0.805/0.941/0.136 ms
+
+root@J1> ping 10.0.0.4 count 2   
+PING 10.0.0.4 (10.0.0.4): 56 data bytes
+64 bytes from 10.0.0.4: icmp_seq=0 ttl=64 time=0.941 ms
+64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.667 ms
+
+--- 10.0.0.4 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.667/0.804/0.941/0.137 ms
+
+root@J1> ping 10.0.0.5 count 2   
+PING 10.0.0.5 (10.0.0.5): 56 data bytes
+64 bytes from 10.0.0.5: icmp_seq=0 ttl=64 time=1.253 ms
+64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=0.747 ms
+
+--- 10.0.0.5 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.747/1.000/1.253/0.253 ms
+
+root@J1> ping 10.0.0.6 count 2   
+PING 10.0.0.6 (10.0.0.6): 56 data bytes
+64 bytes from 10.0.0.6: icmp_seq=0 ttl=64 time=1.093 ms
+64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=0.615 ms
+
+--- 10.0.0.6 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.615/0.854/1.093/0.239 ms
+
+root@J1> ping 10.0.0.7 count 2   
+PING 10.0.0.7 (10.0.0.7): 56 data bytes
+64 bytes from 10.0.0.7: icmp_seq=0 ttl=64 time=1.111 ms
+64 bytes from 10.0.0.7: icmp_seq=1 ttl=64 time=0.699 ms
+
+--- 10.0.0.7 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.699/0.905/1.111/0.206 ms
+
+root@J1> ping 10.0.0.8 count 2   
+PING 10.0.0.8 (10.0.0.8): 56 data bytes
+64 bytes from 10.0.0.8: icmp_seq=0 ttl=64 time=1.178 ms
+64 bytes from 10.0.0.8: icmp_seq=1 ttl=64 time=0.653 ms
+
+--- 10.0.0.8 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.653/0.915/1.178/0.263 ms
+
+root@J1> ping 10.0.0.9 count 2   
+PING 10.0.0.9 (10.0.0.9): 56 data bytes
+64 bytes from 10.0.0.9: icmp_seq=0 ttl=62 time=2.072 ms
+64 bytes from 10.0.0.9: icmp_seq=1 ttl=62 time=1.355 ms
+
+--- 10.0.0.9 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.355/1.714/2.072/0.359 ms
+
+root@J1> ping 10.0.0.10 count 2  
+PING 10.0.0.10 (10.0.0.10): 56 data bytes
+64 bytes from 10.0.0.10: icmp_seq=0 ttl=62 time=1.777 ms
+64 bytes from 10.0.0.10: icmp_seq=1 ttl=62 time=1.463 ms
+
+--- 10.0.0.10 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.463/1.620/1.777/0.157 ms
+
+root@J1> ping 10.0.0.11 count 2   
+PING 10.0.0.11 (10.0.0.11): 56 data bytes
+64 bytes from 10.0.0.11: icmp_seq=0 ttl=62 time=2.127 ms
+64 bytes from 10.0.0.11: icmp_seq=1 ttl=62 time=1.351 ms
+
+--- 10.0.0.11 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.351/1.739/2.127/0.388 ms
+
+root@J1> ping 10.0.0.12 count 2   
+PING 10.0.0.12 (10.0.0.12): 56 data bytes
+64 bytes from 10.0.0.12: icmp_seq=0 ttl=62 time=1.751 ms
+64 bytes from 10.0.0.12: icmp_seq=1 ttl=62 time=1.407 ms
+
+--- 10.0.0.12 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 1.407/1.579/1.751/0.172 ms
+
+root@J1> 
